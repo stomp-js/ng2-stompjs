@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.1.13",
+  "version": "0.1.19",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
@@ -24,11 +24,9 @@
   },
   "main": "./dist/index.js",
   "peerDependencies": {
-    "@angular/http": ">2.0.0",
     "@stomp/stompjs": ">=2.5.3"
   },
   "devDependencies": {
-    "@angular/http": ">2.0.0",
     "@stomp/stompjs": ">=2.5.3",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.1",

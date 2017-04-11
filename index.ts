@@ -1,4 +1,4 @@
 
-export {STOMPService, STOMPState} from 'src/stomp.service';
-export {StompConfig} from 'src/stomp.config';
-export {StompConfigService} from 'src/stomp-config.service';
+export {STOMPService, STOMPState} from './src/stomp.service';
+export {StompConfig} from './src/stomp.config';
+export {StompConfigService} from './src/stomp-config.service';

@@ -12,9 +12,6 @@
       "@angular/core": [
         "node_modules/@angular/core"
       ],
-      "@angular/http": [
-        "node_modules/@angular/http"
-      ],
       "@stomp/stompjs": [
         "node_modules/@stomp/stompjs"
       ],
