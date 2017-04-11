@@ -1,23 +1,40 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "ES6",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowUnusedLabels": false,
-    "noImplicitReturns": true,
-    "sourceMap": true,
+    "baseUrl": ".",
     "declaration": true,
-    "outDir": "./dist",
-    "typeRoots": [
-      "node_modules/@types"
+    "stripInternal": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "paths": {
+      "@angular/core": [
+        "node_modules/@angular/core"
+      ],
+      "@angular/http": [
+        "node_modules/@angular/http"
+      ],
+      "@stomp/stompjs": [
+        "node_modules/@stomp/stompjs"
+      ],
+      "rxjs/*": [
+        "node_modules/rxjs/*"
+      ]
+    },
+    "rootDir": ".",
+    "outDir": "dist",
+    "sourceMap": true,
+    "inlineSources": true,
+    "target": "es5",
+    "skipLibCheck": true,
+    "lib": [
+      "es2015",
+      "dom"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.spec.ts"
+  "files": [
+    "index.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true

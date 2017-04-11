@@ -68,7 +68,7 @@ export class STOMPService {
   }
 
   /** Set up configuration */
-  private configure(config?: StompConfig): void {
+  private configure(config: StompConfig): void {
 
     this.config = config;
 
@@ -82,14 +82,14 @@ export class STOMPService {
     this.client = Stomp.client(`${scheme}://${this.config.host}:${this.config.port}/${this.config.path}`);
 
     // Configure client heartbeating
-    this.client.heartbeat.incoming = this.config.heartbeat_in;
-    this.client.heartbeat.outgoing = this.config.heartbeat_out;
+    this.client.heartbeat.incoming = <number>this.config.heartbeat_in;
+    this.client.heartbeat.outgoing = <number>this.config.heartbeat_out;
 
     // Auto reconnect
     this.client.reconnect_delay = this.config.reconnect_delay;
 
     // Set function to debug print messages
-    this.client.debug = this.config.debug || this.config.debug == null ? this.debug : null;
+    this.client.debug = this.config.debug || this.config.debug == null ? this.debug : () => {};
   }
 
 
@@ -136,7 +136,7 @@ export class STOMPService {
       this.client.send(queueName, {}, message);
     } else {
       this.debug(`Not connected, queueing ${message}`);
-      this.queuedMessages.push({queueName: queueName, message: message});
+      this.queuedMessages.push({queueName: <string>queueName, message: <string>message});
     }
   }
 

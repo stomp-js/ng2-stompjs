@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { StompConfig } from './stomp.config';
 import {Observable} from 'rxjs/Observable';
@@ -18,15 +17,16 @@ import {Observable} from 'rxjs/Observable';
 export class StompConfigService {
 
   /** Constructor */
-  constructor(private _http: Http) { }
+  constructor() { }
 
 
   /** Make an http request for a config file, and
     * return a Promise for its resolution.
     */
   public get(): Observable<StompConfig> {
-    const path = '/src/api/config.json';
-    return this._http.get(path)
-      .map(res => res.json());
+    // const path = '/src/api/config.json';
+    // return this._http.get(path)
+    //   .map(res => res.json());
+    return Observable.of({});
   }
 }
