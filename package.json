@@ -1,10 +1,10 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
-    "test": "tsc && karma start"
+    "test": "ngc -p tsconfig.json && karma start"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "email": "deepak@kreatio.com"
   },
   "keywords": [
-    "angular"
+    "stompjs", "angular2", "angular4", "rabbitmq", "websocket", "angular", "stomp"
   ],
   "license": "MIT",
   "bugs": {

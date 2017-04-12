@@ -1,4 +1,4 @@
-# stomp-ng2-stompjs
+# @stomp/ng2-stompjs
 
 An Angular (Angular2, Angular4, ...) style wrapper for an updated stompjs,
 originally developed by [Jeff Mesnil](http://jmesnil.net/).
@@ -9,7 +9,7 @@ The code itself is quite clean and should work with any setup Angular2 and above
 However, packaging as an NPM module has been proven to be clumsy. So, the NPM
 module may not work with every possible setup. In case it does not work for your 
 setup, please raise a ticket. As interim you may include all the .ts files from
-the GitHub project (TODO) and place it in your project directly.
+the GitHub project (https://github.com/stomp-js/ng2-stompjs/tree/master/src) and place it in your project directly.
 
 Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.
 
@@ -147,7 +147,7 @@ following import in the classes where you consume messages:
 import {Message} from '@stomp/stompjs';
 ```
     
-#### Unsubscribe to a queue
+#### Unsubscribe from a queue
 
 Not a likely chance that you would need it.
 
@@ -155,7 +155,7 @@ You will need to unsubscribe from stomp_subscription (which is an Observer),
 it will then internally unsubscribe from the underlying STOMP queue
 subscription.
 
-#### Publishing Messages
+#### Publishing messages
 
 Call `public publish(queueName: string, message: string)`. Example:
 
@@ -167,7 +167,7 @@ Please note that message is actually string. So, if you need to send JSON
 you will need to convert it into string (typically using 
 `JSON.stringify()`)
 
-#### Watching for Stomp Connection Status
+#### Watching for Stomp Connection status
 
 - `stompService.state` is a `BehaviorSubject` which maintains and switches
   its value as per the underlying Stomp Connection status.
