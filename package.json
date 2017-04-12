@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.1.21",
+  "version": "0.1.24",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
@@ -22,11 +22,10 @@
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
   "main": "./dist/index.js",
-  "peerDependencies": {
+  "dependencies": {
     "@stomp/stompjs": ">=2.5.3"
   },
   "devDependencies": {
-    "@stomp/stompjs": ">=2.5.3",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.1",
     "@angular/compiler-cli": "^4.0.1",

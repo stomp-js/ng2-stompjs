@@ -72,18 +72,12 @@ export class StompService {
 
     this.config = config;
 
-    // Connecting via SSL Websocket?
-    let scheme = 'ws';
-    if (this.config.ssl) {
-      scheme = 'wss';
-    }
-
     // Attempt connection, passing in a callback
-    this.client = Stomp.client(`${scheme}://${this.config.host}:${this.config.port}/${this.config.path}`);
+    this.client = Stomp.client(this.config.url);
 
-    // Configure client heartbeating
-    this.client.heartbeat.incoming = <number>this.config.heartbeat_in;
-    this.client.heartbeat.outgoing = <number>this.config.heartbeat_out;
+    // Configure client heart-beating
+    this.client.heartbeat.incoming = this.config.heartbeat_in;
+    this.client.heartbeat.outgoing = this.config.heartbeat_out;
 
     // Auto reconnect
     this.client.reconnect_delay = this.config.reconnect_delay;

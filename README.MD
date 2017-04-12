@@ -1,64 +1,206 @@
 # stomp-ng2-stompjs
 
+An Angular (Angular2, Angular4, ...) style wrapper for an updated stompjs,
+originally developed by [Jeff Mesnil](http://jmesnil.net/).
+
+## Compatibility
+
+The code itself is quite clean and should work with any setup Angular2 and above.
+However, packaging as an NPM module has been proven to be clumsy. So, the NPM
+module may not work with every possible setup. In case it does not work for your 
+setup, please raise a ticket. As interim you may include all the .ts files from
+the GitHub project (TODO) and place it in your project directly.
+
+Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.
+
 ## Installation
 
 To install this library, run:
 
 ```bash
-$ npm install stomp-ng2-stompjs --save
+$ npm install @stomp/ng2-stompjs --save
 ```
-
-## Consuming your library
-
-Once you have published your library to npm, you can import your library in any Angular application by running:
+or, if using yarn
 
 ```bash
-$ npm install stomp-ng2-stompjs
+$ yarn add @stomp/ng2-stompjs
 ```
 
-and then from your Angular `AppModule`:
+This will addtionally install @stomp/stompjs 
+from https://github.com/stomp-js/stomp-websocket
+
+## Usage
+
+### Prerequisites
+
+- You will need to have a Stomp broker running.
+- Sample code on this page assumes you have
+  RabbitMQ running with default settings and Web STOMP plugin activated.
+  (see: https://www.rabbitmq.com/web-stomp.html).
+
+### All the Hard Work
+
+- The main service is StompService, which will need to be provided.
+- The STOMP Broker connection details will need to be provided via another 
+  class StompConfigService. Typically you will subclass it to provide configuration.
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html for
+  background reading.
+- Sample config:
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+const conf: StompConfig= {
+    // Which server?
+    url: "ws://127.0.0.1:15674/ws",
 
-import { AppComponent } from './app.component';
+    user: "guest",
+    pass: "guest",
 
-// Import your library
-import { SampleModule } from 'stomp-ng2-stompjs';
+    // How often to heartbeat?
+    // Interval in milliseconds, set to 0 to disable
+    heartbeat_in: 0, // Typical value 0 - disabled
+    heartbeat_out: 20000, // Typical value 20000 - every 20 seconds
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
+    // Wait in milliseconds before attempting auto reconnect
+    // Set to 0 to disable
+    // Typical value 5000 (5 seconds)
+    reconnect_delay: 5000,
 
-    // Specify your library as an import
-    LibraryModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+    // Will log diagnostics on console
+    debug: true
+}
+```
+    
+- Your ConfigService must extend StompConfigService and implement a method
+  `public get(): Observable<StompConfig>`. Example:
+  
+```typescript
+  public get(): Observable<StompConfig> {
+    const conf: StompConfig= {
+      // as from previous example
+    };
+
+    return Observable.of(conf);
+  }
+```
+    
+- See TODO 
+  for a sample code file with configuration passed from a local
+  hash.
+- See TODO 
+  for a sample code file with configuration fetched from a http
+  resource.
+- Assuming the class you have created for configuration service is 
+  `ConfigService`, code sample to provide these service will look like:
+  
+```typescript
+  providers: [
+    StompService,
+    {
+      provide: StompConfigService,
+      useClass: ConfigService
+    }
+  ]
+```
+    
+- See TODO
+  for a sample file.
+
+### Reap the Benefits
+
+#### Inject StompService
+
+In your constructor (typically of a component or a service), inject
+  `StompService` as a dependency:
+  
+```typescript
+constructor(private _stompService: StompService) { }
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+#### Subscribe to a queue
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
+The queue name structure and semantics vary
+based on your specific STOMP Broker, 
+see: https://www.rabbitmq.com/stomp.html
+for RabbitMQ specific details.
+
+Call `subscribe` with name of the queue which returns an Observable. Any
+of Observable specific operators (map, filter, subscribe, etc.) cane be
+applied on it. This can also be set into a template with `async` pipe.
+
+Example:
+
+```typescript
+    let stomp_subscription = this._stompService.subscribe('/topic/ng-demo-sub');
+
+    stomp_subscription.map((message: Message) => {
+      return message.body;
+    }).subscribe((msg_body: string) => {
+      console.log(`Received: ${msg_body}`);
+    });
+
+```
+
+The `Message` class comes from `@stomp/stompjs`. So, you will need the
+following import in the classes where you consume messages:
+
+```typescript
+import {Message} from '@stomp/stompjs';
+```
+    
+#### Unsubscribe to a queue
+
+Not a likely chance that you would need it.
+
+You will need to unsubscribe from stomp_subscription (which is an Observer),
+it will then internally unsubscribe from the underlying STOMP queue
+subscription.
+
+#### Publishing Messages
+
+Call `public publish(queueName: string, message: string)`. Example:
+
+```typescript
+this._stompService.publish('/topic/ng-demo-sub', 'My important message');
+```
+
+Please note that message is actually string. So, if you need to send JSON
+you will need to convert it into string (typically using 
+`JSON.stringify()`)
+
+#### Watching for Stomp Connection Status
+
+- `stompService.state` is a `BehaviorSubject` which maintains and switches
+  its value as per the underlying Stomp Connection status.
+- The value is from an enum with these possible values: 
+    CLOSED, TRYING, CONNECTED, and DISCONNECTING.
+- The following code will subscribe to `stompService.state` and covert
+  the enum value (which is a number) to the corresponding string value:
+  
+```typescript
+    this._stompService.state
+      .map((state: number) => StompState[state])
+      .subscribe((status: string) => {
+      console.log(`Stomp connection status: ${status}`);
+    });
 ```
 
 ## Development
 
-To generate all `*.js`, `*.js.map` and `*.d.ts` files:
+After checking out, install the dependencies:
 
 ```bash
-$ npm run tsc
+$ npm install
+```
+or, if using yarn
+
+```bash
+$ yarn
+```
+
+It uses `ngc` to build.
+
+```bash
+$ npm run build
 ```
 
 To lint all `*.ts` files:
@@ -67,6 +209,21 @@ To lint all `*.ts` files:
 $ npm run lint
 ```
 
+To publish it uses a shell script which copies, a slightly modified, package.json
+into dist/ folder and publishes only the dist/ folder.
+
+```bash
+$ bin/npm-publish
+```
+
+## Contributors
+
+- [Sam Finnigan](https://github.com/sjmf)
+- [Jimi (Dimitris) Charalampidis](https://github.com/JimiC)
+- [Deepak Kumar](https://github.com/kum-deepak)
+- Everyone invloved at https://github.com/stomp-js/stomp-websocket
+
+
 ## License
 
-MIT © [Deepak Kumar](mailto:deepak@kreatio.com)
+MIT
