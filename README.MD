@@ -32,8 +32,11 @@ from https://github.com/stomp-js/stomp-websocket
 
 ## Usage
 
-- See https://github.com/stomp-js/ng4-stompjs-demo/ for a working sample
+- See https://github.com/stomp-js/ng4-stompjs-demo for a working sample
   using Angular4 and Angular CLI.
+- See https://github.com/stomp-js/ng2-stompjs-demo for a working sample
+  using Angular2 and Angular CLI. This version also demonstrates fetching
+  Stomp configuration using an http call.
 
 ### Prerequisites
 
@@ -90,7 +93,7 @@ const conf: StompConfig= {
 - See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/services/config/config.service.ts 
   for a sample code file with configuration passed from a local
   hash. Feel free to copy an modify this file.
-- See TODO
+- See https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/services/config/config.service.ts
   for a sample code file with configuration fetched from a http
   resource.
 - Assuming the class you have created for configuration service is 
