@@ -9,7 +9,8 @@ The code itself is quite clean and should work with any setup Angular2 and above
 However, packaging as an NPM module has been proven to be clumsy. So, the NPM
 module may not work with every possible setup. In case it does not work for your 
 setup, please raise a ticket. As interim you may include all the .ts files from
-the GitHub project (https://github.com/stomp-js/ng2-stompjs/tree/master/src) and place it in your project directly.
+https://github.com/stomp-js/ng2-stompjs/tree/master/src and place these
+in your project directly.
 
 Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.
 
@@ -30,6 +31,9 @@ This will addtionally install @stomp/stompjs
 from https://github.com/stomp-js/stomp-websocket
 
 ## Usage
+
+- See https://github.com/stomp-js/ng4-stompjs-demo/ for a working sample
+  using Angular4 and Angular CLI.
 
 ### Prerequisites
 
@@ -83,10 +87,10 @@ const conf: StompConfig= {
   }
 ```
     
-- See TODO 
+- See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/services/config/config.service.ts 
   for a sample code file with configuration passed from a local
-  hash.
-- See TODO 
+  hash. Feel free to copy an modify this file.
+- See TODO
   for a sample code file with configuration fetched from a http
   resource.
 - Assuming the class you have created for configuration service is 
@@ -102,7 +106,7 @@ const conf: StompConfig= {
   ]
 ```
     
-- See TODO
+- See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts
   for a sample file.
 
 ### Reap the Benefits
@@ -221,7 +225,7 @@ $ bin/npm-publish
 - [Sam Finnigan](https://github.com/sjmf)
 - [Jimi (Dimitris) Charalampidis](https://github.com/JimiC)
 - [Deepak Kumar](https://github.com/kum-deepak)
-- Everyone invloved at https://github.com/stomp-js/stomp-websocket
+- Everyone involved at https://github.com/stomp-js/stomp-websocket
 
 
 ## License
