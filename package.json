@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",

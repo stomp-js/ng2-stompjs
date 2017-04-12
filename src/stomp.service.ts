@@ -10,7 +10,7 @@ import { StompSubscription } from '@stomp/stompjs';
 import {StompConfigService} from './stomp-config.service';
 
 /** possible states for the STOMP service */
-export enum STOMPState {
+export enum StompState {
   CLOSED,
   TRYING,
   CONNECTED,
@@ -27,10 +27,10 @@ export enum STOMPState {
  * messages into a observable.
  */
 @Injectable()
-export class STOMPService {
+export class StompService {
 
   // State of the STOMPService
-  public state: BehaviorSubject<STOMPState>;
+  public state: BehaviorSubject<StompState>;
 
   // Will trigger when connection is established, will trigger immediately once if already connected
   public connectObservable: Observable<number>;
@@ -45,11 +45,11 @@ export class STOMPService {
 
   /** Constructor */
   public constructor(private _configService: StompConfigService) {
-    this.state = new BehaviorSubject<STOMPState>(STOMPState.CLOSED);
+    this.state = new BehaviorSubject<StompState>(StompState.CLOSED);
 
     this.connectObservable = this.state
       .filter((currentState: number) => {
-        return currentState === STOMPState.CONNECTED;
+        return currentState === StompState.CONNECTED;
       });
 
     // Setup sending queuedMessages
@@ -107,7 +107,7 @@ export class STOMPService {
     );
 
     this.debug('Connecting...');
-    this.state.next(STOMPState.TRYING);
+    this.state.next(StompState.TRYING);
   }
 
 
@@ -116,18 +116,18 @@ export class STOMPService {
   public disconnect(): void {
 
     // Notify observers that we are disconnecting!
-    this.state.next(STOMPState.DISCONNECTING);
+    this.state.next(StompState.DISCONNECTING);
 
     // Disconnect if connected. Callback will set CLOSED state
     if (this.client && this.client.connected) {
       this.client.disconnect(
-        () => this.state.next(STOMPState.CLOSED)
+        () => this.state.next(StompState.CLOSED)
       );
     }
   }
 
   public connected(): boolean {
-    return this.state.getValue() === STOMPState.CONNECTED;
+    return this.state.getValue() === StompState.CONNECTED;
   }
 
   /** Send a message, queue it locally if not connected */
@@ -192,7 +192,7 @@ export class STOMPService {
           this.debug(`Stop watching connection state (for ${queueName})`);
           stompConnectedSubscription.unsubscribe();
 
-          if (this.state.getValue() === STOMPState.CONNECTED) {
+          if (this.state.getValue() === StompState.CONNECTED) {
             this.debug(`Will unsubscribe from ${queueName} at Stomp`);
             stompSubscription.unsubscribe();
           } else {
@@ -226,7 +226,7 @@ export class STOMPService {
     this.debug('Connected');
 
     // Indicate our connected state to observers
-    this.state.next(STOMPState.CONNECTED);
+    this.state.next(StompState.CONNECTED);
   }
 
   // Handle errors from stomp.js
@@ -241,7 +241,7 @@ export class STOMPService {
     // Check for dropped connection and try reconnecting
     if (!this.client.connected) {
       // Reset state indicator
-      this.state.next(STOMPState.CLOSED);
+      this.state.next(StompState.CLOSED);
     }
   }
 }
