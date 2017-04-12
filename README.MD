@@ -92,7 +92,7 @@ const conf: StompConfig= {
     
 - See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/services/config/config.service.ts 
   for a sample code file with configuration passed from a local
-  hash. Feel free to copy an modify this file.
+  hash. Feel free to copy and modify this file.
 - See https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/services/config/config.service.ts
   for a sample code file with configuration fetched from a http
   resource.

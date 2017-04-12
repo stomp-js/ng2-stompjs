@@ -31,4 +31,4 @@ Desktop.ini
 *.ngsummary.json
 
 # bin/npm-publish
-/dist/package.json
+dist/
