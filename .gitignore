@@ -29,3 +29,6 @@ Desktop.ini
 **/*.ngfactory.ts
 *.metadata.json
 *.ngsummary.json
+
+# bin/npm-publish
+/dist/package.json
