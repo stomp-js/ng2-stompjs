@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import {Observable, Observer, Subscription} from 'rxjs/Rx';
+import { Observable, Observer, Subscription } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { StompConfig } from './stomp.config';
 
 import * as Stomp from '@stomp/stompjs';
 import { StompSubscription } from '@stomp/stompjs';
-import {StompConfigService} from './stomp-config.service';
+import { StompConfigService } from './stomp-config.service';
 
 /** possible states for the STOMP service */
 export enum StompState {
@@ -35,7 +35,7 @@ export class StompService {
   // Will trigger when connection is established, will trigger immediately once if already connected
   public connectObservable: Observable<number>;
 
-  private queuedMessages: {queueName: string, message: string}[]= [];
+  private queuedMessages: { queueName: string, message: string }[] = [];
 
   // Configuration structure with MQ creds
   private config: StompConfig;
@@ -83,7 +83,7 @@ export class StompService {
     this.client.reconnect_delay = this.config.reconnect_delay;
 
     // Set function to debug print messages
-    this.client.debug = this.config.debug || this.config.debug == null ? this.debug : () => {};
+    this.client.debug = this.config.debug || this.config.debug == null ? this.debug : () => { };
   }
 
 
@@ -108,7 +108,7 @@ export class StompService {
 
   /** Disconnect the STOMP client and clean up,
    * not sure how this method will get called, if ever */
-  public disconnect(): void {
+  public disconnect(headers?: {}): void {
 
     // Notify observers that we are disconnecting!
     this.state.next(StompState.DISCONNECTING);
@@ -116,8 +116,7 @@ export class StompService {
     // Disconnect if connected. Callback will set CLOSED state
     if (this.client && this.client.connected) {
       this.client.disconnect(
-        () => this.state.next(StompState.CLOSED)
-      );
+        () => this.state.next(StompState.CLOSED), headers);
     }
   }
 
@@ -126,12 +125,12 @@ export class StompService {
   }
 
   /** Send a message, queue it locally if not connected */
-  public publish(queueName: string, message?: string): void {
+  public publish(queueName: string, headers?: {}, message?: string): void {
     if (this.connected()) {
-      this.client.send(queueName, {}, message);
+      this.client.send(queueName, headers, message);
     } else {
       this.debug(`Not connected, queueing ${message}`);
-      this.queuedMessages.push({queueName: <string>queueName, message: <string>message});
+      this.queuedMessages.push({ queueName: <string>queueName, message: <string>message });
     }
   }
 
@@ -149,7 +148,7 @@ export class StompService {
   }
 
   /** Subscribe to server message queues */
-  public subscribe(queueName: string): Observable<Stomp.Message> {
+  public subscribe(queueName: string, headers?: any): Observable<Stomp.Message> {
 
     /** Well the logic is complicated but works beautifully. RxJS is indeed wonderful.
      *
@@ -165,6 +164,12 @@ export class StompService {
      */
     this.debug(`Request to subscribe ${queueName}`);
 
+    if (!headers) {
+      headers = {};
+    }
+
+    headers.ack = 'auto';
+
     const coldObservable = Observable.create(
       (messages: Observer<Stomp.Message>) => {
         /**
@@ -178,9 +183,8 @@ export class StompService {
           .subscribe(() => {
             this.debug(`Will subscribe to ${queueName}`);
             stompSubscription = this.client.subscribe(queueName, (message: Stomp.Message) => {
-                messages.next(message);
-              },
-              {ack: 'auto'});
+              messages.next(message);
+            }, headers);
           });
 
         return () => { /* cleanup function, will be called when no subscribers are left */
@@ -212,7 +216,7 @@ export class StompService {
    * if we need to use this.x inside the function
    */
   private debug = (args: any): void => {
-      console.log(new Date(), args);
+    console.log(new Date(), args);
   }
 
   // Callback run on successfully connecting to server
