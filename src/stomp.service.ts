@@ -97,7 +97,8 @@ export class StompService {
       this.config.user,
       this.config.pass,
       this.on_connect,
-      this.on_error
+      this.on_error,
+      this.config.virtualHost
     );
 
     this.debug('Connecting...');
