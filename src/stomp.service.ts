@@ -135,7 +135,7 @@ export class StompService {
   }
 
   /** Send queued messages */
-  private sendQueuedMessages(): void {
+  private sendQueuedMessages(headers?: {}): void {
     const queuedMessages = this.queuedMessages;
     this.queuedMessages = [];
 
@@ -143,7 +143,7 @@ export class StompService {
 
     for (const queuedMessage of queuedMessages) {
       this.debug(`Attempting to send ${queuedMessage}`);
-      this.publish(queuedMessage.queueName, queuedMessage.message);
+      this.publish(queuedMessage.queueName, headers, queuedMessage.message);
     }
   }
 
