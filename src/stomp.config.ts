@@ -7,6 +7,9 @@ export interface StompConfig {
   // Example: ws://127.0.0.1:15674/ws
   url: string;
 
+  // Virtual Host
+  virtualHost: string;
+
   // What credentials?
   // Example: guest/guest
   user: string;
