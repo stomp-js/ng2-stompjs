@@ -35,7 +35,7 @@ export class StompService {
   // Will trigger when connection is established, will trigger immediately once if already connected
   public connectObservable: Observable<number>;
 
-  private queuedMessages: { queueName: string, message: string }[] = [];
+  private queuedMessages: { queueName: string, headers: any, message: string }[] = [];
 
   // Configuration structure with MQ creds
   private config: StompConfig;
@@ -130,12 +130,12 @@ export class StompService {
       this.client.send(queueName, headers, message);
     } else {
       this.debug(`Not connected, queueing ${message}`);
-      this.queuedMessages.push({ queueName: <string>queueName, message: <string>message });
+      this.queuedMessages.push({ queueName: <string>queueName, headers, message: <string>message });
     }
   }
 
   /** Send queued messages */
-  private sendQueuedMessages(headers?: {}): void {
+  private sendQueuedMessages(): void {
     const queuedMessages = this.queuedMessages;
     this.queuedMessages = [];
 
@@ -143,7 +143,7 @@ export class StompService {
 
     for (const queuedMessage of queuedMessages) {
       this.debug(`Attempting to send ${queuedMessage}`);
-      this.publish(queuedMessage.queueName, headers, queuedMessage.message);
+      this.publish(queuedMessage.queueName, queuedMessage.headers, queuedMessage.message);
     }
   }
 
