@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.2.2",
+  "version": "0.3.0-beta1",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
@@ -15,7 +15,13 @@
     "email": "deepak@kreatio.com"
   },
   "keywords": [
-    "stompjs", "angular2", "angular4", "rabbitmq", "websocket", "angular", "stomp"
+    "stompjs",
+    "angular2",
+    "angular4",
+    "rabbitmq",
+    "websocket",
+    "angular",
+    "stomp"
   ],
   "license": "MIT",
   "bugs": {
@@ -23,7 +29,7 @@
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "@stomp/stompjs": ">=2.5.3"
+    "@stomp/stompjs": ">=2.5.4"
   },
   "devDependencies": {
     "@angular/common": "^4.0.0",

@@ -1,3 +1,4 @@
+import {StompHeaders} from './stomp-headers';
 /**
  * Represents a configuration object for the
  * STOMPService to connect to, pub, and sub.
@@ -7,10 +8,9 @@ export interface StompConfig {
   // Example: ws://127.0.0.1:15674/ws
   url: string;
 
-  // What credentials?
-  // Example: guest/guest
-  user: string;
-  pass: string;
+  // Additional headers
+  // Typical keys: login, passcode, host
+  headers: StompHeaders;
 
   // How often to heartbeat?
   // Interval in milliseconds, set to 0 to disable

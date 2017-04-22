@@ -8,6 +8,7 @@ import { StompConfig } from './stomp.config';
 import * as Stomp from '@stomp/stompjs';
 import { StompSubscription } from '@stomp/stompjs';
 import {StompConfigService} from './stomp-config.service';
+import {StompHeaders} from './stomp-headers';
 
 /** possible states for the STOMP service */
 export enum StompState {
@@ -35,7 +36,7 @@ export class StompService {
   // Will trigger when connection is established, will trigger immediately once if already connected
   public connectObservable: Observable<number>;
 
-  private queuedMessages: {queueName: string, message: string}[]= [];
+  private queuedMessages: {queueName: string, message: string, headers: StompHeaders}[]= [];
 
   // Configuration structure with MQ creds
   private config: StompConfig;
@@ -94,8 +95,7 @@ export class StompService {
 
     // Attempt connection, passing in a callback
     this.client.connect(
-      this.config.user,
-      this.config.pass,
+      this.config.headers,
       this.on_connect,
       this.on_error
     );
@@ -125,12 +125,12 @@ export class StompService {
   }
 
   /** Send a message, queue it locally if not connected */
-  public publish(queueName: string, message?: string): void {
+  public publish(queueName: string, message?: string, headers: StompHeaders = {}): void {
     if (this.connected()) {
-      this.client.send(queueName, {}, message);
+      this.client.send(queueName, headers, message);
     } else {
       this.debug(`Not connected, queueing ${message}`);
-      this.queuedMessages.push({queueName: <string>queueName, message: <string>message});
+      this.queuedMessages.push({queueName: <string>queueName, message: <string>message, headers});
     }
   }
 
@@ -143,12 +143,12 @@ export class StompService {
 
     for (const queuedMessage of queuedMessages) {
       this.debug(`Attempting to send ${queuedMessage}`);
-      this.publish(queuedMessage.queueName, queuedMessage.message);
+      this.publish(queuedMessage.queueName, queuedMessage.message, {});
     }
   }
 
   /** Subscribe to server message queues */
-  public subscribe(queueName: string): Observable<Stomp.Message> {
+  public subscribe(queueName: string, headers: StompHeaders = {}): Observable<Stomp.Message> {
 
     /** Well the logic is complicated but works beautifully. RxJS is indeed wonderful.
      *
@@ -163,6 +163,11 @@ export class StompService {
      * the message subscriber.
      */
     this.debug(`Request to subscribe ${queueName}`);
+
+    // By default auto acknowledgement of messages
+    if (!headers['ack']) {
+      headers['ack'] = 'auto';
+    }
 
     const coldObservable = Observable.create(
       (messages: Observer<Stomp.Message>) => {
@@ -179,7 +184,7 @@ export class StompService {
             stompSubscription = this.client.subscribe(queueName, (message: Stomp.Message) => {
                 messages.next(message);
               },
-              {ack: 'auto'});
+              headers);
           });
 
         return () => { /* cleanup function, will be called when no subscribers are left */
