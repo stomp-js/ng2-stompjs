@@ -75,6 +75,13 @@
 					<a href="https://github.com/stomp-js/ng2-stompjs/tree/master/src">https://github.com/stomp-js/ng2-stompjs/tree/master/src</a> and place these
 				in your project directly.</p>
 				<p>Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.</p>
+				<h2 id="changelog">Changelog</h2>
+				<h3 id="0-3-0">0.3.0</h3>
+				<ul>
+					<li>Configuration structure has changed, user/password are not part of header.</li>
+					<li>Support for headers in connect, subscribe, and publish.</li>
+					<li>Typedoc for API documentation.</li>
+				</ul>
 				<h2 id="installation">Installation</h2>
 				<p>To install this library, run:</p>
 				<pre><code class="lang-bash">$ npm install @stomp/ng2-stompjs --save
@@ -178,8 +185,9 @@
 					based on your specific STOMP Broker,
 					see: <a href="https://www.rabbitmq.com/stomp.html">https://www.rabbitmq.com/stomp.html</a>
 				for RabbitMQ specific details.</p>
-				<p>Call <code>subscribe</code> with name of the queue which returns an Observable. Any
-					of Observable specific operators (map, filter, subscribe, etc.) cane be
+				<p>Call <code>subscribe(queueName: string, headers: StompHeaders = {})</code>
+					with name of the queue which returns an Observable. Any
+					of Observable specific operators (map, filter, subscribe, etc.) can be
 				applied on it. This can also be set into a template with <code>async</code> pipe.</p>
 				<p>Example:</p>
 				<pre><code class="lang-typescript">    <span class="hljs-keyword">let</span> stomp_subscription = <span class="hljs-keyword">this</span>._stompService.subscribe(<span class="hljs-string">'/topic/ng-demo-sub'</span>);
@@ -200,7 +208,8 @@
 					it will then internally unsubscribe from the underlying STOMP queue
 				subscription.</p>
 				<h4 id="publishing-messages">Publishing messages</h4>
-				<p>Call <code>public publish(queueName: string, message: string)</code>. Example:</p>
+				<p>Call <code>publish(queueName: string, message: string, headers: StompHeaders = {})</code>.
+				Example:</p>
 				<pre><code class="lang-typescript"><span class="hljs-keyword">this</span>._stompService.publish(<span class="hljs-string">'/topic/ng-demo-sub'</span>, <span class="hljs-string">'My important message'</span>);
 </code></pre>
 				<p>Please note that message is actually string. So, if you need to send JSON
@@ -221,6 +230,8 @@
       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Stomp connection status: <span class="hljs-subst">${status}</span>`</span>);
     });
 </code></pre>
+				<p>If you are interested in watching only when connection is established, you can
+				subscribe to <code>this._stompService.connectObservable</code>.</p>
 				<h2 id="development">Development</h2>
 				<p>After checking out, install the dependencies:</p>
 				<pre><code class="lang-bash">$ npm install
