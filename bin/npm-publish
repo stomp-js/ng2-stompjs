@@ -1,6 +1,6 @@
 #!/bin/sh
 
-npm run build
+yarn run build
 
 # Adjust the value of main in package.json according to new folder structure
 sed 's#"main": "./dist/index.js"#"main": "./index.js"#' package.json > ./dist/package.json
@@ -8,4 +8,4 @@ sed 's#"main": "./dist/index.js"#"main": "./index.js"#' package.json > ./dist/pa
 cp README.MD LICENSE.txt ./dist/
 
 cd ./dist
-npm publish --access=public
+yarn publish --access=public
