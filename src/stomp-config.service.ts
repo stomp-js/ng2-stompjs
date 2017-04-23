@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { StompConfig } from './stomp.config';
+import {StompConfig} from './stomp.config';
 import {Observable} from 'rxjs/Observable';
 
 /**
@@ -8,8 +8,8 @@ import {Observable} from 'rxjs/Observable';
  * config variables (e.g. STOMP credentials)
  * for the user application.
  *
- * This makes an AJAX request to the server
- * api containing some user token and secret
+ * You will need to subclass this and pass an instance using Dependency Injection
+ * mechanism of Angular. See README and samples for ideas on how to implement.
  *
  * @type StompConfigService
  */
@@ -17,16 +17,14 @@ import {Observable} from 'rxjs/Observable';
 export class StompConfigService {
 
   /** Constructor */
-  constructor() { }
+  constructor() {
+  }
 
 
-  /** Make an http request for a config file, and
-    * return a Promise for its resolution.
-    */
+  /** Implement this method in your derived class.
+   * See README and samples for ideas on how to implement.
+   */
   public get(): Observable<StompConfig> {
-    // const path = '/src/api/config.json';
-    // return this._http.get(path)
-    //   .map(res => res.json());
     return Observable.of({});
   }
 }

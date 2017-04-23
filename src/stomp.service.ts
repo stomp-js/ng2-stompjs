@@ -10,7 +10,9 @@ import { StompSubscription } from '@stomp/stompjs';
 import {StompConfigService} from './stomp-config.service';
 import {StompHeaders} from './stomp-headers';
 
-/** possible states for the STOMP service */
+/**
+ * Possible states for the STOMP service
+ */
 export enum StompState {
   CLOSED,
   TRYING,
@@ -19,32 +21,53 @@ export enum StompState {
 }
 
 /**
- * Angular2 STOMP Service using stomp.js
+ * Angular2 STOMP Service using @stomp/stomp.js
  *
  * @description This service handles subscribing to a
  * message queue using the stomp.js library, and returns
  * values via the ES6 Observable specification for
  * asynchronous value streaming by wiring the STOMP
- * messages into a observable.
+ * messages into an observable.
  */
 @Injectable()
 export class StompService {
 
-  // State of the STOMPService
+  /**
+   * State of the STOMPService
+   *
+   * It is a BehaviorSubject and will emit current status immediately. This will typically get
+   * used to show current status to the end user.
+   */
   public state: BehaviorSubject<StompState>;
 
-  // Will trigger when connection is established, will trigger immediately once if already connected
-  public connectObservable: Observable<number>;
+  /**
+   * Will trigger when connection is established. Use this to carry out initialization.
+   * It will trigger every time a (re)connection occurs. If it is already connected
+   * it will trigger immediately. You can safely ignore the value, as it will always be
+   * StompState.CONNECTED
+   */
+  public connectObservable: Observable<StompState>;
 
+  /**
+   * Internal array to hold locallly queued messages when STOMP broker is not connected.
+   */
   private queuedMessages: {queueName: string, message: string, headers: StompHeaders}[]= [];
 
-  // Configuration structure with MQ creds
+  /**
+   * Configuration
+   */
   private config: StompConfig;
 
-  // STOMP Client from stomp.js
+  /**
+   * STOMP Client from @stomp/stomp.js
+   */
   private client: Stomp.Client;
 
-  /** Constructor */
+  /**
+   * Constructor
+   *
+   * See README and samples for configuration examples
+   */
   public constructor(private _configService: StompConfigService) {
     this.state = new BehaviorSubject<StompState>(StompState.CLOSED);
 
@@ -105,8 +128,11 @@ export class StompService {
   }
 
 
-  /** Disconnect the STOMP client and clean up,
-   * not sure how this method will get called, if ever */
+  /**
+   * Disconnect the connection to the STOMP broker and clean up,
+   * not sure how this method will get called, if ever.
+   * Call this method only if you know what you are doing.
+   */
   public disconnect(): void {
 
     // Notify observers that we are disconnecting!
@@ -120,12 +146,25 @@ export class StompService {
     }
   }
 
+  /**
+   * The current connection status with the STOMP broker
+   * @returns {boolean}
+   */
   public connected(): boolean {
     return this.state.getValue() === StompState.CONNECTED;
   }
 
-  /** Send a message, queue it locally if not connected */
-  public publish(queueName: string, message?: string, headers: StompHeaders = {}): void {
+  /**
+   * Send a message to a named destination. The message must be string.
+   *
+   * The message will get locally queued if the STOMP broker is not connected. Attempt
+   * will be made to publish queued messages as soon as the broker gets connected.
+   *
+   * @param queueName
+   * @param message
+   * @param headers
+   */
+  public publish(queueName: string, message: string, headers: StompHeaders = {}): void {
     if (this.connected()) {
       this.client.send(queueName, headers, message);
     } else {
@@ -147,10 +186,27 @@ export class StompService {
     }
   }
 
-  /** Subscribe to server message queues */
+  /**
+   * Subscribe to server message queues
+   *
+   * This method can safely be called even when STOMP broker is not connected. Further
+   * if the underlying STOMP connection drops and reconnects, it will resubscribe transparently.
+   *
+   * If a header field 'ack' is not explicitly passed, 'ack' will be set to 'auto'. If you
+   * do not understand what it means, please leave it as is.
+   *
+   * Please note, however, while working with temporary queues, where the subscription request
+   * creates the
+   * underlying queue, during reconnect it might miss messages. This issue is not specific
+   * to this library but the way STOMP brokers are designed to work.
+   *
+   * @param queueName
+   * @param headers
+   * @returns {Observable<Stomp.Message>}
+   */
   public subscribe(queueName: string, headers: StompHeaders = {}): Observable<Stomp.Message> {
 
-    /** Well the logic is complicated but works beautifully. RxJS is indeed wonderful.
+    /* Well the logic is complicated but works beautifully. RxJS is indeed wonderful.
      *
      * We need to activate the underlying subscription immediately if Stomp is connected. If not it should
      * subscribe when it gets next connected. Further it should re establish the subscription whenever Stomp
@@ -171,7 +227,7 @@ export class StompService {
 
     const coldObservable = Observable.create(
       (messages: Observer<Stomp.Message>) => {
-        /**
+        /*
          * These variables will be used as part of the closure and work their magic during unsubscribe
          */
         let stompSubscription: StompSubscription;
@@ -219,7 +275,7 @@ export class StompService {
       console.log(new Date(), args);
   }
 
-  // Callback run on successfully connecting to server
+  /** Callback run on successfully connecting to server */
   private on_connect = () => {
 
     this.debug('Connected');
@@ -228,7 +284,7 @@ export class StompService {
     this.state.next(StompState.CONNECTED);
   }
 
-  // Handle errors from stomp.js
+  /** Handle errors from stomp.js */
   private on_error = (error: string | Stomp.Message) => {
 
     if (typeof error === 'object') {

@@ -14,6 +14,14 @@ in your project directly.
 
 Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.
 
+## Changelog
+
+### 0.3.0
+
+- Configuration structure has changed, user/password are not part of header.
+- Support for headers in connect, subscribe, and publish.
+- Typedoc for API documentation.
+
 ## Installation
 
 To install this library, run:
@@ -59,8 +67,12 @@ const conf: StompConfig= {
     // Which server?
     url: "ws://127.0.0.1:15674/ws",
 
-    user: "guest",
-    pass: "guest",
+      // Headers
+      // Typical keys: login, passcode, host
+      headers: {
+        login: "guest",
+        passcode: "guest"
+      },
 
     // How often to heartbeat?
     // Interval in milliseconds, set to 0 to disable
@@ -130,8 +142,9 @@ based on your specific STOMP Broker,
 see: https://www.rabbitmq.com/stomp.html
 for RabbitMQ specific details.
 
-Call `subscribe` with name of the queue which returns an Observable. Any
-of Observable specific operators (map, filter, subscribe, etc.) cane be
+Call `subscribe(queueName: string, headers: StompHeaders = {})` 
+with name of the queue which returns an Observable. Any
+of Observable specific operators (map, filter, subscribe, etc.) can be
 applied on it. This can also be set into a template with `async` pipe.
 
 Example:
@@ -164,7 +177,8 @@ subscription.
 
 #### Publishing messages
 
-Call `public publish(queueName: string, message: string)`. Example:
+Call `publish(queueName: string, message: string, headers: StompHeaders = {})`. 
+Example:
 
 ```typescript
 this._stompService.publish('/topic/ng-demo-sub', 'My important message');
@@ -190,6 +204,9 @@ you will need to convert it into string (typically using
       console.log(`Stomp connection status: ${status}`);
     });
 ```
+
+If you are interested in watching only when connection is established, you can
+subscribe to `this._stompService.connectObservable`.
 
 ## Development
 

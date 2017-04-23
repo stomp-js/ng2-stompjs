@@ -1,27 +1,48 @@
 import {StompHeaders} from './stomp-headers';
 /**
  * Represents a configuration object for the
- * STOMPService to connect to, pub, and sub.
+ * STOMPService to connect to.
  */
 export interface StompConfig {
-  // Which server?
-  // Example: ws://127.0.0.1:15674/ws
+  /**
+   * Server URL to connect to. Please refer to your STOMP broker documentation for details.
+   *
+   * Example: ws://127.0.0.1:15674/ws (for a RabbitMQ default setup running on localhost)
+   */
   url: string;
 
-  // Additional headers
-  // Typical keys: login, passcode, host
+  //
+
+  /**
+   * Headers
+   * Typical keys: login: string, passcode: string.
+   * host:string will neeed to be passed for virtual hosts in RabbitMQ
+   */
   headers: StompHeaders;
 
-  // How often to heartbeat?
-  // Interval in milliseconds, set to 0 to disable
-  heartbeat_in: number; // Typical value 0 - disabled
-  heartbeat_out: number; // Typical value 20000 - every 20 seconds
+  /** How often to incoming heartbeat?
+   * Interval in milliseconds, set to 0 to disable
+   *
+   * Typical value 0 - disabled
+   */
+  heartbeat_in: number;
 
-  // Wait in milliseconds before attempting auto reconnect
-  // Set to 0 to disable
-  // Typical value 5000 (5 seconds)
+  /**
+   * How often to outgoing heartbeat?
+   * Interval in milliseconds, set to 0 to disable
+   *
+   * Typical value 20000 - every 20 seconds
+   */
+  heartbeat_out: number;
+
+  /**
+   * Wait in milliseconds before attempting auto reconnect
+   * Set to 0 to disable
+   *
+   * Typical value 5000 (5 seconds)
+   */
   reconnect_delay: number;
 
-  // Enable client debugging?
+  /** Enable client debugging? */
   debug: boolean;
 }
