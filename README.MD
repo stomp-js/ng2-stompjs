@@ -18,6 +18,10 @@ Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CL
 
 ### 0.3.0
 
+- added references to GitHub pages.
+
+### 0.3.0
+
 - Configuration structure has changed, user/password are not part of header.
 - Support for headers in connect, subscribe, and publish.
 - Typedoc for API documentation.
@@ -40,6 +44,9 @@ from https://github.com/stomp-js/stomp-websocket
 
 ## Usage
 
+- See API documentation at 
+  https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html
+  and https://stomp-js.github.io/ng2-stompjs/index.html
 - See https://github.com/stomp-js/ng4-stompjs-demo for a working sample
   using Angular4 and Angular CLI.
 - See https://github.com/stomp-js/ng2-stompjs-demo for a working sample
@@ -143,7 +150,8 @@ see: https://www.rabbitmq.com/stomp.html
 for RabbitMQ specific details.
 
 Call `subscribe(queueName: string, headers: StompHeaders = {})` 
-with name of the queue which returns an Observable. Any
+with name of the queue which returns an Observable (details at:
+https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#subscribe). Any
 of Observable specific operators (map, filter, subscribe, etc.) can be
 applied on it. This can also be set into a template with `async` pipe.
 
@@ -177,7 +185,8 @@ subscription.
 
 #### Publishing messages
 
-Call `publish(queueName: string, message: string, headers: StompHeaders = {})`. 
+Call `publish(queueName: string, message: string, headers: StompHeaders = {})` 
+(details at: https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish).
 Example:
 
 ```typescript
