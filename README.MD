@@ -16,7 +16,7 @@ Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CL
 
 ## Changelog
 
-### 0.3.0
+### 0.3.4
 
 - added references to GitHub pages.
 
