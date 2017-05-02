@@ -291,7 +291,7 @@ export class StompService {
       error = (<Stomp.Message>error).body;
     }
 
-    console.error(`Error: ${error}`);
+    this.debug(`Error: ${error}`);
 
     // Check for dropped connection and try reconnecting
     if (!this.client.connected) {

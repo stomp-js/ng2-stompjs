@@ -16,6 +16,12 @@ Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CL
 
 ## Changelog
 
+### 0.3.5
+
+- Test case at https://github.com/stomp-js/ng2-stompjs-testbed these
+  will be merged into main repository in future. Currently unable
+  to configure Karma correctly in the main project. Any help appreciated.
+
 ### 0.3.4
 
 - added references to GitHub pages.

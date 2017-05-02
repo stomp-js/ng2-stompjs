@@ -55,7 +55,7 @@ var StompService = (function () {
             if (typeof error === 'object') {
                 error = error.body;
             }
-            console.error("Error: " + error);
+            _this.debug("Error: " + error);
             // Check for dropped connection and try reconnecting
             if (!_this.client.connected) {
                 // Reset state indicator
