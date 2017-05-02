@@ -107,10 +107,10 @@ var StompService = (function () {
      */
     StompService.prototype.disconnect = function () {
         var _this = this;
-        // Notify observers that we are disconnecting!
-        this.state.next(StompState.DISCONNECTING);
         // Disconnect if connected. Callback will set CLOSED state
         if (this.client && this.client.connected) {
+            // Notify observers that we are disconnecting!
+            this.state.next(StompState.DISCONNECTING);
             this.client.disconnect(function () { return _this.state.next(StompState.CLOSED); });
         }
     };
