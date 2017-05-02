@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "dependencies": {
     "@stomp/stompjs": "^2.5.4"
   },
