@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { StompConfig } from './stomp.config';
 import * as Stomp from '@stomp/stompjs';
 import { StompConfigService } from './stomp-config.service';
 import { StompHeaders } from './stomp-headers';
@@ -22,7 +23,7 @@ export declare enum StompState {
  * messages into an observable.
  */
 export declare class StompService {
-    private _configService;
+    protected _configService: StompConfigService;
     /**
      * State of the STOMPService
      *
@@ -40,15 +41,19 @@ export declare class StompService {
     /**
      * Internal array to hold locallly queued messages when STOMP broker is not connected.
      */
-    private queuedMessages;
+    protected queuedMessages: {
+        queueName: string;
+        message: string;
+        headers: StompHeaders;
+    }[];
     /**
      * Configuration
      */
-    private config;
+    protected config: StompConfig;
     /**
      * STOMP Client from @stomp/stomp.js
      */
-    private client;
+    protected client: Stomp.Client;
     /**
      * Constructor
      *
@@ -56,11 +61,11 @@ export declare class StompService {
      */
     constructor(_configService: StompConfigService);
     /** Set up configuration */
-    private configure(config);
+    protected configure(config: StompConfig): void;
     /**
      * Perform connection to STOMP broker
      */
-    private try_connect();
+    protected try_connect(): void;
     /**
      * Disconnect the connection to the STOMP broker and clean up,
      * not sure how this method will get called, if ever.
@@ -84,7 +89,7 @@ export declare class StompService {
      */
     publish(queueName: string, message: string, headers?: StompHeaders): void;
     /** Send queued messages */
-    private sendQueuedMessages();
+    protected sendQueuedMessages(): void;
     /**
      * Subscribe to server message queues
      *
@@ -110,9 +115,9 @@ export declare class StompService {
      * Note the method signature: () => preserves lexical scope
      * if we need to use this.x inside the function
      */
-    private debug;
+    protected debug: (args: any) => void;
     /** Callback run on successfully connecting to server */
-    private on_connect;
+    protected on_connect: () => void;
     /** Handle errors from stomp.js */
-    private on_error;
+    protected on_error: (error: string | Stomp.Message) => void;
 }

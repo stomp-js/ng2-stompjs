@@ -51,24 +51,24 @@ export class StompService {
   /**
    * Internal array to hold locallly queued messages when STOMP broker is not connected.
    */
-  private queuedMessages: {queueName: string, message: string, headers: StompHeaders}[]= [];
+  protected queuedMessages: {queueName: string, message: string, headers: StompHeaders}[]= [];
 
   /**
    * Configuration
    */
-  private config: StompConfig;
+  protected config: StompConfig;
 
   /**
    * STOMP Client from @stomp/stomp.js
    */
-  private client: Stomp.Client;
+  protected client: Stomp.Client;
 
   /**
    * Constructor
    *
    * See README and samples for configuration examples
    */
-  public constructor(private _configService: StompConfigService) {
+  public constructor(protected _configService: StompConfigService) {
     this.state = new BehaviorSubject<StompState>(StompState.CLOSED);
 
     this.connectObservable = this.state
@@ -92,7 +92,7 @@ export class StompService {
   }
 
   /** Set up configuration */
-  private configure(config: StompConfig): void {
+  protected configure(config: StompConfig): void {
 
     this.config = config;
 
@@ -114,7 +114,7 @@ export class StompService {
   /**
    * Perform connection to STOMP broker
    */
-  private try_connect(): void {
+  protected try_connect(): void {
 
     // Attempt connection, passing in a callback
     this.client.connect(
@@ -174,7 +174,7 @@ export class StompService {
   }
 
   /** Send queued messages */
-  private sendQueuedMessages(): void {
+  protected sendQueuedMessages(): void {
     const queuedMessages = this.queuedMessages;
     this.queuedMessages = [];
 
@@ -271,12 +271,12 @@ export class StompService {
    * Note the method signature: () => preserves lexical scope
    * if we need to use this.x inside the function
    */
-  private debug = (args: any): void => {
+  protected debug = (args: any): void => {
       console.log(new Date(), args);
   }
 
   /** Callback run on successfully connecting to server */
-  private on_connect = () => {
+  protected on_connect = () => {
 
     this.debug('Connected');
 
@@ -285,7 +285,7 @@ export class StompService {
   }
 
   /** Handle errors from stomp.js */
-  private on_error = (error: string | Stomp.Message) => {
+  protected on_error = (error: string | Stomp.Message) => {
 
     if (typeof error === 'object') {
       error = (<Stomp.Message>error).body;
