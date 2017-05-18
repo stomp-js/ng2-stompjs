@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as Stomp from '@stomp/stompjs';
-import { StompConfigService } from './stomp-config.service';
 /**
  * Possible states for the STOMP service
  */
@@ -28,9 +27,9 @@ var StompService = (function () {
      *
      * See README and samples for configuration examples
      */
-    function StompService(_configService) {
+    function StompService(config) {
         var _this = this;
-        this._configService = _configService;
+        this.config = config;
         /**
          * Internal array to hold locallly queued messages when STOMP broker is not connected.
          */
@@ -71,16 +70,11 @@ var StompService = (function () {
         this.connectObservable.subscribe(function () {
             _this.sendQueuedMessages();
         });
-        // Get configuration from config service...
-        this._configService.get().subscribe(function (config) {
-            // ... then pass it to (and connect) STOMP:
-            _this.configure(config);
-            _this.try_connect();
-        });
+        this.initStompClient();
+        this.try_connect();
     }
-    /** Set up configuration */
-    StompService.prototype.configure = function (config) {
-        this.config = config;
+    /** Initialize STOMP Client */
+    StompService.prototype.initStompClient = function () {
         // Attempt connection, passing in a callback
         this.client = Stomp.client(this.config.url);
         // Configure client heart-beating
@@ -88,8 +82,11 @@ var StompService = (function () {
         this.client.heartbeat.outgoing = this.config.heartbeat_out;
         // Auto reconnect
         this.client.reconnect_delay = this.config.reconnect_delay;
+        if (!this.config.debug) {
+            this.debug = function () { };
+        }
         // Set function to debug print messages
-        this.client.debug = this.config.debug || this.config.debug == null ? this.debug : function () { };
+        this.client.debug = this.debug;
     };
     /**
      * Perform connection to STOMP broker
@@ -230,6 +227,6 @@ StompService.decorators = [
 ];
 /** @nocollapse */
 StompService.ctorParameters = function () { return [
-    { type: StompConfigService, },
+    null,
 ]; };
 //# sourceMappingURL=stomp.service.js.map

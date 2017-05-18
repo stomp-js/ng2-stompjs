@@ -7,7 +7,6 @@ import { StompConfig } from './stomp.config';
 
 import * as Stomp from '@stomp/stompjs';
 import { StompSubscription } from '@stomp/stompjs';
-import {StompConfigService} from './stomp-config.service';
 import {StompHeaders} from './stomp-headers';
 
 /**
@@ -56,7 +55,6 @@ export class StompService {
   /**
    * Configuration
    */
-  protected config: StompConfig;
 
   /**
    * STOMP Client from @stomp/stomp.js
@@ -68,7 +66,7 @@ export class StompService {
    *
    * See README and samples for configuration examples
    */
-  public constructor(protected _configService: StompConfigService) {
+  public constructor(protected config: StompConfig) {
     this.state = new BehaviorSubject<StompState>(StompState.CLOSED);
 
     this.connectObservable = this.state
@@ -81,21 +79,12 @@ export class StompService {
       this.sendQueuedMessages();
     });
 
-    // Get configuration from config service...
-    this._configService.get().subscribe(
-      (config: StompConfig) => {
-        // ... then pass it to (and connect) STOMP:
-        this.configure(config);
-        this.try_connect();
-      }
-    );
+    this.initStompClient();
+    this.try_connect();
   }
 
-  /** Set up configuration */
-  protected configure(config: StompConfig): void {
-
-    this.config = config;
-
+  /** Initialize STOMP Client */
+  protected initStompClient(): void {
     // Attempt connection, passing in a callback
     this.client = Stomp.client(this.config.url);
 
@@ -106,8 +95,11 @@ export class StompService {
     // Auto reconnect
     this.client.reconnect_delay = this.config.reconnect_delay;
 
+    if (!this.config.debug) {
+      this.debug = function() {};
+    }
     // Set function to debug print messages
-    this.client.debug = this.config.debug || this.config.debug == null ? this.debug : () => {};
+    this.client.debug = this.debug;
   }
 
 

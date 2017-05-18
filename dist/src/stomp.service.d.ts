@@ -2,7 +2,6 @@ import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { StompConfig } from './stomp.config';
 import * as Stomp from '@stomp/stompjs';
-import { StompConfigService } from './stomp-config.service';
 import { StompHeaders } from './stomp-headers';
 /**
  * Possible states for the STOMP service
@@ -23,7 +22,7 @@ export declare enum StompState {
  * messages into an observable.
  */
 export declare class StompService {
-    protected _configService: StompConfigService;
+    protected config: StompConfig;
     /**
      * State of the STOMPService
      *
@@ -49,7 +48,6 @@ export declare class StompService {
     /**
      * Configuration
      */
-    protected config: StompConfig;
     /**
      * STOMP Client from @stomp/stomp.js
      */
@@ -59,9 +57,9 @@ export declare class StompService {
      *
      * See README and samples for configuration examples
      */
-    constructor(_configService: StompConfigService);
-    /** Set up configuration */
-    protected configure(config: StompConfig): void;
+    constructor(config: StompConfig);
+    /** Initialize STOMP Client */
+    protected initStompClient(): void;
     /**
      * Perform connection to STOMP broker
      */
