@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>StompConfigService | @stomp/ng2-stompjs</title>
+	<title>StompConfig | @stomp/ng2-stompjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="stompconfigservice.html">StompConfigService</a>
+					<a href="stompconfig.html">StompConfig</a>
 				</li>
 			</ul>
-			<h1>Class StompConfigService</h1>
+			<h1>Class StompConfig</h1>
 		</div>
 	</div>
 </header>
@@ -69,24 +69,16 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>An injected class which grabs the application
-							config variables (e.g. STOMP credentials)
-						for the user application.</p>
+						<p>Represents a configuration object for the
+						STOMPService to connect to.</p>
 					</div>
-					<p>You will need to subclass this and pass an instance using Dependency Injection
-					mechanism of Angular. See README and samples for ideas on how to implement.</p>
-					<dl class="tsd-comment-tags">
-						<dt>type</dt>
-						<dd><p>StompConfigService</p>
-						</dd>
-					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">StompConfigService</span>
+						<span class="target">StompConfig</span>
 					</li>
 				</ul>
 			</section>
@@ -95,69 +87,119 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external">
-							<h3>Constructors</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="stompconfigservice.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="stompconfigservice.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="stompconfig.html#debug" class="tsd-kind-icon">debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="stompconfig.html#headers" class="tsd-kind-icon">headers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="stompconfig.html#heartbeat_in" class="tsd-kind-icon">heartbeat_<wbr>in</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="stompconfig.html#heartbeat_out" class="tsd-kind-icon">heartbeat_<wbr>out</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="stompconfig.html#reconnect_delay" class="tsd-kind-icon">reconnect_<wbr>delay</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="stompconfig.html#url" class="tsd-kind-icon">url</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Stomp<wbr>Config<wbr>Service<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stompconfigservice.html" class="tsd-signature-type">StompConfigService</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/2a59c74/src/stomp-config.service.ts#L17">src/stomp-config.service.ts:17</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Constructor</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <a href="stompconfigservice.html" class="tsd-signature-type">StompConfigService</a></h4>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="debug" class="tsd-anchor"></a>
+					<h3>debug</h3>
+					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/302744a/src/stomp.config.ts#L45">src/stomp.config.ts:45</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Enable client debugging?</p>
+						</div>
+					</div>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a name="get" class="tsd-anchor"></a>
-					<h3>get</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/stompconfig.html" class="tsd-signature-type">StompConfig</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/2a59c74/src/stomp-config.service.ts#L27">src/stomp-config.service.ts:27</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Implement this method in your derived class.
-									See README and samples for ideas on how to implement.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/stompconfig.html" class="tsd-signature-type">StompConfig</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="headers" class="tsd-anchor"></a>
+					<h3>headers</h3>
+					<div class="tsd-signature tsd-kind-icon">headers<span class="tsd-signature-symbol">:</span> <a href="../globals.html#stompheaders" class="tsd-signature-type">StompHeaders</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/302744a/src/stomp.config.ts#L19">src/stomp.config.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Headers
+								Typical keys: login: string, passcode: string.
+							host:string will neeed to be passed for virtual hosts in RabbitMQ</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="heartbeat_in" class="tsd-anchor"></a>
+					<h3>heartbeat_<wbr>in</h3>
+					<div class="tsd-signature tsd-kind-icon">heartbeat_<wbr>in<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/302744a/src/stomp.config.ts#L26">src/stomp.config.ts:26</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>How often to incoming heartbeat?
+							Interval in milliseconds, set to 0 to disable</p>
+						</div>
+						<p>Typical value 0 - disabled</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="heartbeat_out" class="tsd-anchor"></a>
+					<h3>heartbeat_<wbr>out</h3>
+					<div class="tsd-signature tsd-kind-icon">heartbeat_<wbr>out<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/302744a/src/stomp.config.ts#L34">src/stomp.config.ts:34</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>How often to outgoing heartbeat?
+							Interval in milliseconds, set to 0 to disable</p>
+						</div>
+						<p>Typical value 20000 - every 20 seconds</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="reconnect_delay" class="tsd-anchor"></a>
+					<h3>reconnect_<wbr>delay</h3>
+					<div class="tsd-signature tsd-kind-icon">reconnect_<wbr>delay<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/302744a/src/stomp.config.ts#L42">src/stomp.config.ts:42</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Wait in milliseconds before attempting auto reconnect
+							Set to 0 to disable</p>
+						</div>
+						<p>Typical value 5000 (5 seconds)</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="url" class="tsd-anchor"></a>
+					<h3>url</h3>
+					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/302744a/src/stomp.config.ts#L12">src/stomp.config.ts:12</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Server URL to connect to. Please refer to your STOMP broker documentation for details.</p>
+						</div>
+						<p>Example: ws://127.0.0.1:15674/ws (for a RabbitMQ default setup running on localhost)</p>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -177,13 +219,25 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-is-external">
-						<a href="stompconfigservice.html" class="tsd-kind-icon">Stomp<wbr>Config<wbr>Service</a>
+						<a href="stompconfig.html" class="tsd-kind-icon">Stomp<wbr>Config</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
-								<a href="stompconfigservice.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="stompconfig.html#debug" class="tsd-kind-icon">debug</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-								<a href="stompconfigservice.html#get" class="tsd-kind-icon">get</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="stompconfig.html#headers" class="tsd-kind-icon">headers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="stompconfig.html#heartbeat_in" class="tsd-kind-icon">heartbeat_<wbr>in</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="stompconfig.html#heartbeat_out" class="tsd-kind-icon">heartbeat_<wbr>out</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="stompconfig.html#reconnect_delay" class="tsd-kind-icon">reconnect_<wbr>delay</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="stompconfig.html#url" class="tsd-kind-icon">url</a>
 							</li>
 						</ul>
 					</li>
@@ -191,9 +245,6 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="stompservice.html" class="tsd-kind-icon">Stomp<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/stompconfig.html" class="tsd-kind-icon">Stomp<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-external">
 						<a href="../globals.html#stompheaders" class="tsd-kind-icon">Stomp<wbr>Headers</a>

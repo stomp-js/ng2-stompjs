@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { StompConfig } from './stomp.config';
 import * as Stomp from '@stomp/stompjs';
 /**
  * Possible states for the STOMP service
@@ -227,6 +228,6 @@ StompService.decorators = [
 ];
 /** @nocollapse */
 StompService.ctorParameters = function () { return [
-    null,
+    { type: StompConfig, },
 ]; };
 //# sourceMappingURL=stomp.service.js.map

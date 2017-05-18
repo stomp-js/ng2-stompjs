@@ -3,7 +3,7 @@ import { StompHeaders } from './stomp-headers';
  * Represents a configuration object for the
  * STOMPService to connect to.
  */
-export interface StompConfig {
+export declare class StompConfig {
     /**
      * Server URL to connect to. Please refer to your STOMP broker documentation for details.
      *

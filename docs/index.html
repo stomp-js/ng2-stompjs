@@ -76,6 +76,16 @@
 				in your project directly.</p>
 				<p>Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.</p>
 				<h2 id="changelog">Changelog</h2>
+				<h3 id="0-3-5">0.3.5</h3>
+				<ul>
+					<li>Test case at <a href="https://github.com/stomp-js/ng2-stompjs-testbed">https://github.com/stomp-js/ng2-stompjs-testbed</a> these
+						will be merged into main repository in future. Currently unable
+					to configure Karma correctly in the main project. Any help appreciated.</li>
+				</ul>
+				<h3 id="0-3-4">0.3.4</h3>
+				<ul>
+					<li>added references to GitHub pages.</li>
+				</ul>
 				<h3 id="0-3-0">0.3.0</h3>
 				<ul>
 					<li>Configuration structure has changed, user/password are not part of header.</li>
@@ -93,6 +103,9 @@
 				from <a href="https://github.com/stomp-js/stomp-websocket">https://github.com/stomp-js/stomp-websocket</a></p>
 				<h2 id="usage">Usage</h2>
 				<ul>
+					<li>See API documentation at
+						<a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html</a>
+					and <a href="https://stomp-js.github.io/ng2-stompjs/index.html">https://stomp-js.github.io/ng2-stompjs/index.html</a></li>
 					<li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo">https://github.com/stomp-js/ng4-stompjs-demo</a> for a working sample
 					using Angular4 and Angular CLI.</li>
 					<li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a> for a working sample
@@ -186,7 +199,8 @@
 					see: <a href="https://www.rabbitmq.com/stomp.html">https://www.rabbitmq.com/stomp.html</a>
 				for RabbitMQ specific details.</p>
 				<p>Call <code>subscribe(queueName: string, headers: StompHeaders = {})</code>
-					with name of the queue which returns an Observable. Any
+					with name of the queue which returns an Observable (details at:
+					<a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#subscribe">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#subscribe</a>). Any
 					of Observable specific operators (map, filter, subscribe, etc.) can be
 				applied on it. This can also be set into a template with <code>async</code> pipe.</p>
 				<p>Example:</p>
@@ -208,7 +222,8 @@
 					it will then internally unsubscribe from the underlying STOMP queue
 				subscription.</p>
 				<h4 id="publishing-messages">Publishing messages</h4>
-				<p>Call <code>publish(queueName: string, message: string, headers: StompHeaders = {})</code>.
+				<p>Call <code>publish(queueName: string, message: string, headers: StompHeaders = {})</code>
+					(details at: <a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish</a>).
 				Example:</p>
 				<pre><code class="lang-typescript"><span class="hljs-keyword">this</span>._stompService.publish(<span class="hljs-string">'/topic/ng-demo-sub'</span>, <span class="hljs-string">'My important message'</span>);
 </code></pre>
@@ -274,13 +289,10 @@
 						<a href="enums/stompstate.html" class="tsd-kind-icon">Stomp<wbr>State</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="classes/stompconfigservice.html" class="tsd-kind-icon">Stomp<wbr>Config<wbr>Service</a>
+						<a href="classes/stompconfig.html" class="tsd-kind-icon">Stomp<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/stompservice.html" class="tsd-kind-icon">Stomp<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="interfaces/stompconfig.html" class="tsd-kind-icon">Stomp<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-external">
 						<a href="globals.html#stompheaders" class="tsd-kind-icon">Stomp<wbr>Headers</a>

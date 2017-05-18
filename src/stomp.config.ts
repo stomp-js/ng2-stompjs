@@ -3,15 +3,13 @@ import {StompHeaders} from './stomp-headers';
  * Represents a configuration object for the
  * STOMPService to connect to.
  */
-export interface StompConfig {
+export class StompConfig {
   /**
    * Server URL to connect to. Please refer to your STOMP broker documentation for details.
    *
    * Example: ws://127.0.0.1:15674/ws (for a RabbitMQ default setup running on localhost)
    */
   url: string;
-
-  //
 
   /**
    * Headers
