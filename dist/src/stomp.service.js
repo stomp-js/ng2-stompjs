@@ -149,7 +149,7 @@ var StompService = (function () {
         for (var _i = 0, queuedMessages_1 = queuedMessages; _i < queuedMessages_1.length; _i++) {
             var queuedMessage = queuedMessages_1[_i];
             this.debug("Attempting to send " + queuedMessage);
-            this.publish(queuedMessage.queueName, queuedMessage.message, {});
+            this.publish(queuedMessage.queueName, queuedMessage.message, queuedMessage.headers);
         }
     };
     /**

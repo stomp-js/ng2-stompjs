@@ -169,7 +169,7 @@ export class StompService {
       this.client.send(queueName, headers, message);
     } else {
       this.debug(`Not connected, queueing ${message}`);
-      this.queuedMessages.push({queueName: <string>queueName, message: <string>message, headers});
+      this.queuedMessages.push({queueName: <string>queueName, message: <string>message, headers: headers});
     }
   }
 
@@ -182,7 +182,7 @@ export class StompService {
 
     for (const queuedMessage of queuedMessages) {
       this.debug(`Attempting to send ${queuedMessage}`);
-      this.publish(queuedMessage.queueName, queuedMessage.message, {});
+      this.publish(queuedMessage.queueName, queuedMessage.message, queuedMessage.headers);
     }
   }
 
