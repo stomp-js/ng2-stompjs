@@ -1,8 +1,11 @@
 import {StompHeaders} from './stomp-headers';
+import {Injectable} from '@angular/core';
 /**
  * Represents a configuration object for the
  * STOMPService to connect to.
  */
+
+@Injectable()
 export class StompConfig {
   /**
    * Server URL to connect to. Please refer to your STOMP broker documentation for details.
