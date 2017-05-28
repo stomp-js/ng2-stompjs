@@ -1,8 +1,0 @@
-#!/bin/sh
-
-npm run build
-
-# Adjust the value of main in package.json according to new folder structure
-sed 's#"main": "./dist/index.js"#"main": "./index.js"#' package.json > ./dist/package.json
-
-cp README.MD LICENSE.txt ./dist/

@@ -16,6 +16,10 @@ Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CL
 
 ## Changelog
 
+### 0.3.8
+
+- Switched to source distribution. The npm bundle now only has .ts files.
+
 ### 0.3.5
 
 - Test case at https://github.com/stomp-js/ng2-stompjs-testbed these

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-bin/npm-prepare
-
-cd ./dist
-npm publish --access=public

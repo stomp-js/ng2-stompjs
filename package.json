@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
-  "main": "./dist/index.js",
+  "main": "./index.ts",
   "dependencies": {
     "@stomp/stompjs": "^3.0.2"
   },

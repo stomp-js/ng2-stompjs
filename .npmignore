@@ -28,3 +28,10 @@ Desktop.ini
 
 # ngc generated files
 *.ngFactory.ts
+
+# Need only source .ts files - needed for source only distribution
+*
+
+!index.ts
+!src/*.ts
+!src/**/*.ts
