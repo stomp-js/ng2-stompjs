@@ -1,7 +1,6 @@
 # @stomp/ng2-stompjs
 
-An Angular (Angular2, Angular4, ...) style wrapper for an updated stompjs,
-originally developed by [Jeff Mesnil](http://jmesnil.net/).
+An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.
 
 ## Compatibility
 
@@ -15,6 +14,12 @@ in your project directly.
 Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.
 
 ## Changelog
+
+### 0.4.0
+
+Updated to make it compliant to possible use of APP_INITIALIZER. Please not
+that way to initiate the service has changed. It no longer uses StompConfigService.
+StompConfig is directly injected as dependency into StompService.
 
 ### 0.3.8
 
@@ -61,7 +66,7 @@ from https://github.com/stomp-js/stomp-websocket
   using Angular4 and Angular CLI.
 - See https://github.com/stomp-js/ng2-stompjs-demo for a working sample
   using Angular2 and Angular CLI. This version also demonstrates fetching
-  Stomp configuration using an http call.
+  Stomp configuration using an http call (APP_INITIALIZER).
 
 ### Prerequisites
 
@@ -73,67 +78,54 @@ from https://github.com/stomp-js/stomp-websocket
 ### All the Hard Work
 
 - The main service is StompService, which will need to be provided.
-- The STOMP Broker connection details will need to be provided via another 
-  class StompConfigService. Typically you will subclass it to provide configuration.
+- The STOMP Broker connection details will need to be provided via  
+  class StompConfig. See the samples for several ways to configure.
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html for
   background reading.
 - Sample config:
 
 ```typescript
-const conf: StompConfig= {
-    // Which server?
-    url: "ws://127.0.0.1:15674/ws",
-
+    const stompConfig: StompConfig = {
+      // Which server?
+      url: 'ws://127.0.0.1:15674/ws',
+    
       // Headers
       // Typical keys: login, passcode, host
       headers: {
-        login: "guest",
-        passcode: "guest"
+        login: 'guest',
+        passcode: 'guest'
       },
-
-    // How often to heartbeat?
-    // Interval in milliseconds, set to 0 to disable
-    heartbeat_in: 0, // Typical value 0 - disabled
-    heartbeat_out: 20000, // Typical value 20000 - every 20 seconds
-
-    // Wait in milliseconds before attempting auto reconnect
-    // Set to 0 to disable
-    // Typical value 5000 (5 seconds)
-    reconnect_delay: 5000,
-
-    // Will log diagnostics on console
-    debug: true
-}
-```
     
-- Your ConfigService must extend StompConfigService and implement a method
-  `public get(): Observable<StompConfig>`. Example:
-  
-```typescript
-  public get(): Observable<StompConfig> {
-    const conf: StompConfig= {
-      // as from previous example
+      // How often to heartbeat?
+      // Interval in milliseconds, set to 0 to disable
+      heartbeat_in: 0, // Typical value 0 - disabled
+      heartbeat_out: 20000, // Typical value 20000 - every 20 seconds
+    
+      // Wait in milliseconds before attempting auto reconnect
+      // Set to 0 to disable
+      // Typical value 5000 (5 seconds)
+      reconnect_delay: 5000,
+    
+      // Will log diagnostics on console
+      debug: true
     };
-
-    return Observable.of(conf);
-  }
 ```
-    
-- See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/services/config/config.service.ts 
+  
+- See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts 
   for a sample code file with configuration passed from a local
   hash. Feel free to copy and modify this file.
-- See https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/services/config/config.service.ts
+- See https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts
   for a sample code file with configuration fetched from a http
   resource.
-- Assuming the class you have created for configuration service is 
-  `ConfigService`, code sample to provide these service will look like:
+- Assuming the config specified as a `const`, code sample to 
+  provide `StompService` and `StompConfig` will look like:
   
 ```typescript
   providers: [
     StompService,
     {
-      provide: StompConfigService,
-      useClass: ConfigService
+      provide: StompConfig,
+      useValue: stompConfig
     }
   ]
 ```

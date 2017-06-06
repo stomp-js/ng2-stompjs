@@ -76,6 +76,14 @@
 				in your project directly.</p>
 				<p>Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.</p>
 				<h2 id="changelog">Changelog</h2>
+				<h3 id="0-4-0">0.4.0</h3>
+				<p>Updated to make it compliant to possible use of APP_INITIALIZER. Please not
+					that way to initiate the service has changed. It no longer uses StompConfigService.
+				StompConfig is directly injected as dependency into StompService.</p>
+				<h3 id="0-3-8">0.3.8</h3>
+				<ul>
+					<li>Switched to source distribution. The npm bundle now only has .ts files.</li>
+				</ul>
 				<h3 id="0-3-5">0.3.5</h3>
 				<ul>
 					<li>Test case at <a href="https://github.com/stomp-js/ng2-stompjs-testbed">https://github.com/stomp-js/ng2-stompjs-testbed</a> these
@@ -110,7 +118,7 @@
 					using Angular4 and Angular CLI.</li>
 					<li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a> for a working sample
 						using Angular2 and Angular CLI. This version also demonstrates fetching
-					Stomp configuration using an http call.</li>
+					Stomp configuration using an http call (APP_INITIALIZER).</li>
 				</ul>
 				<h3 id="prerequisites">Prerequisites</h3>
 				<ul>
@@ -122,64 +130,51 @@
 				<h3 id="all-the-hard-work">All the Hard Work</h3>
 				<ul>
 					<li>The main service is StompService, which will need to be provided.</li>
-					<li>The STOMP Broker connection details will need to be provided via another
-						class StompConfigService. Typically you will subclass it to provide configuration.
+					<li>The STOMP Broker connection details will need to be provided via<br>class StompConfig. See the samples for several ways to configure.
 						See <a href="https://angular.io/docs/ts/latest/guide/dependency-injection.html">https://angular.io/docs/ts/latest/guide/dependency-injection.html</a> for
 					background reading.</li>
 					<li>Sample config:</li>
 				</ul>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> conf: StompConfig= {
-    <span class="hljs-comment">// Which server?</span>
-    url: <span class="hljs-string">"ws://127.0.0.1:15674/ws"</span>,
+				<pre><code class="lang-typescript">    <span class="hljs-keyword">const</span> stompConfig: StompConfig = {
+      <span class="hljs-comment">// Which server?</span>
+      url: <span class="hljs-string">'ws://127.0.0.1:15674/ws'</span>,
 
       <span class="hljs-comment">// Headers</span>
       <span class="hljs-comment">// Typical keys: login, passcode, host</span>
       headers: {
-        login: <span class="hljs-string">"guest"</span>,
-        passcode: <span class="hljs-string">"guest"</span>
+        login: <span class="hljs-string">'guest'</span>,
+        passcode: <span class="hljs-string">'guest'</span>
       },
 
-    <span class="hljs-comment">// How often to heartbeat?</span>
-    <span class="hljs-comment">// Interval in milliseconds, set to 0 to disable</span>
-    heartbeat_in: <span class="hljs-number">0</span>, <span class="hljs-comment">// Typical value 0 - disabled</span>
-    heartbeat_out: <span class="hljs-number">20000</span>, <span class="hljs-comment">// Typical value 20000 - every 20 seconds</span>
+      <span class="hljs-comment">// How often to heartbeat?</span>
+      <span class="hljs-comment">// Interval in milliseconds, set to 0 to disable</span>
+      heartbeat_in: <span class="hljs-number">0</span>, <span class="hljs-comment">// Typical value 0 - disabled</span>
+      heartbeat_out: <span class="hljs-number">20000</span>, <span class="hljs-comment">// Typical value 20000 - every 20 seconds</span>
 
-    <span class="hljs-comment">// Wait in milliseconds before attempting auto reconnect</span>
-    <span class="hljs-comment">// Set to 0 to disable</span>
-    <span class="hljs-comment">// Typical value 5000 (5 seconds)</span>
-    reconnect_delay: <span class="hljs-number">5000</span>,
+      <span class="hljs-comment">// Wait in milliseconds before attempting auto reconnect</span>
+      <span class="hljs-comment">// Set to 0 to disable</span>
+      <span class="hljs-comment">// Typical value 5000 (5 seconds)</span>
+      reconnect_delay: <span class="hljs-number">5000</span>,
 
-    <span class="hljs-comment">// Will log diagnostics on console</span>
-    debug: <span class="hljs-literal">true</span>
-}
-</code></pre>
-				<ul>
-					<li>Your ConfigService must extend StompConfigService and implement a method
-					<code>public get(): Observable&lt;StompConfig&gt;</code>. Example:</li>
-				</ul>
-				<pre><code class="lang-typescript">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">get</span>(): Observable&lt;StompConfig&gt; {
-    <span class="hljs-keyword">const</span> conf: StompConfig= {
-      <span class="hljs-comment">// as from previous example</span>
+      <span class="hljs-comment">// Will log diagnostics on console</span>
+      debug: <span class="hljs-literal">true</span>
     };
-
-    <span class="hljs-keyword">return</span> Observable.of(conf);
-  }
 </code></pre>
 				<ul>
-					<li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/services/config/config.service.ts">https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/services/config/config.service.ts</a>
+					<li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts</a>
 						for a sample code file with configuration passed from a local
 					hash. Feel free to copy and modify this file.</li>
-					<li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/services/config/config.service.ts">https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/services/config/config.service.ts</a>
+					<li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts</a>
 						for a sample code file with configuration fetched from a http
 					resource.</li>
-					<li>Assuming the class you have created for configuration service is
-					<code>ConfigService</code>, code sample to provide these service will look like:</li>
+					<li>Assuming the config specified as a <code>const</code>, code sample to
+					provide <code>StompService</code> and <code>StompConfig</code> will look like:</li>
 				</ul>
 				<pre><code class="lang-typescript">  providers: [
     StompService,
     {
-      provide: StompConfigService,
-      useClass: ConfigService
+      provide: StompConfig,
+      useValue: stompConfig
     }
   ]
 </code></pre>
