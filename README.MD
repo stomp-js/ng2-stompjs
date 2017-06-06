@@ -4,14 +4,11 @@ An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.
 
 ## Compatibility
 
-The code itself is quite clean and should work with any setup Angular2 and above.
-However, packaging as an NPM module has been proven to be clumsy. So, the NPM
-module may not work with every possible setup. In case it does not work for your 
-setup, please raise a ticket. As interim you may include all the .ts files from
-https://github.com/stomp-js/ng2-stompjs/tree/master/src and place these
-in your project directly.
+There were compatibility issues reported, so this project has now switched to
+source distribution. In case it does not work for your 
+setup, please raise a ticket.
 
-Tested with Angular2 (2.4.0) and Angular4 (4.0.0) project created with Angula CLI.
+Tested with Angular2 (2.4.0) and Angular4 (4.0.0) projects created with Angula CLI.
 
 ## Changelog
 
