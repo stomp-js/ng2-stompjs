@@ -14,7 +14,7 @@ Tested with Angular2 (2.4.0) and Angular4 (4.0.0) projects created with Angula C
 
 ### 0.4.0
 
-Updated to make it compliant to possible use of APP_INITIALIZER. Please not
+Updated to make it compliant to possible use of APP_INITIALIZER. Please note
 that way to initiate the service has changed. It no longer uses StompConfigService.
 StompConfig is directly injected as dependency into StompService.
 
