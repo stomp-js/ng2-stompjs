@@ -85,8 +85,12 @@ export class StompService {
 
   /** Initialize STOMP Client */
   protected initStompClient(): void {
-    // Attempt connection, passing in a callback
-    this.client = Stomp.client(this.config.url);
+    // url takes precedence over socketFn
+    if (typeof(this.config.url) === 'string') {
+      this.client = Stomp.client(this.config.url);
+    } else {
+      this.client = Stomp.over(this.config.url);
+    }
 
     // Configure client heart-beating
     this.client.heartbeat.incoming = this.config.heartbeat_in;

@@ -11,8 +11,17 @@ export class StompConfig {
    * Server URL to connect to. Please refer to your STOMP broker documentation for details.
    *
    * Example: ws://127.0.0.1:15674/ws (for a RabbitMQ default setup running on localhost)
+   *
+   * Alternatively this parameter can be a function that returns an object similar to WebSocket
+   * (typically SockJS instance).
+   *
+   * Example:
+   *
+   * () => {
+   *   return new SockJS('http://127.0.0.1:15674/stomp');
+   * }
    */
-  url: string;
+  url: string | (() => any);
 
   /**
    * Headers
