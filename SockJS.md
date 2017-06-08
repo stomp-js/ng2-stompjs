@@ -1,5 +1,7 @@
 # Using with SockJS
 
+See sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
+
 ### Install SockJS Client
 
 ```bash
