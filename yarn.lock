@@ -36,9 +36,9 @@
   dependencies:
     tsickle "^0.21.0"
 
-"@stomp/stompjs@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@stomp/stompjs/-/stompjs-3.0.2.tgz#18f126a63653b9ca14c2a7f71eb00a012662e26a"
+"@stomp/stompjs@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@stomp/stompjs/-/stompjs-3.0.3.tgz#e92e49e6d7755e6b3199023e45a1ea1dddea4ea3"
   optionalDependencies:
     websocket latest
 
