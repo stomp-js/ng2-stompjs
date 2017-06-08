@@ -2,11 +2,13 @@
   "name": "@stomp/ng2-stompjs",
   "version": "0.4.1",
   "scripts": {
-    "build": "ngc -p tsconfig.json",
-    "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
     "doc": "typedoc --excludePrivate --mode file --out docs/ ./index.ts",
     "cleanup": "rm -rf dist doc",
-    "test": "ngc -p tsconfig.json && karma start"
+    "lint": "ng lint"
   },
   "repository": {
     "type": "git",
@@ -34,12 +36,14 @@
     "@stomp/stompjs": "^3.0.3"
   },
   "devDependencies": {
+    "@angular/cli": "1.0.0",
     "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.1",
-    "@angular/compiler-cli": "^4.0.1",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
@@ -53,16 +57,11 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.0",
-    "rollup": "^0.41.6",
     "rxjs": "^5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typedoc": "~0.5.10",
-    "typescript": "^2.2.0",
-    "uglify-js": "^2.8.22",
+    "typedoc": "^0.7.1",
+    "typescript": "~2.2.0",
     "zone.js": "^0.8.4"
-  },
-  "engines": {
-    "node": ">=6.0.0"
   }
 }
