@@ -3,19 +3,20 @@ import {StompService} from '../../../stomp.service';
 import {defaultConfig, stompServiceFactory} from './stomp.service.factory';
 import {ensureStompConnected} from './helpers';
 import {Message} from '@stomp/stompjs';
-import {RabbitRPCService} from '../../../..';
+import {StompRPCService} from '../../../..';
+import {UUID} from 'angular2-uuid';
 
 describe('Rabbit RPC', () => {
   const myServiceEndPoint = '/topic/echo';
 
   let stompService: StompService;
-  let rabbitRPCService: RabbitRPCService;
+  let stompRPCService: StompRPCService;
   const stompConfig = defaultConfig();
 
   // Wait till STOMP Service is actually connected
   beforeAll(() => {
     stompService = stompServiceFactory(stompConfig);
-    rabbitRPCService = new RabbitRPCService(stompService);
+    stompRPCService = new StompRPCService(stompService);
   });
 
   // Wait till STOMP Service is actually connected
@@ -24,7 +25,9 @@ describe('Rabbit RPC', () => {
   });
 
   beforeAll((done) => {
-    stompService.subscribe(myServiceEndPoint).subscribe((message: Message) => {
+    const receiptId = UUID.UUID();
+
+    stompService.subscribe(myServiceEndPoint, {receipt: receiptId}).subscribe((message: Message) => {
       const replyTo = message.headers['reply-to'];
       const correlationId = message.headers['correlation-id'];
       const incomingMessage = message.body;
@@ -33,15 +36,14 @@ describe('Rabbit RPC', () => {
       stompService.publish(replyTo, outgoingMessage, {'correlation-id' : correlationId});
     });
 
-    // Wait for a second to ensure that subscription has been effected at the broker
-    setTimeout(() => {
+    stompService.waitForReceipt(receiptId, () => {
       done();
-    }, 1000);
+    });
   });
 
   it('Simple RPC', (done) => {
     // Watch for RPC response
-    rabbitRPCService.rpc(myServiceEndPoint, 'Hello').subscribe((message: Message) => {
+    stompRPCService.rpc(myServiceEndPoint, 'Hello').subscribe((message: Message) => {
       expect(message.body).toBe('Echoing - Hello');
       done();
     });
@@ -55,7 +57,7 @@ describe('Rabbit RPC', () => {
     let origNumSubcribers = numSubscribers();
 
     // Watch for RPC response
-    rabbitRPCService.rpc(myServiceEndPoint, 'Hello').subscribe((message: Message) => {
+    stompRPCService.rpc(myServiceEndPoint, 'Hello').subscribe((message: Message) => {
       expect(message.body).toBe('Echoing - Hello');
       setTimeout(() => {
         expect(numSubscribers()).toBe(origNumSubcribers);
