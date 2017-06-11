@@ -18,7 +18,6 @@ export class StompRPCService {
   }
 
   public rpc(serviceEndPoint: string, payload: string): Observable<Message> {
-    // We know there will be only one message in reply
     return this.stream(serviceEndPoint, payload).first();
   }
 
@@ -29,6 +28,7 @@ export class StompRPCService {
 
         const correlationId = UUID.UUID();
 
+        // We know there will be only one message in reply
         defaultMessagesSubscription = this.messagesObservable.filter((message: Message) => {
           return message.headers['correlation-id'] === correlationId;
         }).subscribe((message: Message) => {
