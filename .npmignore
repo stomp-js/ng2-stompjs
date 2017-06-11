@@ -35,3 +35,6 @@ Desktop.ini
 !index.ts
 !src/*.ts
 !src/**/*.ts
+
+src/environments
+src/specs
