@@ -20,7 +20,9 @@ describe('StompService', () => {
     stompService.state.subscribe((state: StompState) => {
       if (state === StompState.CLOSED) {
         stompService = null;
-        done();
+        setTimeout(() => {
+          done();
+        }, 100);
       }
     });
 

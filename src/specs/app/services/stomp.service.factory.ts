@@ -3,11 +3,17 @@
 import {StompService, StompConfig} from '../../../..';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import * as SockJS from 'sockjs-client';
+
+
+export function socketProvider() {
+  return new SockJS('http://127.0.0.1:15674/stomp');
+}
 
 export function defaultConfig(): StompConfig {
   return {
     // Which server?
-    url: 'ws://127.0.0.1:15674/ws',
+    url: socketProvider,
 
     // Headers
     // Typical keys: login, passcode, host
