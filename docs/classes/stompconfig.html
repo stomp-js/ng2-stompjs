@@ -108,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/b3882e1/src/stomp.config.ts#L48">src/stomp.config.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/ff814a7/src/stomp.config.ts#L57">src/stomp.config.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -123,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">headers<span class="tsd-signature-symbol">:</span> <a href="../globals.html#stompheaders" class="tsd-signature-type">StompHeaders</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/b3882e1/src/stomp.config.ts#L22">src/stomp.config.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/ff814a7/src/stomp.config.ts#L31">src/stomp.config.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -140,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">heartbeat_<wbr>in<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/b3882e1/src/stomp.config.ts#L29">src/stomp.config.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/ff814a7/src/stomp.config.ts#L38">src/stomp.config.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -157,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">heartbeat_<wbr>out<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/b3882e1/src/stomp.config.ts#L37">src/stomp.config.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/ff814a7/src/stomp.config.ts#L46">src/stomp.config.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -174,7 +174,7 @@
 					<div class="tsd-signature tsd-kind-icon">reconnect_<wbr>delay<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/b3882e1/src/stomp.config.ts#L45">src/stomp.config.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/ff814a7/src/stomp.config.ts#L54">src/stomp.config.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -188,10 +188,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
 					<a name="url" class="tsd-anchor"></a>
 					<h3>url</h3>
-					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/b3882e1/src/stomp.config.ts#L15">src/stomp.config.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/stomp-js/ng2-stompjs/blob/ff814a7/src/stomp.config.ts#L24">src/stomp.config.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -199,6 +199,12 @@
 							<p>Server URL to connect to. Please refer to your STOMP broker documentation for details.</p>
 						</div>
 						<p>Example: ws://127.0.0.1:15674/ws (for a RabbitMQ default setup running on localhost)</p>
+						<p>Alternatively this parameter can be a function that returns an object similar to WebSocket
+						(typically SockJS instance).</p>
+						<p>Example:</p>
+						<p>() =&gt; {
+							return new SockJS(&#39;<a href="http://127.0.0.1:15674/stomp">http://127.0.0.1:15674/stomp</a>&#39;);
+						}</p>
 					</div>
 				</section>
 			</section>

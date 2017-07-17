@@ -2,6 +2,22 @@
 
 See sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
 
+## Notes
+
+- Currently it is initial support.
+- The configuration overrides the `url`
+to be used a `socketProvider` function. It will be streamlined in next
+minor release.
+- Please read notes on SockJS support of the underlying library at
+https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html
+- When developing the SockJS code, please adjust the unit tests to use
+SockJS.
+- Unit testes may occasionally fail in SockJS. It is because of limitations
+of SockJS around allowing only one SockJS connection at a time. Usually 
+this should not affect your usage of the library.
+
+## Usage
+
 ### Install SockJS Client
 
 ```bash
