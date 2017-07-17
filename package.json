@@ -33,7 +33,7 @@
   },
   "main": "./index.ts",
   "dependencies": {
-    "@stomp/stompjs": "^3.0.3"
+    "@stomp/stompjs": "^3.1.1"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",

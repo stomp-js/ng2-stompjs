@@ -8,7 +8,7 @@ There were compatibility issues reported, so this project has now switched to
 source distribution. In case it does not work for your 
 setup, please raise a ticket.
 
-Tested with Angular2 (2.4.0) and Angular4 (4.0.0) projects created with Angula CLI.
+Tested with Angular2 (2.4.0) and Angular4 (4.0.0) projects created with Angular CLI.
 
 ## Changelog
 
@@ -19,7 +19,7 @@ Sample at https://github.com/stomp-js/ng2-stompjs/tree/sockjs
 
 ### 0.4.0
 
-Updated to make it compliant to possible use of APP_INITIALIZER. Please not
+Updated to make it compliant to possible use of APP_INITIALIZER. Please note
 that way to initiate the service has changed. It no longer uses StompConfigService.
 StompConfig is directly injected as dependency into StompService.
 

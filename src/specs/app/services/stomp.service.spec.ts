@@ -13,6 +13,7 @@ describe('StompService', () => {
   // Wait till STOMP Service is actually connected
   beforeEach(() => {
     stompService = stompServiceFactory(defaultConfig());
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
   });
 
   // Disconnect and wait till it actually disconnects
@@ -117,7 +118,7 @@ describe('StompService', () => {
           setTimeout(() => {
             // Now publish the message when STOMP Broker has been disconnected
             stompService.publish(queueName, msg);
-          }, 100);
+          }, 1000);
         }
       });
     });
