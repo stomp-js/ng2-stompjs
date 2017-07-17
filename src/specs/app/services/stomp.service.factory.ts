@@ -7,13 +7,17 @@ import * as SockJS from 'sockjs-client';
 
 
 export function socketProvider() {
+  // See below (url property of defaultConfig)
   return new SockJS('http://127.0.0.1:15674/stomp');
 }
 
 export function defaultConfig(): StompConfig {
   return {
     // Which server?
-    url: socketProvider,
+    url: 'ws://127.0.0.1:15674/ws',
+
+    // Comment above and uncomment below to test with SockJS
+    // url: socketProvider,
 
     // Headers
     // Typical keys: login, passcode, host
