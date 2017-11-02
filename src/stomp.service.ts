@@ -111,6 +111,9 @@ export class StompService {
    * Perform connection to STOMP broker
    */
   protected try_connect(): void {
+    if (!this.config.headers) {
+      this.config.headers = {};
+    }
 
     // Attempt connection, passing in a callback
     this.client.connect(
