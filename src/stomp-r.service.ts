@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, Observer, Subscription } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/share';
 
 import { StompConfig } from './stomp.config';
 
