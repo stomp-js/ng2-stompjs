@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import {Observable, Observer, Subscription} from 'rxjs/Rx';
+import { Observable, Observer, Subscription } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { StompConfig } from './stomp.config';
 
 import * as Stomp from '@stomp/stompjs';
 import { StompSubscription } from '@stomp/stompjs';
-import {StompHeaders} from './stomp-headers';
+import { StompHeaders } from './stomp-headers';
 
 /**
  * Possible states for the STOMP service
