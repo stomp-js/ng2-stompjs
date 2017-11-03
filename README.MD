@@ -15,7 +15,7 @@ Tested with Angular2 (2.4.0) and Angular4 (4.0.0) projects created with Angular 
 ### 0.4.2
 
 Initial [SockJS Support](https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md).
-Sample at https://github.com/stomp-js/ng2-stompjs/tree/sockjs
+Sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
 
 ### 0.4.0
 
