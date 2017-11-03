@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import {Observable, Observer, Subscription} from 'rxjs/Rx';
+import { Observable, Observer, Subscription } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 import { StompConfig } from './stomp.config';
 
 import * as Stomp from '@stomp/stompjs';
 import { StompSubscription } from '@stomp/stompjs';
-import {StompHeaders} from './stomp-headers';
+import { StompHeaders } from './stomp-headers';
 
 /**
  * Possible states for the STOMP service
@@ -48,7 +49,13 @@ export class StompService {
   public connectObservable: Observable<StompState>;
 
   /**
-   * Internal array to hold locallly queued messages when STOMP broker is not connected.
+   * Will trigger when an error occurs. This Subject can be used to handle errors from
+   * the stomp broker.
+   */
+  public errorSubject: Subject<string | Stomp.Message>;
+
+  /**
+   * Internal array to hold locally queued messages when STOMP broker is not connected.
    */
   protected queuedMessages: {queueName: string, message: string, headers: StompHeaders}[]= [];
 
@@ -78,6 +85,8 @@ export class StompService {
     this.connectObservable.subscribe(() => {
       this.sendQueuedMessages();
     });
+
+    this.errorSubject = new Subject();
 
     this.initStompClient();
     this.try_connect();
@@ -285,6 +294,9 @@ export class StompService {
 
   /** Handle errors from stomp.js */
   protected on_error = (error: string | Stomp.Message) => {
+
+    // Trigger the error subject
+    this.errorSubject.next(error);
 
     if (typeof error === 'object') {
       error = (<Stomp.Message>error).body;

@@ -1,5 +1,5 @@
-import {StompHeaders} from './stomp-headers';
-import {Injectable} from '@angular/core';
+import { StompHeaders } from './stomp-headers';
+import { Injectable } from '@angular/core';
 /**
  * Represents a configuration object for the
  * STOMPService to connect to.
