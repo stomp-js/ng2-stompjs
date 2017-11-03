@@ -55,7 +55,7 @@ export class StompService {
   public errorSubject: Subject<string | Stomp.Message>;
 
   /**
-   * Internal array to hold locallly queued messages when STOMP broker is not connected.
+   * Internal array to hold locally queued messages when STOMP broker is not connected.
    */
   protected queuedMessages: {queueName: string, message: string, headers: StompHeaders}[]= [];
 
