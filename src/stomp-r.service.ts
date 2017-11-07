@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { StompConfig } from './stomp.config';
 
-import * as Stomp from '@stomp/stompjs';
+import { Stomp } from '@stomp/stompjs/lib/stomp';
 import { StompSubscription } from '@stomp/stompjs';
 import { StompHeaders } from './stomp-headers';
 import { StompState } from './stomp-state';
