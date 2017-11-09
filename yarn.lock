@@ -123,6 +123,12 @@
   optionalDependencies:
     websocket "^1.0.24"
 
+"@stomp/stompjs@https://github.com/stomp-js/stomp-websocket#v4":
+  version "3.1.2"
+  resolved "https://github.com/stomp-js/stomp-websocket#0263954fda6b7061c889f335d6eed488b148baa3"
+  optionalDependencies:
+    websocket "^1.0.24"
+
 "@types/fs-extra@^3.0.0":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-3.0.3.tgz#1d66eb670ebf657e57c0fda014df340c19d8aa0c"

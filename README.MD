@@ -8,9 +8,17 @@ There were compatibility issues reported, so this project has now switched to
 source distribution. In case it does not work for your 
 setup, please raise a ticket.
 
-Tested with Angular2 (2.4.0) and Angular4 (4.0.0) projects created with Angular CLI.
+Tested with Angular2 (2.4.0), Angular4 (4.0.0), Angular (5.0.0), and 
+ionic projects created with Angular CLI.
+
+See notes below for Angular 5 and ionic.
 
 ## Changelog
+
+### 0.4.3
+
+- Ability to delay initialization.
+- Angular 5 compatibility
 
 ### 0.4.2
 
@@ -72,6 +80,41 @@ from https://github.com/stomp-js/stomp-websocket
 - See [SockJS Support](https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md).
   https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs for a sample
   using SockJS.
+  
+### Agular 5 & Ionic
+
+This project is distributed as ts files.
+You need to instruct the compiler to include files from this library to be compiled
+as part of the build process.
+
+#### Angular 5
+
+- Sample at https://github.com/stomp-js/ng5-stompjs-demo
+- In `src/tsconfig.app.json` place the following in `compilerOptions`:
+```javascript
+    "paths": {
+        "@stomp/ng2-stompjs": ["../node_modules/@stomp/ng2-stompjs"]
+    }
+```
+See: https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c6dbf94e600f2c8c/src/tsconfig.app.json#L7
+
+#### Ionic
+- Sample at https://github.com/sjbwylbs/ionic-ng2-stompjs
+- In `tsconfig.json` ensure the following:
+```javascript
+{
+  "compilerOptions": {
+    ...
+    "baseUrl": "./src",
+    "paths": {
+      "@stomp/ng2-stompjs": ["../node_modules/@stomp/ng2-stompjs"]
+    },
+    ...
+  }
+  ...
+}
+```
+- See: https://github.com/sjbwylbs/ionic-ng2-stompjs/blob/c0bd2e0d216c289fbb0225992969d826ee8d2459/tsconfig.json#L15
 
 ### Prerequisites
 
@@ -204,7 +247,7 @@ Please note that message is actually string. So, if you need to send JSON
 you will need to convert it into string (typically using 
 `JSON.stringify()`)
 
-#### Watching for Stomp Connection status
+#### Watching for Stomp connection status
 
 - `stompService.state` is a `BehaviorSubject` which maintains and switches
   its value as per the underlying Stomp Connection status.
@@ -224,6 +267,47 @@ you will need to convert it into string (typically using
 If you are interested in watching only when connection is established, you can
 subscribe to `this._stompService.connectObservable`.
 
+#### Delayed initialization
+
+While often it is possible using Angular dependency injection techniques and
+APP_INITIALIZER to delay the initialization till the configuration is ready
+(may be fetched using an API call). See a sample at:
+https://github.com/stomp-js/ng2-stompjs-demo
+
+If a manual control is needed on the initialization process there is an additional
+class `StompRService`, inject it instead of `StompService`. This has few additional
+methods to assign a configuration and manually connect.
+
+```typescript
+// Do not provide StompService or StompConfig, only provide StompRService
+
+  providers: [
+    StompRService
+  ]
+
+```
+
+```typescript
+class YourClass {}
+    constructor(private _stompService: StompRService) { }
+    
+    public initStomp() {
+      StompConfig config;
+  
+      cofig = this.fetchConfigFromSomeWhere();
+      
+      this._stompService.config = config;
+      this._stompService.initAndConnect();
+    }
+}
+```
+
+`subscribe` and `publish` can be called even before call to `initAndConnect`.
+These however will be interally queued till actual connection is successful.
+
+For the curious - `initAndConnect` may be called more than once with potentially
+updated config.
+
 ## Development
 
 After checking out, install the dependencies:
@@ -237,23 +321,16 @@ or, if using yarn
 $ yarn
 ```
 
-It uses `ngc` to build.
+To generate documentation:
 
 ```bash
-$ npm run build
+$ npm run doc
 ```
 
 To lint all `*.ts` files:
 
 ```bash
 $ npm run lint
-```
-
-To publish it uses a shell script which copies, a slightly modified, package.json
-into dist/ folder and publishes only the dist/ folder.
-
-```bash
-$ bin/npm-publish
 ```
 
 ## Contributors

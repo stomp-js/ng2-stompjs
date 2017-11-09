@@ -33,7 +33,7 @@
   },
   "main": "./index.ts",
   "dependencies": {
-    "@stomp/stompjs": "^3.1.1"
+    "@stomp/stompjs": "https://github.com/stomp-js/stomp-websocket#v4"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",

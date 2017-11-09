@@ -10,7 +10,7 @@ import 'rxjs/add/operator/share';
 
 import { StompConfig } from './stomp.config';
 
-import { Stomp } from '@stomp/stompjs/lib/stomp';
+import * as Stomp from '@stomp/stompjs';
 import { StompSubscription } from '@stomp/stompjs';
 import { StompHeaders } from './stomp-headers';
 import { StompState } from './stomp-state';
