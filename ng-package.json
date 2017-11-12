@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "lib": {
+    "entryFile": "index.ts",
+    "externals": {
+      "net": "net",
+      "events": "events",
+      "tty": "tty",
+      "util": "util",
+      "@stomp/stompjs": "stompjs",
+      "url": "url",
+      "crypto": "crypto",
+      "fs": "fs",
+      "websocket": "websocket"
+    },
+    "preferBuiltins": true
+  },
+  "preferBuiltins": true
+}

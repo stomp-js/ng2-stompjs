@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dist": "ng-packagr -p ng-package.json",
     "build": "ng build",
     "test": "ng test",
     "doc": "typedoc --excludePrivate --mode file --out docs/ ./index.ts",
