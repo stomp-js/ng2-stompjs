@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
-  "main": "./index.ts",
+  "main": "bundles/ng2-stompjs.umd.js",
   "dependencies": {
     "@stomp/stompjs": "https://github.com/stomp-js/stomp-websocket#v4"
   },
@@ -66,5 +66,9 @@
     "typedoc": "^0.7.1",
     "typescript": "~2.2.0",
     "zone.js": "^0.8.4"
-  }
+  },
+  "module": "@stomp/ng2-stompjs.es5.js",
+  "es2015": "@stomp/ng2-stompjs.js",
+  "typings": "ng2-stompjs.d.ts",
+  "metadata": "ng2-stompjs.metadata.json"
 }

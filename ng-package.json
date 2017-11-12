@@ -3,17 +3,8 @@
   "lib": {
     "entryFile": "index.ts",
     "externals": {
-      "net": "net",
-      "events": "events",
-      "tty": "tty",
-      "util": "util",
-      "@stomp/stompjs": "stompjs",
-      "url": "url",
-      "crypto": "crypto",
-      "fs": "fs",
-      "websocket": "websocket"
-    },
-    "preferBuiltins": true
-  },
-  "preferBuiltins": true
+      "@stomp/stompjs": "./node_modules/@stomp/stompjs/index.js",
+      "@stomp/stompjs/index": "./node_modules/@stomp/stompjs/index.js"
+    }
+  }
 }

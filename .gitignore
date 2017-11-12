@@ -4,8 +4,8 @@ npm-debug.log
 
 # TypeScript
 # *.js
-*.map
-*.d.ts
+#*.map
+#*.d.ts
 
 # JetBrains
 .idea
@@ -26,11 +26,8 @@ Desktop.ini
 **/.DS_Store
 
 # Ngc generated files
-**/*.ngfactory.ts
-*.metadata.json
-*.ngsummary.json
+#**/*.ngfactory.ts
+#*.metadata.json
+#*.ngsummary.json
 
 # bin/npm-publish
-
-# Ignore Dist
-dist/
