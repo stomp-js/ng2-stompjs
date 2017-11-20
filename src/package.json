@@ -1,0 +1,32 @@
+{
+  "name": "@stomp/ng2-stompjs",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stomp-js/ng2-stompjs"
+  },
+  "author": {
+    "name": "Deepak Kumar",
+    "email": "deepak@kreatio.com"
+  },
+  "main": "./bundles/ng2-stompjs.umd.js",
+  "module": "./@stratio/ng2-stompjs.es5.js",
+  "es2015": "./@stratio/ng2-stompjs.js",
+  "typings": "./ng2-stompjs.d.ts",
+  "keywords": [
+    "stompjs",
+    "angular2",
+    "angular4",
+    "rabbitmq",
+    "websocket",
+    "angular",
+    "stomp"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stomp-js/ng2-stompjs/issues"
+  },
+  "dependencies": {
+    "@stomp/stompjs": "^3.1.1"
+  }
+}

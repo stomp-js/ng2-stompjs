@@ -1,10 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
-import { StompService, StompConfig } from '../../../..';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import * as SockJS from 'sockjs-client';
 
+import { StompService, StompConfig } from '../public_api';
 
 export function socketProvider() {
   // See below (url property of defaultConfig)
