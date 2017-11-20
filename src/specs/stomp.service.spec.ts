@@ -1,11 +1,12 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { StompService, StompState, StompConfig } from '../../../..';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { defaultConfig, MyStompService, stompServiceFactory } from './stomp.service.factory';
 import { Message } from '@stomp/stompjs';
+
+import { StompService, StompState, StompConfig } from '../public_api';
+import { defaultConfig, MyStompService, stompServiceFactory } from './stomp.service.factory';
 
 describe('StompService', () => {
   let stompService: StompService;

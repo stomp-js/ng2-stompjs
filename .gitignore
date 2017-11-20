@@ -34,3 +34,6 @@ Desktop.ini
 
 # Ignore Dist
 dist/
+
+# Ignore coverage
+coverage/
