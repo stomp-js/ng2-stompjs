@@ -69,7 +69,7 @@ or, if using yarn
 $ yarn add @stomp/ng2-stompjs
 ```
 
-This will addtionally install @stomp/stompjs 
+This will additionally install @stomp/stompjs 
 from https://github.com/stomp-js/stomp-websocket
 
 ## Usage
