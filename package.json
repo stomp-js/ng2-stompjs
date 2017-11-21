@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -35,7 +35,7 @@
   },
   "main": "./index.ts",
   "dependencies": {
-    "@stomp/stompjs": "https://github.com/stomp-js/stomp-websocket#v4"
+    "@stomp/stompjs": "^4.0.0"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",

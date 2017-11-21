@@ -15,6 +15,10 @@ See notes below for Angular 5 and ionic.
 
 ## Changelog
 
+### 0.6.1
+
+- Updated underlying dependencies
+
 ### 0.6.0
 
 - Jump in version number to indicate compiled JS release

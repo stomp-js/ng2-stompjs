@@ -15,6 +15,10 @@ See notes below for Angular 5 and ionic.
 
 ## Changelog
 
+### 0.6.1
+
+- Updated underlying dependencies
+
 ### 0.6.0
 
 - Jump in version number to indicate compiled JS release
@@ -69,7 +73,7 @@ or, if using yarn
 $ yarn add @stomp/ng2-stompjs
 ```
 
-This will addtionally install @stomp/stompjs 
+This will additionally install @stomp/stompjs 
 from https://github.com/stomp-js/stomp-websocket
 
 ## Usage
