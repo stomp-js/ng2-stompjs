@@ -15,6 +15,11 @@ See notes below for Angular 5 and ionic.
 
 ## Changelog
 
+### 0.6.0
+
+- Jump in version number to indicate compiled JS release
+- Improved Angular 5 support
+
 ### 0.4.3
 
 - Ability to delay initialization.
@@ -82,6 +87,10 @@ from https://github.com/stomp-js/stomp-websocket
   using SockJS.
   
 ### Agular 5 & Ionic
+
+**If you are using version 0.6.0 or higher you should not need
+any of this. Please report an issue if still you need to do any of
+these.**
 
 This project is distributed as ts files.
 You need to instruct the compiler to include files from this library to be compiled
