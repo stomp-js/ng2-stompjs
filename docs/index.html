@@ -70,11 +70,18 @@
 				<p>There were compatibility issues reported, so this project has now switched to
 					source distribution. In case it does not work for your
 				setup, please raise a ticket.</p>
-				<p>Tested with Angular2 (2.4.0) and Angular4 (4.0.0) projects created with Angular CLI.</p>
+				<p>Tested with Angular2 (2.4.0), Angular4 (4.0.0), Angular (5.0.0), and
+				ionic projects created with Angular CLI.</p>
+				<p>See notes below for Angular 5 and ionic.</p>
 				<h2 id="changelog">Changelog</h2>
+				<h3 id="0-4-3">0.4.3</h3>
+				<ul>
+					<li>Ability to delay initialization.</li>
+					<li>Angular 5 compatibility</li>
+				</ul>
 				<h3 id="0-4-2">0.4.2</h3>
 				<p>Initial <a href="https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md">SockJS Support</a>.
-				Sample at <a href="https://github.com/stomp-js/ng2-stompjs/tree/sockjs">https://github.com/stomp-js/ng2-stompjs/tree/sockjs</a></p>
+				Sample at <a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a></p>
 				<h3 id="0-4-0">0.4.0</h3>
 				<p>Updated to make it compliant to possible use of APP_INITIALIZER. Please note
 					that way to initiate the service has changed. It no longer uses StompConfigService.
@@ -121,6 +128,37 @@
 					<li>See <a href="https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md">SockJS Support</a>.
 						<a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a> for a sample
 					using SockJS.</li>
+				</ul>
+				<h3 id="agular-5-ionic">Agular 5 &amp; Ionic</h3>
+				<p>This project is distributed as ts files.
+					You need to instruct the compiler to include files from this library to be compiled
+				as part of the build process.</p>
+				<h4 id="angular-5">Angular 5</h4>
+				<ul>
+					<li>Sample at <a href="https://github.com/stomp-js/ng5-stompjs-demo">https://github.com/stomp-js/ng5-stompjs-demo</a></li>
+					<li>In <code>src/tsconfig.app.json</code> place the following in <code>compilerOptions</code>:<pre><code class="lang-javascript">  <span class="hljs-string">"paths"</span>: {
+      <span class="hljs-string">"@stomp/ng2-stompjs"</span>: [<span class="hljs-string">"../node_modules/@stomp/ng2-stompjs"</span>]
+  }
+</code></pre>
+					See: <a href="https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c6dbf94e600f2c8c/src/tsconfig.app.json#L7">https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c6dbf94e600f2c8c/src/tsconfig.app.json#L7</a></li>
+				</ul>
+				<h4 id="ionic">Ionic</h4>
+				<ul>
+					<li>Sample at <a href="https://github.com/sjbwylbs/ionic-ng2-stompjs">https://github.com/sjbwylbs/ionic-ng2-stompjs</a></li>
+					<li>In <code>tsconfig.json</code> ensure the following:<pre><code class="lang-javascript">{
+<span class="hljs-string">"compilerOptions"</span>: {
+  ...
+  <span class="hljs-string">"baseUrl"</span>: <span class="hljs-string">"./src"</span>,
+  <span class="hljs-string">"paths"</span>: {
+    <span class="hljs-string">"@stomp/ng2-stompjs"</span>: [<span class="hljs-string">"../node_modules/@stomp/ng2-stompjs"</span>]
+  },
+  ...
+}
+...
+}
+</code></pre>
+					</li>
+					<li>See: <a href="https://github.com/sjbwylbs/ionic-ng2-stompjs/blob/c0bd2e0d216c289fbb0225992969d826ee8d2459/tsconfig.json#L15">https://github.com/sjbwylbs/ionic-ng2-stompjs/blob/c0bd2e0d216c289fbb0225992969d826ee8d2459/tsconfig.json#L15</a></li>
 				</ul>
 				<h3 id="prerequisites">Prerequisites</h3>
 				<ul>
@@ -227,7 +265,7 @@
 				<p>Please note that message is actually string. So, if you need to send JSON
 					you will need to convert it into string (typically using
 				<code>JSON.stringify()</code>)</p>
-				<h4 id="watching-for-stomp-connection-status">Watching for Stomp Connection status</h4>
+				<h4 id="watching-for-stomp-connection-status">Watching for Stomp connection status</h4>
 				<ul>
 					<li><code>stompService.state</code> is a <code>BehaviorSubject</code> which maintains and switches
 					its value as per the underlying Stomp Connection status.</li>
@@ -244,6 +282,37 @@
 </code></pre>
 				<p>If you are interested in watching only when connection is established, you can
 				subscribe to <code>this._stompService.connectObservable</code>.</p>
+				<h4 id="delayed-initialization">Delayed initialization</h4>
+				<p>While often it is possible using Angular dependency injection techniques and
+					APP_INITIALIZER to delay the initialization till the configuration is ready
+					(may be fetched using an API call). See a sample at:
+				<a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a></p>
+				<p>If a manual control is needed on the initialization process there is an additional
+					class <code>StompRService</code>, inject it instead of <code>StompService</code>. This has few additional
+				methods to assign a configuration and manually connect.</p>
+				<pre><code class="lang-typescript"><span class="hljs-comment">// Do not provide StompService or StompConfig, only provide StompRService</span>
+
+  providers: [
+    StompRService
+  ]
+</code></pre>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> YourClass {}
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _stompService: StompRService</span>) { }
+
+    <span class="hljs-keyword">public</span> initStomp() {
+      StompConfig config;
+
+      cofig = <span class="hljs-keyword">this</span>.fetchConfigFromSomeWhere();
+
+      <span class="hljs-keyword">this</span>._stompService.config = config;
+      <span class="hljs-keyword">this</span>._stompService.initAndConnect();
+    }
+}
+</code></pre>
+				<p><code>subscribe</code> and <code>publish</code> can be called even before call to <code>initAndConnect</code>.
+				These however will be interally queued till actual connection is successful.</p>
+				<p>For the curious - <code>initAndConnect</code> may be called more than once with potentially
+				updated config.</p>
 				<h2 id="development">Development</h2>
 				<p>After checking out, install the dependencies:</p>
 				<pre><code class="lang-bash">$ npm install
@@ -251,15 +320,11 @@
 				<p>or, if using yarn</p>
 				<pre><code class="lang-bash">$ yarn
 </code></pre>
-				<p>It uses <code>ngc</code> to build.</p>
-				<pre><code class="lang-bash">$ npm run build
+				<p>To generate documentation:</p>
+				<pre><code class="lang-bash">$ npm run doc
 </code></pre>
 				<p>To lint all <code>*.ts</code> files:</p>
 				<pre><code class="lang-bash">$ npm run lint
-</code></pre>
-				<p>To publish it uses a shell script which copies, a slightly modified, package.json
-				into dist/ folder and publishes only the dist/ folder.</p>
-				<pre><code class="lang-bash">$ bin/npm-publish
 </code></pre>
 				<h2 id="contributors">Contributors</h2>
 				<ul>
@@ -287,6 +352,9 @@
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/stompconfig.html" class="tsd-kind-icon">Stomp<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/stomprservice.html" class="tsd-kind-icon">StompRService</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/stompservice.html" class="tsd-kind-icon">Stomp<wbr>Service</a>

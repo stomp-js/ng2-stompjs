@@ -1,9 +1,10 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dist": "ng-packagr -p ng-package.json",
     "build": "ng build",
     "test": "ng test",
     "doc": "typedoc --excludePrivate --mode file --out docs/ ./index.ts",
@@ -22,6 +23,7 @@
     "stompjs",
     "angular2",
     "angular4",
+    "angular5",
     "rabbitmq",
     "websocket",
     "angular",
@@ -33,7 +35,7 @@
   },
   "main": "./index.ts",
   "dependencies": {
-    "@stomp/stompjs": "^3.1.1"
+    "@stomp/stompjs": "https://github.com/stomp-js/stomp-websocket#v4"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",
@@ -56,6 +58,7 @@
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^1.5",
     "protractor": "~5.1.0",
     "rxjs": "^5.1.0",
     "ts-node": "~2.0.0",
