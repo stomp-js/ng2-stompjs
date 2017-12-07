@@ -7,6 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/share';
 
 import { StompConfig } from './stomp.config';
@@ -56,6 +57,16 @@ export class StompRService {
   public serverHeadersObservable: Observable<StompHeaders>;
 
   private _serverHeadersBehaviourSubject: BehaviorSubject<null|StompHeaders>;
+
+  /**
+   * Will emit all messages to the default queue (any message that are not handled by a subscription)
+   */
+  public defaultMessagesObservable: Subject<Stomp.Message>;
+
+  /**
+   * Will emit all receipts
+   */
+  public receiptsObservable: Subject<Stomp.Frame>;
 
   /**
    * Will trigger when an error occurs. This Subject can be used to handle errors from
@@ -135,6 +146,12 @@ export class StompRService {
     }
     // Set function to debug print messages
     this.client.debug = this.debug;
+
+    // Default messages
+    this.setupOnReceive();
+
+    // Receipts
+    this.setupReceipts();
   }
 
 
@@ -296,6 +313,39 @@ export class StompRService {
     return coldObservable.share();
   }
 
+  /**
+   * Handle messages to default queue, it will include any unhandled messages. We can use this for
+   * RPC type communications.
+   */
+  protected setupOnReceive(): void {
+    this.defaultMessagesObservable = new Subject();
+
+    this.client.onreceive = (message: Stomp.Message) => {
+      this.defaultMessagesObservable.next(message);
+    };
+  }
+
+  /**
+   * Emit all receipts.
+   */
+  protected setupReceipts(): void {
+    this.receiptsObservable = new Subject();
+
+    this.client.onreceipt = (frame: Stomp.Frame) => {
+      this.receiptsObservable.next(frame);
+    };
+  }
+
+  /**
+   * Wait for receipt, this indicates that server has carried out the related operation
+   */
+  public waitForReceipt(receiptId: string, callback: () => void): void {
+    this.receiptsObservable.filter((frame: Stomp.Frame) => {
+      return frame.headers['receipt-id'] === receiptId;
+    }).first().subscribe((frame: Stomp.Frame) => {
+      callback();
+    });
+  }
 
   /**
    * Callback Functions
