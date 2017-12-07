@@ -2,7 +2,7 @@ sudo: false
 dist: trusty
 language: node_js
 node_js:
-  - '4.2.1'
+  - '8.2.1'
 
 apt:
   sources:
