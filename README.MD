@@ -15,6 +15,12 @@ See notes below for Angular 5 and ionic.
 
 ## Changelog
 
+### 0.6.2
+
+- Added ability to get server headers from CONNECTED Frame 
+  https://stomp-js.github.io/ng2-stompjs/classes/stomprservice.html#serverheadersobservable
+- Enabled Travis
+
 ### 0.6.1
 
 - Updated underlying dependencies
