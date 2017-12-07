@@ -5,13 +5,14 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 
 import { StompConfig } from './stomp.config';
 
 import * as Stomp from '@stomp/stompjs';
-import { StompSubscription } from '@stomp/stompjs';
+import { Frame, StompSubscription } from '@stomp/stompjs';
 import { StompHeaders } from './stomp-headers';
 import { StompState } from './stomp-state';
 
@@ -46,6 +47,17 @@ export class StompRService {
   public connectObservable: Observable<StompState>;
 
   /**
+   * Provides headers from most recent connection to the server as return by the CONNECTED
+   * frame.
+   * If the STOMP connection has already been established it will trigger immediately.
+   * It will additionally trigger in event of reconnection, the value will be set of headers from
+   * the recent server response.
+   */
+  public serverHeadersObservable: Observable<StompHeaders>;
+
+  private _serverHeadersBehaviourSubject: BehaviorSubject<null|StompHeaders>;
+
+  /**
    * Will trigger when an error occurs. This Subject can be used to handle errors from
    * the stomp broker.
    */
@@ -75,7 +87,7 @@ export class StompRService {
     this.state = new BehaviorSubject<StompState>(StompState.CLOSED);
 
     this.connectObservable = this.state
-      .filter((currentState: number) => {
+      .filter((currentState: StompState) => {
         return currentState === StompState.CONNECTED;
       });
 
@@ -83,6 +95,13 @@ export class StompRService {
     this.connectObservable.subscribe(() => {
       this.sendQueuedMessages();
     });
+
+    this._serverHeadersBehaviourSubject = new BehaviorSubject<null|StompHeaders>(null);
+
+    this.serverHeadersObservable = this._serverHeadersBehaviourSubject
+      .filter((headers: null | StompHeaders) => {
+        return headers !== null;
+      });
 
     this.errorSubject = new Subject();
   }
@@ -289,9 +308,11 @@ export class StompRService {
   }
 
   /** Callback run on successfully connecting to server */
-  protected on_connect = () => {
+  protected on_connect = (frame: Frame) => {
 
     this.debug('Connected');
+
+    this._serverHeadersBehaviourSubject.next(frame.headers);
 
     // Indicate our connected state to observers
     this.state.next(StompState.CONNECTED);

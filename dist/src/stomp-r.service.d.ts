@@ -35,6 +35,15 @@ export declare class StompRService {
      */
     connectObservable: Observable<StompState>;
     /**
+     * Provides headers from most recent connection to the server as return by the CONNECTED
+     * frame.
+     * If the STOMP connection has already been established it will trigger immediately.
+     * It will additionally trigger in event of reconnection, the value will be set of headers from
+     * the recent server response.
+     */
+    serverHeadersObservable: Observable<StompHeaders>;
+    private _serverHeadersBehaviourSubject;
+    /**
      * Will trigger when an error occurs. This Subject can be used to handle errors from
      * the stomp broker.
      */
@@ -120,7 +129,7 @@ export declare class StompRService {
      */
     protected debug: (args: any) => void;
     /** Callback run on successfully connecting to server */
-    protected on_connect: () => void;
+    protected on_connect: (frame: Stomp.Frame) => void;
     /** Handle errors from stomp.js */
     protected on_error: (error: string | Stomp.Message) => void;
 }

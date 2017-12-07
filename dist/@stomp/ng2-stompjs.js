@@ -51,8 +51,9 @@ class StompRService {
         /**
          * Callback run on successfully connecting to server
          */
-        this.on_connect = () => {
+        this.on_connect = (frame) => {
             this.debug('Connected');
+            this._serverHeadersBehaviourSubject.next(frame.headers);
             // Indicate our connected state to observers
             this.state.next(StompState.CONNECTED);
         };
@@ -80,6 +81,11 @@ class StompRService {
         // Setup sending queuedMessages
         this.connectObservable.subscribe(() => {
             this.sendQueuedMessages();
+        });
+        this._serverHeadersBehaviourSubject = new BehaviorSubject$1(null);
+        this.serverHeadersObservable = this._serverHeadersBehaviourSubject
+            .filter((headers) => {
+            return headers !== null;
         });
         this.errorSubject = new Subject$1();
     }

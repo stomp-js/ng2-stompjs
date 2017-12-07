@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { defaultConfig, MyStompService, stompServiceFactory } from './stomp.service.factory';
 import { Message } from '@stomp/stompjs';
+import { StompHeaders } from '../../../stomp-headers';
 
 describe('StompService', () => {
   let stompService: StompService;
@@ -121,6 +122,22 @@ describe('StompService', () => {
           }, 1000);
         }
       });
+    });
+
+    it('should receive server headers', (done) => {
+      stompService.serverHeadersObservable
+        .subscribe((headers: StompHeaders) => {
+          // Check that we have received at least one key in header
+          expect(Object.keys(headers).length).toBeGreaterThan(0);
+
+          // Subscribe again, we should get the same set of headers
+          // (as per specifications, if STOMP has already connected it should immediately trigger)
+          stompService.serverHeadersObservable
+            .subscribe((headers1: StompHeaders) => {
+              expect(headers1).toEqual(headers);
+              done();
+            });
+        });
     });
   });
 });

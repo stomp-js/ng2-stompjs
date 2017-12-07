@@ -60,8 +60,9 @@ var StompRService = (function () {
         /**
          * Callback run on successfully connecting to server
          */
-        this.on_connect = function () {
+        this.on_connect = function (frame) {
             _this.debug('Connected');
+            _this._serverHeadersBehaviourSubject.next(frame.headers);
             // Indicate our connected state to observers
             _this.state.next(StompState.CONNECTED);
         };
@@ -89,6 +90,11 @@ var StompRService = (function () {
         // Setup sending queuedMessages
         this.connectObservable.subscribe(function () {
             _this.sendQueuedMessages();
+        });
+        this._serverHeadersBehaviourSubject = new BehaviorSubject$1(null);
+        this.serverHeadersObservable = this._serverHeadersBehaviourSubject
+            .filter(function (headers) {
+            return headers !== null;
         });
         this.errorSubject = new Subject$1();
     }
