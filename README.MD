@@ -1,5 +1,7 @@
 # @stomp/ng2-stompjs
 
+[![Build Status](https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master)](https://travis-ci.org/stomp-js/ng2-stompjs)
+
 An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.
 
 ## Compatibility
