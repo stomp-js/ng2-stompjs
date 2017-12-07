@@ -6,37 +6,29 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { defaultConfig, MyStompService, stompServiceFactory } from './stomp.service.factory';
 import { Message } from '@stomp/stompjs';
+import { ensureStompConnected, ensureStompDisconnected } from './helpers';
 import { StompHeaders } from '../../../stomp-headers';
 
 describe('StompService', () => {
   let stompService: StompService;
+  const stompConfig = defaultConfig();
 
   // Wait till STOMP Service is actually connected
   beforeEach(() => {
-    stompService = stompServiceFactory(defaultConfig());
+    stompService = stompServiceFactory(stompConfig);
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
   });
 
   // Disconnect and wait till it actually disconnects
   afterEach((done) => {
-    stompService.state.subscribe((state: StompState) => {
-      if (state === StompState.CLOSED) {
-        stompService = null;
-        setTimeout(() => {
-          done();
-        }, 100);
-      }
-    });
-
-    stompService.disconnect();
+    ensureStompDisconnected(stompService, done);
+    stompService = null;
   });
 
   describe('Simple operations', () => {
     // Wait till STOMP Service is actually connected
     beforeEach((done) => {
-      stompService.connectObservable.subscribe((state: StompState) => {
-        done();
-      });
+      ensureStompConnected(stompService, done);
     });
 
     it('should already be connected', () => {
