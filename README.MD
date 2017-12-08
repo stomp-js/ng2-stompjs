@@ -6,9 +6,7 @@ An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.
 
 ## Compatibility
 
-There were compatibility issues reported, so this project has now switched to
-source distribution. In case it does not work for your 
-setup, please raise a ticket.
+
 
 Tested with Angular2 (2.4.0), Angular4 (4.0.0), Angular (5.0.0), and 
 ionic projects created with Angular CLI.
@@ -25,7 +23,7 @@ See notes below for Angular 5 and ionic.
 
 ### 0.6.1
 
-- Updated underlying dependencies
+- Updated dependencies
 
 ### 0.6.0
 
@@ -34,39 +32,38 @@ See notes below for Angular 5 and ionic.
 
 ### 0.4.3
 
-- Ability to delay initialization.
+- Ability to delay initialization
 - Angular 5 compatibility
 
 ### 0.4.2
 
-Initial [SockJS Support](https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md).
+- Initial [SockJS Support](https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md).
 Sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
 
 ### 0.4.0
 
-Updated to make it compliant to possible use of APP_INITIALIZER. Please note
-that way to initiate the service has changed. It no longer uses StompConfigService.
-StompConfig is directly injected as dependency into StompService.
+- Updated to make it compliant to possible use of APP_INITIALIZER. The way to initiate the service has changed and it no longer uses StompConfigService.
+StompConfig is directly injected as dependency into StompService
 
 ### 0.3.8
 
-- Switched to source distribution. The npm bundle now only has .ts files.
+- Switched to source distribution. The npm bundle now only has .ts files
 
 ### 0.3.5
 
 - Test case at https://github.com/stomp-js/ng2-stompjs-testbed these
   will be merged into main repository in future. Currently unable
-  to configure Karma correctly in the main project. Any help appreciated.
+  to configure Karma correctly in the main project. Any help appreciated
 
 ### 0.3.4
 
-- added references to GitHub pages.
+- Added references to GitHub pages
 
 ### 0.3.0
 
-- Configuration structure has changed, user/password are not part of header.
-- Support for headers in connect, subscribe, and publish.
-- Typedoc for API documentation.
+- Configuration structure has changed, user/password are not part of header
+- Support for headers in connect, subscribe, and publish
+- Typedoc for API documentation
 
 ## Installation
 
@@ -75,7 +72,7 @@ To install this library, run:
 ```bash
 $ npm install @stomp/ng2-stompjs --save
 ```
-or, if using yarn
+or, if using yarn:
 
 ```bash
 $ yarn add @stomp/ng2-stompjs
@@ -90,68 +87,30 @@ from https://github.com/stomp-js/stomp-websocket
   https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html
   and https://stomp-js.github.io/ng2-stompjs/index.html
 - See https://github.com/stomp-js/ng4-stompjs-demo for a working sample
-  using Angular4 and Angular CLI.
+  using Angular4 and Angular CLI
 - See https://github.com/stomp-js/ng2-stompjs-demo for a working sample
   using Angular2 and Angular CLI. This version also demonstrates fetching
-  Stomp configuration using an http call (APP_INITIALIZER).
+  Stomp configuration using a http call (APP_INITIALIZER)
 - See [SockJS Support](https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md).
   https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs for a sample
-  using SockJS.
+  using SockJS
   
-### Agular 5 & Ionic
-
-**If you are using version 0.6.0 or higher you should not need
-any of this. Please report an issue if still you need to do any of
-these.**
-
-This project is distributed as ts files.
-You need to instruct the compiler to include files from this library to be compiled
-as part of the build process.
-
-#### Angular 5
-
-- Sample at https://github.com/stomp-js/ng5-stompjs-demo
-- In `src/tsconfig.app.json` place the following in `compilerOptions`:
-```javascript
-    "paths": {
-        "@stomp/ng2-stompjs": ["../node_modules/@stomp/ng2-stompjs"]
-    }
-```
-See: https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c6dbf94e600f2c8c/src/tsconfig.app.json#L7
-
-#### Ionic
-- Sample at https://github.com/sjbwylbs/ionic-ng2-stompjs
-- In `tsconfig.json` ensure the following:
-```javascript
-{
-  "compilerOptions": {
-    ...
-    "baseUrl": "./src",
-    "paths": {
-      "@stomp/ng2-stompjs": ["../node_modules/@stomp/ng2-stompjs"]
-    },
-    ...
-  }
-  ...
-}
-```
-- See: https://github.com/sjbwylbs/ionic-ng2-stompjs/blob/c0bd2e0d216c289fbb0225992969d826ee8d2459/tsconfig.json#L15
 
 ### Prerequisites
 
 - You will need to have a Stomp broker running.
-- Sample code on this page assumes you have
+- The sample code on this page assumes you have
   RabbitMQ running with default settings and Web STOMP plugin activated.
-  (see: https://www.rabbitmq.com/web-stomp.html).
+  (see: https://www.rabbitmq.com/web-stomp.html.)
 
 ### All the Hard Work
 
-- The main service is StompService, which will need to be provided.
+- The main service is StompService, which will need to be provided
 - The STOMP Broker connection details will need to be provided via  
-  class StompConfig. See the samples for several ways to configure.
+  class StompConfig. See the samples for several ways to configure it
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html for
-  background reading.
-- Sample config:
+  background reading
+- Sample configuration:
 
 ```typescript
     const stompConfig: StompConfig = {
@@ -182,10 +141,10 @@ See: https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c
   
 - See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts 
   for a sample code file with configuration passed from a local
-  hash. Feel free to copy and modify this file.
+  hash. Feel free to copy and modify this file
 - See https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts
   for a sample code file with configuration fetched from a http
-  resource.
+  resource
 - Assuming the config specified as a `const`, code sample to 
   provide `StompService` and `StompConfig` will look like:
   
@@ -200,7 +159,7 @@ See: https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c
 ```
     
 - See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts
-  for a sample file.
+  for a sample file
 
 ### Reap the Benefits
 
@@ -248,7 +207,7 @@ import {Message} from '@stomp/stompjs';
     
 #### Unsubscribe from a queue
 
-Not a likely chance that you would need it.
+
 
 You will need to unsubscribe from stomp_subscription (which is an Observer),
 it will then internally unsubscribe from the underlying STOMP queue
@@ -264,7 +223,7 @@ Example:
 this._stompService.publish('/topic/ng-demo-sub', 'My important message');
 ```
 
-Please note that message is actually string. So, if you need to send JSON
+Please note that `message` is actually string. So, if you need to send JSON
 you will need to convert it into string (typically using 
 `JSON.stringify()`)
 
@@ -273,8 +232,11 @@ you will need to convert it into string (typically using
 - `stompService.state` is a `BehaviorSubject` which maintains and switches
   its value as per the underlying Stomp Connection status.
 - The value is from an enum with these possible values: 
-    CLOSED, TRYING, CONNECTED, and DISCONNECTING.
-- The following code will subscribe to `stompService.state` and covert
+    - CLOSED
+    - TRYING
+    - CONNECTED
+    - DISCONNECTING
+- The following code will subscribe to `stompService.state` and convert
   the enum value (which is a number) to the corresponding string value:
   
 ```typescript
@@ -290,14 +252,17 @@ subscribe to `this._stompService.connectObservable`.
 
 #### Delayed initialization
 
-While often it is possible using Angular dependency injection techniques and
+It is usually possible to use Angular dependency injection techniques and
 APP_INITIALIZER to delay the initialization till the configuration is ready
-(may be fetched using an API call). See a sample at:
+(may be fetched using an API call.) See a sample at:
 https://github.com/stomp-js/ng2-stompjs-demo
 
-If a manual control is needed on the initialization process there is an additional
-class `StompRService`, inject it instead of `StompService`. This has few additional
-methods to assign a configuration and manually connect.
+The initialization process can be manually controlled with the additional 
+class `StompRService` which is injected 
+instead of `StompService`. This has a few additional
+methods to assign a configuration and manually initiate the connection to the STOMP Broker.
+
+
 
 ```typescript
 // Do not provide StompService or StompConfig, only provide StompRService
@@ -323,20 +288,20 @@ class YourClass {}
 }
 ```
 
-`subscribe` and `publish` can be called even before call to `initAndConnect`.
-These however will be interally queued till actual connection is successful.
+The methods `subscribe` and `publish` can be called even before call to `initAndConnect`.
+However these will be queued till the actual connection is successful.
 
-For the curious - `initAndConnect` may be called more than once with potentially
-updated config.
+For the curious - `initAndConnect` may be called more than once with a potentially
+updated configuration.
 
 ## Development
 
-After checking out, install the dependencies:
+After checking out from GitHub, install the dependencies:
 
 ```bash
 $ npm install
 ```
-or, if using yarn
+or, if using yarn:
 
 ```bash
 $ yarn
@@ -359,6 +324,7 @@ $ npm run lint
 - [Sam Finnigan](https://github.com/sjmf)
 - [Jimi (Dimitris) Charalampidis](https://github.com/JimiC)
 - [Deepak Kumar](https://github.com/kum-deepak)
+- Astha Deep
 - Everyone involved at https://github.com/stomp-js/stomp-websocket
 
 
