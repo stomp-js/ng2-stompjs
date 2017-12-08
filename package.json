@@ -7,8 +7,9 @@
     "dist": "ng-packagr -p ng-package.json",
     "build": "ng build",
     "test": "ng test",
-    "doc": "typedoc --excludePrivate --mode file --out docs/ ./index.ts",
-    "cleanup": "rm -rf dist doc",
+    "doc": "rm -rf docs/; compodoc src -p src/tsconfig.app.json -d docs --disablePrivate --disableInternal",
+    "doc-serve": "rm -rf docs/; compodoc src -p src/tsconfig.app.json -d docs --disablePrivate --disableInternal -s -w",
+    "cleanup": "rm -rf dist docs",
     "lint": "ng lint"
   },
   "repository": {
@@ -46,6 +47,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@compodoc/compodoc": "^1.0.5",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
@@ -63,7 +65,6 @@
     "rxjs": "^5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typedoc": "^0.7.1",
     "typescript": "~2.2.0",
     "zone.js": "^0.8.4"
   }

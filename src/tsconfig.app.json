@@ -19,7 +19,8 @@
     ]
   },
   "exclude": [
-    "specs/test.ts",
+    "specs/**/*.ts",
+    "environments/*.ts",
     "**/*.spec.ts"
   ]
 }
