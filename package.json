@@ -7,8 +7,8 @@
     "dist": "ng-packagr -p ng-package.json",
     "build": "ng build",
     "test": "ng test",
-    "doc": "rm -rf docs/; compodoc src -p src/tsconfig.app.json -d docs --disablePrivate --disableInternal",
-    "doc-serve": "rm -rf docs/; compodoc src -p src/tsconfig.app.json -d docs --disablePrivate --disableInternal -s -w",
+    "doc": "rm -rf docs/; compodoc src -p src/tsconfig.app.json -d docs --disablePrivate --disableInternal --disableGraph --includes docs-src",
+    "doc-serve": "rm -rf docs/; compodoc src -p src/tsconfig.app.json -d docs --disablePrivate --disableInternal --disableGraph  --includes docs-src -s -w",
     "cleanup": "rm -rf dist docs",
     "lint": "ng lint"
   },

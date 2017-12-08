@@ -47,9 +47,43 @@
                                 <li class="link">
                                   <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
+                                <li class="link">
+                                        <a href="./changelog.html"
+                                    >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                        <a href="./contributing.html"
+                                    >
+                                        <span class="fa fa-file-text-o"></span>CONTRIBUTING
+                                    </a>
+                                </li>
+                                <li class="link">
+                                        <a href="./license.html"
+                                    >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-additional-pages"
+                            >
+                            <span class="fa fa-book"></span>
+                            <span>Additional documentation</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-additional-pages"
+                            >
+                                <li class="link ">
+                                    <a href="./additional-documentation/sock-js.html" >Sock JS</a>
+                                </li>
+                        </ul>
+                    </li>
             
             
             
@@ -150,9 +184,43 @@
                                        <li class="link">
                                          <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
+                                       <li class="link">
+                                               <a href="./changelog.html"
+                                           >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                               <a href="./contributing.html"
+                                           >
+                                               <span class="fa fa-file-text-o"></span>CONTRIBUTING
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                               <a href="./license.html"
+                                           >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#additional-pages"
+                   >
+                                   <span class="fa fa-book"></span>
+                                   <span>Additional documentation</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="additional-pages"
+                   >
+                                       <li class="link ">
+                                           <a href="./additional-documentation/sock-js.html" >Sock JS</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                    
                    
@@ -227,63 +295,12 @@
 <p><a href="https://travis-ci.org/stomp-js/ng2-stompjs"><img src="https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
 <p>An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.</p>
 <h2 id="compatibility">Compatibility</h2>
-<p>There were compatibility issues reported, so this project has now switched to
-source distribution. In case it does not work for your 
-setup, please raise a ticket.</p>
 <p>Tested with Angular2 (2.4.0), Angular4 (4.0.0), Angular (5.0.0), and 
 ionic projects created with Angular CLI.</p>
 <p>See notes below for Angular 5 and ionic.</p>
-<h2 id="changelog">Changelog</h2>
-<h3 id="0-6-2">0.6.2</h3>
-<ul>
-<li>Added ability to get server headers from CONNECTED Frame 
-<a href="https://stomp-js.github.io/ng2-stompjs/classes/stomprservice.html#serverheadersobservable">https://stomp-js.github.io/ng2-stompjs/classes/stomprservice.html#serverheadersobservable</a></li>
-<li>Enabled Travis</li>
-</ul>
-<h3 id="0-6-1">0.6.1</h3>
-<ul>
-<li>Updated underlying dependencies</li>
-</ul>
-<h3 id="0-6-0">0.6.0</h3>
-<ul>
-<li>Jump in version number to indicate compiled JS release</li>
-<li>Improved Angular 5 support</li>
-</ul>
-<h3 id="0-4-3">0.4.3</h3>
-<ul>
-<li>Ability to delay initialization.</li>
-<li>Angular 5 compatibility</li>
-</ul>
-<h3 id="0-4-2">0.4.2</h3>
-<p>Initial <a href="https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md">SockJS Support</a>.
-Sample at <a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a></p>
-<h3 id="0-4-0">0.4.0</h3>
-<p>Updated to make it compliant to possible use of APP_INITIALIZER. Please note
-that way to initiate the service has changed. It no longer uses StompConfigService.
-StompConfig is directly injected as dependency into StompService.</p>
-<h3 id="0-3-8">0.3.8</h3>
-<ul>
-<li>Switched to source distribution. The npm bundle now only has .ts files.</li>
-</ul>
-<h3 id="0-3-5">0.3.5</h3>
-<ul>
-<li>Test case at <a href="https://github.com/stomp-js/ng2-stompjs-testbed">https://github.com/stomp-js/ng2-stompjs-testbed</a> these
-will be merged into main repository in future. Currently unable
-to configure Karma correctly in the main project. Any help appreciated.</li>
-</ul>
-<h3 id="0-3-4">0.3.4</h3>
-<ul>
-<li>added references to GitHub pages.</li>
-</ul>
-<h3 id="0-3-0">0.3.0</h3>
-<ul>
-<li>Configuration structure has changed, user/password are not part of header.</li>
-<li>Support for headers in connect, subscribe, and publish.</li>
-<li>Typedoc for API documentation.</li>
-</ul>
 <h2 id="installation">Installation</h2>
 <p>To install this library, run:</p>
-<pre class="line-numbers"><code class="language-bash">$ npm install &#64;stomp/ng2-stompjs --save</code></pre><p>or, if using yarn</p>
+<pre class="line-numbers"><code class="language-bash">$ npm install &#64;stomp/ng2-stompjs --save</code></pre><p>or, if using yarn:</p>
 <pre class="line-numbers"><code class="language-bash">$ yarn add &#64;stomp/ng2-stompjs</code></pre><p>This will additionally install @stomp/stompjs 
 from <a href="https://github.com/stomp-js/stomp-websocket">https://github.com/stomp-js/stomp-websocket</a></p>
 <h2 id="usage">Usage</h2>
@@ -292,58 +309,28 @@ from <a href="https://github.com/stomp-js/stomp-websocket">https://github.com/st
 <a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html</a>
 and <a href="https://stomp-js.github.io/ng2-stompjs/index.html">https://stomp-js.github.io/ng2-stompjs/index.html</a></li>
 <li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo">https://github.com/stomp-js/ng4-stompjs-demo</a> for a working sample
-using Angular4 and Angular CLI.</li>
+using Angular4 and Angular CLI</li>
 <li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a> for a working sample
 using Angular2 and Angular CLI. This version also demonstrates fetching
-Stomp configuration using an http call (APP_INITIALIZER).</li>
+Stomp configuration using a http call (APP_INITIALIZER)</li>
 <li>See <a href="https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md">SockJS Support</a>.
 <a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a> for a sample
-using SockJS.</li>
-</ul>
-<h3 id="agular-5-ionic">Agular 5 &amp; Ionic</h3>
-<p><strong>If you are using version 0.6.0 or higher you should not need
-any of this. Please report an issue if still you need to do any of
-these.</strong></p>
-<p>This project is distributed as ts files.
-You need to instruct the compiler to include files from this library to be compiled
-as part of the build process.</p>
-<h4 id="angular-5">Angular 5</h4>
-<ul>
-<li>Sample at <a href="https://github.com/stomp-js/ng5-stompjs-demo">https://github.com/stomp-js/ng5-stompjs-demo</a></li>
-<li>In <code>src/tsconfig.app.json</code> place the following in <code>compilerOptions</code>:<pre class="line-numbers"><code class="language-javascript">  &quot;paths&quot;: {
-      &quot;&#64;stomp/ng2-stompjs&quot;: [&quot;../node_modules/&#64;stomp/ng2-stompjs&quot;]
-  }</code></pre>See: <a href="https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c6dbf94e600f2c8c/src/tsconfig.app.json#L7">https://github.com/stomp-js/ng5-stompjs-demo/blob/3594c458f98e7c4523b7d274c6dbf94e600f2c8c/src/tsconfig.app.json#L7</a></li>
-</ul>
-<h4 id="ionic">Ionic</h4>
-<ul>
-<li>Sample at <a href="https://github.com/sjbwylbs/ionic-ng2-stompjs">https://github.com/sjbwylbs/ionic-ng2-stompjs</a></li>
-<li>In <code>tsconfig.json</code> ensure the following:<pre class="line-numbers"><code class="language-javascript">{
-&quot;compilerOptions&quot;: {
-  ...
-  &quot;baseUrl&quot;: &quot;./src&quot;,
-  &quot;paths&quot;: {
-    &quot;&#64;stomp/ng2-stompjs&quot;: [&quot;../node_modules/&#64;stomp/ng2-stompjs&quot;]
-  },
-  ...
-}
-...
-}</code></pre></li>
-<li>See: <a href="https://github.com/sjbwylbs/ionic-ng2-stompjs/blob/c0bd2e0d216c289fbb0225992969d826ee8d2459/tsconfig.json#L15">https://github.com/sjbwylbs/ionic-ng2-stompjs/blob/c0bd2e0d216c289fbb0225992969d826ee8d2459/tsconfig.json#L15</a></li>
+using SockJS</li>
 </ul>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li>You will need to have a Stomp broker running.</li>
-<li>Sample code on this page assumes you have
+<li>The sample code on this page assumes you have
 RabbitMQ running with default settings and Web STOMP plugin activated.
-(see: <a href="https://www.rabbitmq.com/web-stomp.html">https://www.rabbitmq.com/web-stomp.html</a>).</li>
+(see: <a href="https://www.rabbitmq.com/web-stomp.html">https://www.rabbitmq.com/web-stomp.html</a>.)</li>
 </ul>
 <h3 id="all-the-hard-work">All the Hard Work</h3>
 <ul>
-<li>The main service is StompService, which will need to be provided.</li>
-<li>The STOMP Broker connection details will need to be provided via<br>class StompConfig. See the samples for several ways to configure.
+<li>The main service is StompService, which will need to be provided</li>
+<li>The STOMP Broker connection details will need to be provided via<br>class StompConfig. See the samples for several ways to configure it
 See <a href="https://angular.io/docs/ts/latest/guide/dependency-injection.html">https://angular.io/docs/ts/latest/guide/dependency-injection.html</a> for
-background reading.</li>
-<li>Sample config:</li>
+background reading</li>
+<li>Sample configuration:</li>
 </ul>
 <pre class="line-numbers"><code class="language-typescript">    const stompConfig: StompConfig = {
       // Which server?
@@ -371,10 +358,10 @@ background reading.</li>
     };</code></pre><ul>
 <li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts</a> 
 for a sample code file with configuration passed from a local
-hash. Feel free to copy and modify this file.</li>
+hash. Feel free to copy and modify this file</li>
 <li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts</a>
 for a sample code file with configuration fetched from a http
-resource.</li>
+resource</li>
 <li>Assuming the config specified as a <code>const</code>, code sample to 
 provide <code>StompService</code> and <code>StompConfig</code> will look like:</li>
 </ul>
@@ -386,7 +373,7 @@ provide <code>StompService</code> and <code>StompConfig</code> will look like:</
     }
   ]</code></pre><ul>
 <li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts</a>
-for a sample file.</li>
+for a sample file</li>
 </ul>
 <h3 id="reap-the-benefits">Reap the Benefits</h3>
 <h4 id="inject-stompservice">Inject StompService</h4>
@@ -412,7 +399,6 @@ applied on it. This can also be set into a template with <code>async</code> pipe
     });</code></pre><p>The <code>Message</code> class comes from <code>@stomp/stompjs</code>. So, you will need the
 following import in the classes where you consume messages:</p>
 <pre class="line-numbers"><code class="language-typescript">import {Message} from &#39;&#64;stomp/stompjs&#39;;</code></pre><h4 id="unsubscribe-from-a-queue">Unsubscribe from a queue</h4>
-<p>Not a likely chance that you would need it.</p>
 <p>You will need to unsubscribe from stomp_subscription (which is an Observer),
 it will then internally unsubscribe from the underlying STOMP queue
 subscription.</p>
@@ -420,16 +406,21 @@ subscription.</p>
 <p>Call <code>publish(queueName: string, message: string, headers: StompHeaders = {})</code> 
 (details at: <a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish</a>).
 Example:</p>
-<pre class="line-numbers"><code class="language-typescript">this._stompService.publish(&#39;/topic/ng-demo-sub&#39;, &#39;My important message&#39;);</code></pre><p>Please note that message is actually string. So, if you need to send JSON
+<pre class="line-numbers"><code class="language-typescript">this._stompService.publish(&#39;/topic/ng-demo-sub&#39;, &#39;My important message&#39;);</code></pre><p>Please note that <code>message</code> is actually string. So, if you need to send JSON
 you will need to convert it into string (typically using 
 <code>JSON.stringify()</code>)</p>
 <h4 id="watching-for-stomp-connection-status">Watching for Stomp connection status</h4>
 <ul>
 <li><code>stompService.state</code> is a <code>BehaviorSubject</code> which maintains and switches
 its value as per the underlying Stomp Connection status.</li>
-<li>The value is from an enum with these possible values: 
-  CLOSED, TRYING, CONNECTED, and DISCONNECTING.</li>
-<li>The following code will subscribe to <code>stompService.state</code> and covert
+<li>The value is from an enum with these possible values: <ul>
+<li>CLOSED</li>
+<li>TRYING</li>
+<li>CONNECTED</li>
+<li>DISCONNECTING</li>
+</ul>
+</li>
+<li>The following code will subscribe to <code>stompService.state</code> and convert
 the enum value (which is a number) to the corresponding string value:</li>
 </ul>
 <pre class="line-numbers"><code class="language-typescript">    this._stompService.state
@@ -439,13 +430,14 @@ the enum value (which is a number) to the corresponding string value:</li>
     });</code></pre><p>If you are interested in watching only when connection is established, you can
 subscribe to <code>this._stompService.connectObservable</code>.</p>
 <h4 id="delayed-initialization">Delayed initialization</h4>
-<p>While often it is possible using Angular dependency injection techniques and
+<p>It is usually possible to use Angular dependency injection techniques and
 APP_INITIALIZER to delay the initialization till the configuration is ready
-(may be fetched using an API call). See a sample at:
+(may be fetched using an API call.) See a sample at:
 <a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a></p>
-<p>If a manual control is needed on the initialization process there is an additional
-class <code>StompRService</code>, inject it instead of <code>StompService</code>. This has few additional
-methods to assign a configuration and manually connect.</p>
+<p>The initialization process can be manually controlled with the additional 
+class <code>StompRService</code> which is injected 
+instead of <code>StompService</code>. This has a few additional
+methods to assign a configuration and manually initiate the connection to the STOMP Broker.</p>
 <pre class="line-numbers"><code class="language-typescript">// Do not provide StompService or StompConfig, only provide StompRService
 
   providers: [
@@ -461,20 +453,16 @@ methods to assign a configuration and manually connect.</p>
       this._stompService.config = config;
       this._stompService.initAndConnect();
     }
-}</code></pre><p><code>subscribe</code> and <code>publish</code> can be called even before call to <code>initAndConnect</code>.
-These however will be interally queued till actual connection is successful.</p>
-<p>For the curious - <code>initAndConnect</code> may be called more than once with potentially
-updated config.</p>
-<h2 id="development">Development</h2>
-<p>After checking out, install the dependencies:</p>
-<pre class="line-numbers"><code class="language-bash">$ npm install</code></pre><p>or, if using yarn</p>
-<pre class="line-numbers"><code class="language-bash">$ yarn</code></pre><p>To generate documentation:</p>
-<pre class="line-numbers"><code class="language-bash">$ npm run doc</code></pre><p>To lint all <code>*.ts</code> files:</p>
-<pre class="line-numbers"><code class="language-bash">$ npm run lint</code></pre><h2 id="contributors">Contributors</h2>
+}</code></pre><p>The methods <code>subscribe</code> and <code>publish</code> can be called even before call to <code>initAndConnect</code>.
+However these will be queued till the actual connection is successful.</p>
+<p>For the curious - <code>initAndConnect</code> may be called more than once with a potentially
+updated configuration.</p>
+<h2 id="contributors">Contributors</h2>
 <ul>
 <li><a href="https://github.com/sjmf">Sam Finnigan</a></li>
 <li><a href="https://github.com/JimiC">Jimi (Dimitris) Charalampidis</a></li>
 <li><a href="https://github.com/kum-deepak">Deepak Kumar</a></li>
+<li>Astha Deep</li>
 <li>Everyone involved at <a href="https://github.com/stomp-js/stomp-websocket">https://github.com/stomp-js/stomp-websocket</a></li>
 </ul>
 <h2 id="license">License</h2>

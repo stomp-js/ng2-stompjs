@@ -80,7 +80,7 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
-                                    <a href="../additional-documentation/sock-js.html" >Sock JS</a>
+                                    <a href="../additional-documentation/sock-js.html"  data-type="entity-link" class="active" >Sock JS</a>
                                 </li>
                         </ul>
                     </li>
@@ -130,7 +130,7 @@
                                   <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
                                 </li>
                                 <li class="link">
-                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link"  class="active" >Type aliases</a>
+                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
                                 </li>
                         </ul>
                     </li>
@@ -217,7 +217,7 @@
                                        id="additional-pages"
                    >
                                        <li class="link ">
-                                           <a href="../additional-documentation/sock-js.html" >Sock JS</a>
+                                           <a href="../additional-documentation/sock-js.html"  data-type="entity-link" class="active" >Sock JS</a>
                                        </li>
                                </ul>
                            </li>
@@ -267,7 +267,7 @@
                                          <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
                                        </li>
                                        <li class="link">
-                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link"  class="active" >Type aliases</a>
+                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
                                        </li>
                                </ul>
                            </li>
@@ -288,7 +288,7 @@
                    
                    </nav>
                </div>
-               <div class="content miscellaneous-typealiases">
+               <div class="content additional-page">
                    <div class="content-data">
 
 
@@ -302,54 +302,59 @@
 
 
 
-<ol class="breadcrumb">
-  <li>Miscellaneous - Type aliases</li>
-</ol>
-
-<section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <ul class="index-list">
-                        <li>
-                            <a href="#StompHeaders">StompHeaders</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-    <h3>src/stomp-headers.ts</h3>
-    <section>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="StompHeaders"></a>
-                            <span class="name"><b>StompHeaders</b><a href="#StompHeaders"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-description"><p>Type definition for Headers </p>
-    </div>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>StompHeaders:     <code>literal type</code>
-    </code>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
 
+<h1 id="using-with-sockjs">Using with SockJS</h1>
+<p>See sample at <a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a></p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Currently it is initial support.</li>
+<li>The configuration overrides the <code>url</code>
+to be used a <code>socketProvider</code> function. It will be streamlined in next
+minor release.</li>
+<li>Please read notes on SockJS support of the underlying library at
+<a href="https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html">https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html</a></li>
+<li>When developing the SockJS code, please adjust the unit tests to use
+SockJS.</li>
+<li>Unit testes may occasionally fail in SockJS. It is because of limitations
+of SockJS around allowing only one SockJS connection at a time. Usually 
+this should not affect your usage of the library.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<h3 id="install-sockjs-client">Install SockJS Client</h3>
+<pre class="line-numbers"><code class="language-bash">$ npm install sockjs-client --save</code></pre><h3 id="import-sockjs-class">Import SockJS class</h3>
+<pre class="line-numbers"><code class="language-typescript">import * as SockJS from &#39;sockjs-client&#39;;</code></pre><h3 id="implement-a-socketprovider">Implement a socketProvider</h3>
+<p>Create a function that returns an object similar to WebSocket (typically SockJS instance).</p>
+<pre class="line-numbers"><code class="language-typescript">export function socketProvider() {
+  return new SockJS(&#39;http://127.0.0.1:15674/stomp&#39;);
+}</code></pre><h3 id="stompconfig">StompConfig</h3>
+<p>Pass it as <code>url</code> in <code>StompConfig</code>. Do not worry it will work even
+though name of the parameter is url.</p>
+<p>Example:</p>
+<pre class="line-numbers"><code class="language-typescript">const stompConfig: StompConfig = {
+  // Which server?
+  url: socketProvider,
+
+  // Headers
+  // Typical keys: login, passcode, host
+  headers: {
+    login: &#39;guest&#39;,
+    passcode: &#39;guest&#39;
+  },
+
+  // How often to heartbeat?
+  // Interval in milliseconds, set to 0 to disable
+  heartbeat_in: 0, // Typical value 0 - disabled
+  heartbeat_out: 20000, // Typical value 20000 - every 20 seconds
+
+  // Wait in milliseconds before attempting auto reconnect
+  // Set to 0 to disable
+  // Typical value 5000 (5 seconds)
+  reconnect_delay: 5000,
+
+  // Will log diagnostics on console
+  debug: true
+};</code></pre>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
