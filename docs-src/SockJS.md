@@ -5,16 +5,12 @@ See sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
 ## Notes
 
 - It is an initial release.
-- The configuration overrides the `url`
-to be used a `socketProvider` function. It will be streamlined in next
-minor release.
+- Instead of a `url` in the default form, you need 
+to pass it as a `socketProvider` function. It will be streamlined in a
+future release.
 - Please read notes on SockJS support of the underlying library at
 https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html
-- When developing the SockJS code, please adjust the unit tests to use
-SockJS.
-- Unit testes may occasionally fail in SockJS. It is because of limitations
-of SockJS around allowing only one SockJS connection at a time. Usually 
-this should not affect your usage of the library.
+
 
 ## Usage
 
@@ -42,8 +38,9 @@ export function socketProvider() {
 
 ### StompConfig
 
-Pass it as `url` in `StompConfig`. Do not worry it will work even
-though name of the parameter is url.
+Pass the function as `url` in `StompConfig`.
+ It will work even
+though name of the parameter is url, don't worry :)
 
 Example:
 
@@ -59,7 +56,7 @@ const stompConfig: StompConfig = {
     passcode: 'guest'
   },
 
-  // How often to heartbeat?
+  // How frequent is the heartbeat?
   // Interval in milliseconds, set to 0 to disable
   heartbeat_in: 0, // Typical value 0 - disabled
   heartbeat_out: 20000, // Typical value 20000 - every 20 seconds

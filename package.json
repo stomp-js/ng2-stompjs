@@ -8,7 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "doc": "bin/doc-gen.sh",
-    "doc-serve": "bin/doc-gen.sh -r 59322 -s -w -o",
+    "doc-serve": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d docs/ --disablePrivate --disableInternal --disableGraph --includes docs-src --includesName Guides --theme Vagrant --hideGenerator -r 59322 -s -w -o",
     "cleanup": "rm -rf dist docs",
     "lint": "ng lint"
   },
