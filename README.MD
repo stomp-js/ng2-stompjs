@@ -8,10 +8,9 @@ An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.
 
 
 
-Tested with Angular2 (2.4.0), Angular4 (4.0.0), Angular (5.0.0), and 
-ionic projects created with Angular CLI.
-
-See notes below for Angular 5 and ionic.
+Tested with Angular CLI generated Angular2 (2.4.0), Angular4 (4.0.0), 
+Angular (5.0.0). 
+It has been reported to work with ionic projects as well.
 
 ## Installation
 
