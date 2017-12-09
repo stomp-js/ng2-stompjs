@@ -4,7 +4,7 @@ See sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
 
 ## Notes
 
-- Currently it is initial support.
+- It is an initial release.
 - The configuration overrides the `url`
 to be used a `socketProvider` function. It will be streamlined in next
 minor release.
