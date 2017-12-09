@@ -7,4 +7,5 @@ rm -rf docs/
         -d docs/ \
         --disablePrivate --disableInternal --disableGraph \
         --includes docs-src --includesName Guides \
+        --theme Vagrant --hideGenerator \
         "$@"
