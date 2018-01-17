@@ -1,2 +1,2 @@
 /** Type definition for Headers */
-export type StompHeaders = { [key: string]: string };
+export type StompHeaders = { [key: string]: any };
