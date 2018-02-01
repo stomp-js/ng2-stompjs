@@ -276,7 +276,11 @@
 
 <h1 id="-stomp-ng2-stompjs">@stomp/ng2-stompjs</h1>
 <p><a href="https://travis-ci.org/stomp-js/ng2-stompjs"><img src="https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
-<p>An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.</p>
+<p>An Angular (Angular2, Angular4, Angular5 ...) style wrapper for @stomp/stompjs.</p>
+<h2 id="special-request">Special Request</h2>
+<p>Recently documentation has been switched to
+<a href="https://github.com/compodoc/compodoc">Compodoc</a> from TypeDoc.
+Please raise an issue if you find broken links or inconsistency in documentation.</p>
 <h2 id="compatibility">Compatibility</h2>
 <p>Tested with Angular CLI generated Angular2 (2.4.0), Angular4 (4.0.0), 
 Angular (5.0.0). 
@@ -289,17 +293,20 @@ from <a href="https://github.com/stomp-js/stomp-websocket">https://github.com/st
 <h2 id="usage">Usage</h2>
 <ul>
 <li>See API documentation at 
-<a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html</a>
+<a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompService.html">https://stomp-js.github.io/ng2-stompjs/injectables/StompService.html</a>,
+<a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html">https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html</a>
 and <a href="https://stomp-js.github.io/ng2-stompjs/index.html">https://stomp-js.github.io/ng2-stompjs/index.html</a></li>
 <li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo">https://github.com/stomp-js/ng4-stompjs-demo</a> for a working sample
 using Angular4 and Angular CLI</li>
 <li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a> for a working sample
 using Angular2 and Angular CLI. This version also demonstrates fetching
 Stomp configuration using a http call (APP_INITIALIZER)</li>
-<li>See <a href="https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md">SockJS Support</a>.
+<li>See <a href="https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html">SockJS Support</a>.
 <a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a> for a sample
 using SockJS</li>
 </ul>
+<h3 id="sockjs-users">SockJS Users</h3>
+<p>You must read <a href="https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html">https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html</a>  </p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li>You will need to have a Stomp broker running.</li>
@@ -369,7 +376,7 @@ see: <a href="https://www.rabbitmq.com/stomp.html">https://www.rabbitmq.com/stom
 for RabbitMQ specific details.</p>
 <p>Call <code>subscribe(queueName: string, headers: StompHeaders = {})</code> 
 with name of the queue which returns an Observable (details at:
-<a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#subscribe">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#subscribe</a>). Any
+<a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#subscribe">https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#subscribe</a>). Any
 of Observable specific operators (map, filter, subscribe, etc.) can be
 applied on it. This can also be set into a template with <code>async</code> pipe.</p>
 <p>Example:</p>
@@ -387,7 +394,7 @@ it will then internally unsubscribe from the underlying STOMP queue
 subscription.</p>
 <h4 id="publishing-messages">Publishing messages</h4>
 <p>Call <code>publish(queueName: string, message: string, headers: StompHeaders = {})</code> 
-(details at: <a href="https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish">https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish</a>).
+(details at: <a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#publish">https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#publish</a>).
 Example:</p>
 <pre class="line-numbers"><code class="language-typescript">this._stompService.publish(&#39;/topic/ng-demo-sub&#39;, &#39;My important message&#39;);</code></pre><p>Please note that <code>message</code> is actually string. So, if you need to send JSON
 you will need to convert it into string (typically using 

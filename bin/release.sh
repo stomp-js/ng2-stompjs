@@ -3,4 +3,4 @@
 npm run doc \
 && npm run dist \
 && cd dist \
-&& yarn publish --access=public
+&& npm publish --access=public

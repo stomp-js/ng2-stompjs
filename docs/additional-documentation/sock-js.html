@@ -289,19 +289,16 @@
 
 <h1 id="using-with-sockjs">Using with SockJS</h1>
 <p>See sample at <a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a></p>
+<p><em>Almost all brokers that support SockJS also support WebSockets.
+If your application does not need to support old browsers, switch to using WebSockets.
+Check <a href="https://en.wikipedia.org/wiki/WebSocket">https://en.wikipedia.org/wiki/WebSocket</a> for compatibility information.</em></p>
 <h2 id="notes">Notes</h2>
 <ul>
 <li>Currently it is initial support.</li>
 <li>The configuration overrides the <code>url</code>
-to be used a <code>socketProvider</code> function. It will be streamlined in next
-minor release.</li>
+to be used a <code>socketProvider</code> function. It will be streamlined in a future release.</li>
 <li>Please read notes on SockJS support of the underlying library at
 <a href="https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html">https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html</a></li>
-<li>When developing the SockJS code, please adjust the unit tests to use
-SockJS.</li>
-<li>Unit testes may occasionally fail in SockJS. It is because of limitations
-of SockJS around allowing only one SockJS connection at a time. Usually 
-this should not affect your usage of the library.</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <h3 id="install-sockjs-client">Install SockJS Client</h3>
@@ -337,7 +334,22 @@ though name of the parameter is url.</p>
 
   // Will log diagnostics on console
   debug: true
-};</code></pre>
+};</code></pre><h2 id="limitations">Limitations</h2>
+<p>Copied from <a href="https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html">https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html</a></p>
+<ul>
+<li>SockJS is an emulation of WebSockets. This is not a complete implementation.</li>
+<li>Heart beating is not supported.</li>
+<li>SockJS internally uses one of many possible means to communicate. In some of those, auto reconnect may occasionally fail.</li>
+</ul>
+<h2 id="when-hacking-code-of-this-library">When Hacking Code of this Library</h2>
+<ul>
+<li>When developing on this library code to use SockJS, please adjust the unit tests to use
+SockJS.</li>
+<li>Unit testes may occasionally fail in SockJS. It is because of limitations
+of SockJS around allowing only one SockJS connection at a time. Usually 
+this should not affect your usage of the library.</li>
+</ul>
+
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>

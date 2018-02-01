@@ -2,15 +2,21 @@
 
 [![Build Status](https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master)](https://travis-ci.org/stomp-js/ng2-stompjs)
 
-An Angular (Angular2, Angular4, ...) style wrapper for @stomp/stompjs.
+An Angular (Angular2, Angular4, Angular5 ...) style wrapper for @stomp/stompjs.
+
+## Special Request
+
+Recently documentation has been switched to
+[Compodoc](https://github.com/compodoc/compodoc) from TypeDoc.
+Please raise an issue if you find broken links or inconsistency in documentation.
+
 
 ## Compatibility
-
-
 
 Tested with Angular CLI generated Angular2 (2.4.0), Angular4 (4.0.0), 
 Angular (5.0.0). 
 It has been reported to work with ionic projects as well.
+
 
 ## Installation
 
@@ -28,20 +34,27 @@ $ yarn add @stomp/ng2-stompjs
 This will additionally install @stomp/stompjs 
 from https://github.com/stomp-js/stomp-websocket
 
+
 ## Usage
 
 - See API documentation at 
-  https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html
+  https://stomp-js.github.io/ng2-stompjs/injectables/StompService.html,
+  https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html
   and https://stomp-js.github.io/ng2-stompjs/index.html
 - See https://github.com/stomp-js/ng4-stompjs-demo for a working sample
   using Angular4 and Angular CLI
 - See https://github.com/stomp-js/ng2-stompjs-demo for a working sample
   using Angular2 and Angular CLI. This version also demonstrates fetching
   Stomp configuration using a http call (APP_INITIALIZER)
-- See [SockJS Support](https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md).
+- See [SockJS Support](https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html).
   https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs for a sample
   using SockJS
-  
+
+
+### SockJS Users
+
+You must read https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html  
+
 
 ### Prerequisites
 
@@ -49,6 +62,7 @@ from https://github.com/stomp-js/stomp-websocket
 - The sample code on this page assumes you have
   RabbitMQ running with default settings and Web STOMP plugin activated.
   (see: https://www.rabbitmq.com/web-stomp.html.)
+
 
 ### All the Hard Work
 
@@ -108,7 +122,9 @@ from https://github.com/stomp-js/stomp-websocket
 - See https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts
   for a sample file
 
+
 ### Reap the Benefits
+
 
 #### Inject StompService
 
@@ -119,6 +135,7 @@ In your constructor (typically of a component or a service), inject
 constructor(private _stompService: StompService) { }
 ```
 
+
 #### Subscribe to a queue
 
 The queue name structure and semantics vary
@@ -128,7 +145,7 @@ for RabbitMQ specific details.
 
 Call `subscribe(queueName: string, headers: StompHeaders = {})` 
 with name of the queue which returns an Observable (details at:
-https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#subscribe). Any
+https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#subscribe). Any
 of Observable specific operators (map, filter, subscribe, etc.) can be
 applied on it. This can also be set into a template with `async` pipe.
 
@@ -152,16 +169,18 @@ following import in the classes where you consume messages:
 import {Message} from '@stomp/stompjs';
 ```
     
+
 #### Unsubscribe from a queue
 
 You will need to unsubscribe from stomp_subscription (which is an Observer),
 it will then internally unsubscribe from the underlying STOMP queue
 subscription.
 
+
 #### Publishing messages
 
 Call `publish(queueName: string, message: string, headers: StompHeaders = {})` 
-(details at: https://stomp-js.github.io/ng2-stompjs/classes/stompservice.html#publish).
+(details at: https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#publish).
 Example:
 
 ```typescript
@@ -171,6 +190,7 @@ this._stompService.publish('/topic/ng-demo-sub', 'My important message');
 Please note that `message` is actually string. So, if you need to send JSON
 you will need to convert it into string (typically using 
 `JSON.stringify()`)
+
 
 #### Watching for Stomp connection status
 
@@ -194,6 +214,7 @@ you will need to convert it into string (typically using
 
 If you are interested in watching only when connection is established, you can
 subscribe to `this._stompService.connectObservable`.
+
 
 #### Delayed initialization
 
@@ -238,6 +259,7 @@ However these will be queued till the actual connection is successful.
 
 For the curious - `initAndConnect` may be called more than once with a potentially
 updated configuration.
+
 
 ## Contributors
 

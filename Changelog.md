@@ -1,9 +1,15 @@
 # Changelog
 
+### 0.6.3
+
+- Switched to [Compodoc](https://github.com/compodoc/compodoc) from TypeDoc.
+- Changed StompHeaders types to allow any type (instead of string) as value.
+- Documentation changes.
+
 ### 0.6.2
 
 - Added ability to get server headers from CONNECTED Frame 
-  https://stomp-js.github.io/ng2-stompjs/classes/stomprservice.html#serverheadersobservable
+  https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#serverHeadersObservable
 - Enabled Travis
 
 ### 0.6.1
@@ -22,7 +28,7 @@
 
 ### 0.4.2
 
-- Initial [SockJS Support](https://github.com/stomp-js/ng2-stompjs/blob/master/SockJS.md).
+- Initial [SockJS Support](https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html).
 Sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
 
 ### 0.4.0
