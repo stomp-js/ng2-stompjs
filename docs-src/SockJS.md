@@ -8,9 +8,10 @@ Check https://en.wikipedia.org/wiki/WebSocket for compatibility information.*
 
 ## Notes
 
-- Currently it is initial support.
-- The configuration overrides the `url`
-to be used a `socketProvider` function. It will be streamlined in a future release.
+- It is an initial release.
+- Instead of a `url` in the default form, you need 
+to pass it as a `socketProvider` function. It will be streamlined in a
+future release.
 - Please read notes on SockJS support of the underlying library at
 https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html
 
@@ -40,8 +41,9 @@ export function socketProvider() {
 
 ### StompConfig
 
-Pass it as `url` in `StompConfig`. Do not worry it will work even
-though name of the parameter is url.
+Pass the function as `url` in `StompConfig`.
+ It will work even
+though name of the parameter is url, don't worry :)
 
 Example:
 
@@ -57,7 +59,7 @@ const stompConfig: StompConfig = {
     passcode: 'guest'
   },
 
-  // How often to heartbeat?
+  // How frequent is the heartbeat?
   // Interval in milliseconds, set to 0 to disable
   heartbeat_in: 0, // Typical value 0 - disabled
   heartbeat_out: 20000, // Typical value 20000 - every 20 seconds

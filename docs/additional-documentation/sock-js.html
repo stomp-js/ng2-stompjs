@@ -294,9 +294,10 @@ If your application does not need to support old browsers, switch to using WebSo
 Check <a href="https://en.wikipedia.org/wiki/WebSocket">https://en.wikipedia.org/wiki/WebSocket</a> for compatibility information.</em></p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Currently it is initial support.</li>
-<li>The configuration overrides the <code>url</code>
-to be used a <code>socketProvider</code> function. It will be streamlined in a future release.</li>
+<li>It is an initial release.</li>
+<li>Instead of a <code>url</code> in the default form, you need 
+to pass it as a <code>socketProvider</code> function. It will be streamlined in a
+future release.</li>
 <li>Please read notes on SockJS support of the underlying library at
 <a href="https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html">https://stomp-js.github.io/stomp-websocket/codo/extra/docs-src/sockjs.md.html</a></li>
 </ul>
@@ -308,8 +309,9 @@ to be used a <code>socketProvider</code> function. It will be streamlined in a f
 <pre class="line-numbers"><code class="language-typescript">export function socketProvider() {
   return new SockJS(&#39;http://127.0.0.1:15674/stomp&#39;);
 }</code></pre><h3 id="stompconfig">StompConfig</h3>
-<p>Pass it as <code>url</code> in <code>StompConfig</code>. Do not worry it will work even
-though name of the parameter is url.</p>
+<p>Pass the function as <code>url</code> in <code>StompConfig</code>.
+ It will work even
+though name of the parameter is url, don&#39;t worry :)</p>
 <p>Example:</p>
 <pre class="line-numbers"><code class="language-typescript">const stompConfig: StompConfig = {
   // Which server?
@@ -322,7 +324,7 @@ though name of the parameter is url.</p>
     passcode: &#39;guest&#39;
   },
 
-  // How often to heartbeat?
+  // How frequent is the heartbeat?
   // Interval in milliseconds, set to 0 to disable
   heartbeat_in: 0, // Typical value 0 - disabled
   heartbeat_out: 20000, // Typical value 20000 - every 20 seconds
