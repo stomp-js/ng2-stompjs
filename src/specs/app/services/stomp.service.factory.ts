@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { StompService, StompConfig } from '../../../..';
+import { StompRService, StompService, StompConfig } from '../../../..';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import * as SockJS from 'sockjs-client';
@@ -56,4 +56,13 @@ export class MyStompService extends StompService {
 
 export function stompServiceFactory(_conf: StompConfig) {
   return new MyStompService(_conf);
+}
+
+export class MyStompRService extends StompRService {
+  /**
+   * This method closes the underlying WebSocket, simulating a close due to an error
+   */
+  public forceDisconnect(): void {
+    this.client.ws.close();
+  }
 }

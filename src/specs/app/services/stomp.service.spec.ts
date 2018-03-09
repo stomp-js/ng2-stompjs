@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { defaultConfig, MyStompService, stompServiceFactory } from './stomp.service.factory';
 import { Message } from '@stomp/stompjs';
-import { ensureStompConnected, ensureStompDisconnected } from './helpers';
+import { ensureStompConnected, disconnetStompRAndEnsure } from './helpers';
 import { StompHeaders } from '../../../stomp-headers';
 
 describe('StompService', () => {
@@ -21,7 +21,7 @@ describe('StompService', () => {
 
   // Disconnect and wait till it actually disconnects
   afterEach((done) => {
-    ensureStompDisconnected(stompService, done);
+    disconnetStompRAndEnsure(stompService, done);
     stompService = null;
   });
 
