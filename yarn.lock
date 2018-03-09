@@ -169,7 +169,7 @@
 
 "@stomp/stompjs@^4.0.0 >=4.0.2":
   version "4.0.2"
-  resolved "https://repos.kreatio.com/repository/npm-all/@stomp/stompjs/-/stompjs-4.0.2.tgz#e8932ea407e89d47f354b4cb47a4d9ad60c23a0d"
+  resolved "https://registry.yarnpkg.com/@stomp/stompjs/-/stompjs-4.0.2.tgz#e8932ea407e89d47f354b4cb47a4d9ad60c23a0d"
   optionalDependencies:
     websocket "^1.0.24"
 
