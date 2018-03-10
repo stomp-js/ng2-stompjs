@@ -267,6 +267,7 @@ updated configuration.
 - [Jimi (Dimitris) Charalampidis](https://github.com/JimiC)
 - [Deepak Kumar](https://github.com/kum-deepak)
 - Astha Deep
+- [Michel Promonet](https://github.com/mpromonet)
 - Everyone involved at https://github.com/stomp-js/stomp-websocket
 
 

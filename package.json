@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

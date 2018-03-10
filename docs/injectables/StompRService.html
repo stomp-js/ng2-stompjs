@@ -960,7 +960,7 @@ please use StompService class.</p>
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-reset"></span>
-                                    <code>waitForReceipt(receiptId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: () => void)</code>
+                                    <code>waitForReceipt(receiptId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (frame: Stomp.Frame) => void)</code>
                                 </td>
                             </tr>
             
@@ -1929,11 +1929,11 @@ export class StompRService {
   /**
    * Wait for receipt, this indicates that server has carried out the related operation
    */
-  public waitForReceipt(receiptId: string, callback: () &#x3D;&gt; void): void {
+  public waitForReceipt(receiptId: string, callback: (frame: Stomp.Frame) &#x3D;&gt; void): void {
     this.receiptsObservable.filter((frame: Stomp.Frame) &#x3D;&gt; {
       return frame.headers[&#x27;receipt-id&#x27;] &#x3D;&#x3D;&#x3D; receiptId;
     }).first().subscribe((frame: Stomp.Frame) &#x3D;&gt; {
-      callback();
+      callback(frame);
     });
   }
 
