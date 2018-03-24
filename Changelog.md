@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.6.4
+
+- Updates in test cases.
+- Documentation update.
+- [waitForReceipt](https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#waitForReceipt) now passes the frame to the callback.
+
 ### 0.6.3
 
 - Switched to [Compodoc](https://github.com/compodoc/compodoc) from TypeDoc.
