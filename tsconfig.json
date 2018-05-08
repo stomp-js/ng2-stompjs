@@ -1,39 +1,20 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
-    "declaration": true,
-    "stripInternal": true,
-    "experimentalDecorators": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "module": "es2015",
-    "moduleResolution": "node",
-    "paths": {
-      "@angular/core": [
-        "node_modules/@angular/core"
-      ],
-      "@stomp/stompjs": [
-        "node_modules/@stomp/stompjs"
-      ],
-      "rxjs/*": [
-        "node_modules/rxjs/*"
-      ]
-    },
-    "rootDir": ".",
-    "outDir": "dist",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "inlineSources": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "target": "es5",
-    "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
-      "es2015",
+      "es2017",
       "dom"
     ]
-  },
-  "files": [
-    "index.ts"
-  ],
-  "angularCompilerOptions": {
-    "strictMetadataEmit": true
   }
 }
