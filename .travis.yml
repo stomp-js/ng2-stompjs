@@ -24,4 +24,4 @@ before_script:
   - sleep 10
   - docker exec rabbitmq.service rabbitmqctl status
 
-script: ng test --single-run
+script: ng test
