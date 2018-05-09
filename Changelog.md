@@ -1,5 +1,13 @@
 # Changelog
 
+## Angular 6
+
+- It will have version numbers in 6.x.x format.
+
+## Angular 2/4/5
+
+- It will have version numbers in 4.x.x format.
+
 ### 0.6.4
 
 - Updates in test cases.

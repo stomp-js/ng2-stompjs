@@ -374,8 +374,21 @@
                    <div class="content-data">
 
 <h1 id="-stomp-ng2-stompjs">@stomp/ng2-stompjs</h1>
-<p><a href="https://travis-ci.org/stomp-js/ng2-stompjs"><img src="https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
-<p>An Angular (Angular2, Angular4, Angular5 ...) style wrapper for @stomp/stompjs.</p>
+<p>Angular 2/4/5 <a href="https://travis-ci.org/stomp-js/ng2-stompjs"><img src="https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=angular4" alt="Build Status" class="img-responsive"></a></p>
+<p>Angular 6 <a href="https://travis-ci.org/stomp-js/ng2-stompjs"><img src="https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
+<p>An Angular (Angular2, Angular4, Angular5, Angular6 ...) style wrapper for @stomp/stompjs.</p>
+<h2 id="version-compatibility">Version Compatibility</h2>
+<p>While we tried really hard to support multiple Angular versions with same release -
+actually succeeded for Anguar 2/4/5, it is not possible for Angular 6. This library
+makes quite extensive use of rxjs which has undergone breaking changes in Angular 6.</p>
+<p>Going forward following numbering scheme will be followed:</p>
+<ul>
+<li>6.x.x - managed in <code>master</code> branch, will only support Angular 6 - use dependency like &quot;^6.0.0&quot; </li>
+<li>4.x.x - managed in <code>angular4</code> branch, will support Angular 2/4/5 - use dependency like &quot;^4.0.0&quot;</li>
+</ul>
+<p>For the time being both versions will be maintained. From October 2018, only critical
+updates will be applied to 4.x.x releases.</p>
+<p>As of now both versions offer exactly same APIs.</p>
 <h2 id="special-request">Special Request</h2>
 <p>Recently documentation has been switched to
 <a href="https://github.com/compodoc/compodoc">Compodoc</a> from TypeDoc.

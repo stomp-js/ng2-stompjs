@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "0.6.4",
+  "version": "6.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/stomp-js/ng2-stompjs"
