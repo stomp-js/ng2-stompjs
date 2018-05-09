@@ -31,3 +31,7 @@ Desktop.ini
 #*.ngsummary.json
 
 # bin/npm-publish
+
+# ng-packagr
+.ng_pkg_build
+dist.tgz

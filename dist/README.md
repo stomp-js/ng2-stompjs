@@ -10,6 +10,11 @@ Recently documentation has been switched to
 [Compodoc](https://github.com/compodoc/compodoc) from TypeDoc.
 Please raise an issue if you find broken links or inconsistency in documentation.
 
+## Documentation
+
+Please head to https://stomp-js.github.io/ng2-stompjs/
+
+Changelog at https://stomp-js.github.io/ng2-stompjs/changelog.html
 
 ## Compatibility
 
