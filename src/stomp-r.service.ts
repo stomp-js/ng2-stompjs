@@ -196,7 +196,6 @@ export class StompRService {
 
   /**
    * It will return `true` if STOMP broker is connected and `false` otherwise.
-   * @returns {boolean}
    */
   public connected(): boolean {
     return this.state.getValue() === StompState.CONNECTED;
@@ -250,7 +249,6 @@ export class StompRService {
    *
    * @param queueName
    * @param headers
-   * @returns {Observable<Stomp.Message>}
    */
   public subscribe(queueName: string, headers: StompHeaders = {}): Observable<Stomp.Message> {
 

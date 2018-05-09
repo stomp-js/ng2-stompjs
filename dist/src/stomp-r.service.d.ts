@@ -94,7 +94,6 @@ export declare class StompRService {
     disconnect(): void;
     /**
      * It will return `true` if STOMP broker is connected and `false` otherwise.
-     * @returns {boolean}
      */
     connected(): boolean;
     /**
@@ -126,7 +125,6 @@ export declare class StompRService {
      *
      * @param queueName
      * @param headers
-     * @returns {Observable<Stomp.Message>}
      */
     subscribe(queueName: string, headers?: StompHeaders): Observable<Stomp.Message>;
     /**

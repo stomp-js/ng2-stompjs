@@ -35,7 +35,7 @@
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
   "main": "./index.ts",
-  "dependencies": {
+  "peerDependencies": {
     "@stomp/stompjs": "^4.0.0 >=4.0.2"
   },
   "devDependencies": {
@@ -52,6 +52,7 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@compodoc/compodoc": "^1.1.2",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
@@ -64,6 +65,7 @@
     "karma-coverage-istanbul-reporter": "~1.4.2",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^2.4.4",
     "protractor": "~5.3.0",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.1.0",
