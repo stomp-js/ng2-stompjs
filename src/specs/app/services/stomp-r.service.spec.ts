@@ -1,13 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { StompRService, StompService, StompState, StompConfig } from '../../../..';
-import { Observable } from 'rxjs';
+import { StompRService, StompState, StompConfig } from '../../../..';
 
-import {defaultConfig, MyStompRService, MyStompService, stompServiceFactory} from './stomp.service.factory';
-import { Message } from '@stomp/stompjs';
-import {ensureStompConnected, disconnetStompRAndEnsure, ensureStompRDisconnected} from './helpers';
-import { StompHeaders } from '../../../stomp-headers';
+import { defaultConfig, MyStompRService } from './stomp.service.factory';
+import { ensureStompConnected, disconnetStompRAndEnsure, ensureStompRDisconnected } from './helpers';
 
 describe('StompRService', () => {
   let stompService: MyStompRService;

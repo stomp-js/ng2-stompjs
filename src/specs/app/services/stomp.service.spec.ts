@@ -1,9 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { filter } from 'rxjs/operators';
-import { TestBed, async, inject } from '@angular/core/testing';
-import { StompService, StompState, StompConfig } from '../../../..';
-import { Observable } from 'rxjs';
+import { StompService, StompState } from '../../../..';
 
 import { defaultConfig, MyStompService, stompServiceFactory } from './stomp.service.factory';
 import { Message } from '@stomp/stompjs';
