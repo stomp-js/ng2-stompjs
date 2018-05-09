@@ -6,5 +6,8 @@
       "@stomp/stompjs": "./node_modules/@stomp/stompjs/index.js",
       "@stomp/stompjs/index": "./node_modules/@stomp/stompjs/index.js"
     }
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@stomp/stompjs"
+  ]
 }

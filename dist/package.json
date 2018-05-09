@@ -24,8 +24,9 @@
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
   "main": "bundles/stomp-ng2-stompjs.umd.js",
-  "peerDependencies": {
-    "@stomp/stompjs": "^4.0.0 >=4.0.2"
+  "dependencies": {
+    "@stomp/stompjs": "^4.0.0 >=4.0.2",
+    "tslib": "^1.9.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",
@@ -41,6 +42,7 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@compodoc/compodoc": "^1.1.2",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
@@ -65,8 +67,5 @@
   "module": "esm5/stomp-ng2-stompjs.js",
   "es2015": "esm2015/stomp-ng2-stompjs.js",
   "typings": "stomp-ng2-stompjs.d.ts",
-  "metadata": "stomp-ng2-stompjs.metadata.json",
-  "dependencies": {
-    "tslib": "^1.9.0"
-  }
+  "metadata": "stomp-ng2-stompjs.metadata.json"
 }

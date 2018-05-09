@@ -35,7 +35,7 @@
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
   "main": "./index.ts",
-  "peerDependencies": {
+  "dependencies": {
     "@stomp/stompjs": "^4.0.0 >=4.0.2"
   },
   "devDependencies": {
