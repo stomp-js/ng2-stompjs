@@ -64,10 +64,12 @@ from https://github.com/stomp-js/stomp-websocket
   https://stomp-js.github.io/ng2-stompjs/injectables/StompService.html,
   https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html
   and https://stomp-js.github.io/ng2-stompjs/index.html
-- See https://github.com/stomp-js/ng4-stompjs-demo for a working sample
-  using Angular4 and Angular CLI
-- See https://github.com/stomp-js/ng2-stompjs-demo for a working sample
-  using Angular2 and Angular CLI. This version also demonstrates fetching
+- General Demos (using Angular CLI)
+    - https://github.com/stomp-js/ng6-stompjs-demo
+    - https://github.com/stomp-js/ng5-stompjs-demo
+    - https://github.com/stomp-js/ng4-stompjs-demo
+    - https://github.com/stomp-js/ng2-stompjs-demo 
+- https://github.com/stomp-js/ng2-stompjs-demo also demonstrates fetching
   Stomp configuration using a http call (APP_INITIALIZER)
 - See [SockJS Support](https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html).
   https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs for a sample
