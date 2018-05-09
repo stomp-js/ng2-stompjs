@@ -1,8 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
 import { StompRService, StompService, StompConfig } from '../../../..';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
 import * as SockJS from 'sockjs-client';
 
 

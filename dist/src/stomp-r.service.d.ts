@@ -1,9 +1,4 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/share';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { StompConfig } from './stomp.config';
 import * as Stomp from '@stomp/stompjs';
 import { StompHeaders } from './stomp-headers';

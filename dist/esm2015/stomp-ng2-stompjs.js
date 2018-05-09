@@ -1,10 +1,6 @@
+import { first, filter, share } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/share';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { client, over } from '@stomp/stompjs';
 
 /**
@@ -86,19 +82,17 @@ class StompRService {
             }
         };
         this.state = new BehaviorSubject(StompState.CLOSED);
-        this.connectObservable = this.state
-            .filter((currentState) => {
+        this.connectObservable = this.state.pipe(filter((currentState) => {
             return currentState === StompState.CONNECTED;
-        });
+        }));
         // Setup sending queuedMessages
         this.connectObservable.subscribe(() => {
             this.sendQueuedMessages();
         });
         this._serverHeadersBehaviourSubject = new BehaviorSubject(null);
-        this.serverHeadersObservable = this._serverHeadersBehaviourSubject
-            .filter((headers) => {
+        this.serverHeadersObservable = this._serverHeadersBehaviourSubject.pipe(filter((headers) => {
             return headers !== null;
-        });
+        }));
         this.errorSubject = new Subject();
     }
     /**
@@ -129,7 +123,8 @@ class StompRService {
         // Auto reconnect
         this.client.reconnect_delay = this._config.reconnect_delay;
         if (!this._config.debug) {
-            this.debug = function () { };
+            this.debug = function () {
+            };
         }
         // Set function to debug print messages
         this.client.debug = this.debug;
@@ -271,7 +266,7 @@ class StompRService {
              * to this observable twice, it will subscribe twice to Stomp broker. (This was happening in the current example).
              * A long but good explanatory article at https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339
              */
-        return coldObservable.share();
+        return coldObservable.pipe(share());
     }
     /**
      * It will handle messages received in the default queue. Messages that would not be handled otherwise
@@ -301,9 +296,9 @@ class StompRService {
      * @return {?}
      */
     waitForReceipt(receiptId, callback) {
-        this.receiptsObservable.filter((frame) => {
+        this.receiptsObservable.pipe(filter((frame) => {
             return frame.headers['receipt-id'] === receiptId;
-        }).first().subscribe((frame) => {
+        }), first()).subscribe((frame) => {
             callback(frame);
         });
     }

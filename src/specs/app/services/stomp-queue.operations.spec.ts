@@ -1,12 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
+import { map } from 'rxjs/operators';
 import { StompService} from '../../../..';
 import { defaultConfig, stompServiceFactory } from './stomp.service.factory';
 import { ensureStompConnected, disconnetStompRAndEnsure} from './helpers';
-import { Subscription } from 'rxjs/Subscription';
-
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
+import { Subscription } from 'rxjs';
 
 describe('StompService Queues', () => {
   let stompService: StompService;
@@ -48,12 +46,13 @@ describe('StompService Queues', () => {
 
     // Subscribe to both queues
     beforeEach((done) => {
-      queSubscription1 = stompService.subscribe(queueName1)
-        .map((message) => message.body)
-        .subscribe(spyHandler1);
-      queSubscription2 = stompService.subscribe(queueName2)
-        .map((message) => message.body)
-        .subscribe(spyHandler2);
+      queSubscription1 = stompService.subscribe(queueName1).pipe(
+        map((message) => message.body)
+      ).subscribe(spyHandler1);
+
+      queSubscription2 = stompService.subscribe(queueName2).pipe(
+        map((message) => message.body)
+      ).subscribe(spyHandler2);
 
       setTimeout(() => {
         done();

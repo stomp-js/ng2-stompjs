@@ -1,14 +1,6 @@
+import { first, filter, share } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
-
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/share';
+import { BehaviorSubject ,  Observable ,  Observer ,  Subject ,  Subscription } from 'rxjs';
 
 import { StompConfig } from './stomp.config';
 
@@ -57,7 +49,7 @@ export class StompRService {
    */
   public serverHeadersObservable: Observable<StompHeaders>;
 
-  private _serverHeadersBehaviourSubject: BehaviorSubject<null|StompHeaders>;
+  private _serverHeadersBehaviourSubject: BehaviorSubject<null | StompHeaders>;
 
   /**
    * Will emit all messages to the default queue (any message that are not handled by a subscription)
@@ -78,7 +70,7 @@ export class StompRService {
   /**
    * Internal array to hold locally queued messages when STOMP broker is not connected.
    */
-  protected queuedMessages: {queueName: string, message: string, headers: StompHeaders}[]= [];
+  protected queuedMessages: { queueName: string, message: string, headers: StompHeaders }[] = [];
 
   /**
    * Configuration
@@ -98,22 +90,24 @@ export class StompRService {
   public constructor() {
     this.state = new BehaviorSubject<StompState>(StompState.CLOSED);
 
-    this.connectObservable = this.state
-      .filter((currentState: StompState) => {
+    this.connectObservable = this.state.pipe(
+      filter((currentState: StompState) => {
         return currentState === StompState.CONNECTED;
-      });
+      })
+    );
 
     // Setup sending queuedMessages
     this.connectObservable.subscribe(() => {
       this.sendQueuedMessages();
     });
 
-    this._serverHeadersBehaviourSubject = new BehaviorSubject<null|StompHeaders>(null);
+    this._serverHeadersBehaviourSubject = new BehaviorSubject<null | StompHeaders>(null);
 
-    this.serverHeadersObservable = this._serverHeadersBehaviourSubject
-      .filter((headers: null | StompHeaders) => {
+    this.serverHeadersObservable = this._serverHeadersBehaviourSubject.pipe(
+      filter((headers: null | StompHeaders) => {
         return headers !== null;
-      });
+      })
+    );
 
     this.errorSubject = new Subject();
   }
@@ -143,7 +137,8 @@ export class StompRService {
     this.client.reconnect_delay = this._config.reconnect_delay;
 
     if (!this._config.debug) {
-      this.debug = function() {};
+      this.debug = function () {
+      };
     }
     // Set function to debug print messages
     this.client.debug = this.debug;
@@ -307,7 +302,7 @@ export class StompRService {
      * to this observable twice, it will subscribe twice to Stomp broker. (This was happening in the current example).
      * A long but good explanatory article at https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339
      */
-    return coldObservable.share();
+    return coldObservable.pipe(share());
   }
 
   /**
@@ -337,9 +332,12 @@ export class StompRService {
    * Wait for receipt, this indicates that server has carried out the related operation
    */
   public waitForReceipt(receiptId: string, callback: (frame: Stomp.Frame) => void): void {
-    this.receiptsObservable.filter((frame: Stomp.Frame) => {
-      return frame.headers['receipt-id'] === receiptId;
-    }).first().subscribe((frame: Stomp.Frame) => {
+    this.receiptsObservable.pipe(
+      filter((frame: Stomp.Frame) => {
+        return frame.headers['receipt-id'] === receiptId;
+      }),
+      first()
+    ).subscribe((frame: Stomp.Frame) => {
       callback(frame);
     });
   }
@@ -351,7 +349,7 @@ export class StompRService {
    * if we need to use this.x inside the function
    */
   protected debug = (args: any): void => {
-      console.log(new Date(), args);
+    console.log(new Date(), args);
   }
 
   /** Callback run on successfully connecting to server */
@@ -384,4 +382,3 @@ export class StompRService {
     }
   }
 }
-

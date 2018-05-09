@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/BehaviorSubject'), require('rxjs/Observable'), require('rxjs/Subject'), require('rxjs/add/operator/filter'), require('rxjs/add/operator/first'), require('rxjs/add/operator/share'), require('@stomp/stompjs')) :
-	typeof define === 'function' && define.amd ? define('@stomp/ng2-stompjs', ['exports', '@angular/core', 'rxjs/BehaviorSubject', 'rxjs/Observable', 'rxjs/Subject', 'rxjs/add/operator/filter', 'rxjs/add/operator/first', 'rxjs/add/operator/share', '@stomp/stompjs'], factory) :
-	(factory((global.stomp = global.stomp || {}, global.stomp['ng2-stompjs'] = {}),global.ng.core,global.Rx,global.Rx,global.Rx,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.Rx.Observable.prototype,global.stompjs));
-}(this, (function (exports,core,BehaviorSubject,Observable,Subject,filter,first,share,stompjs) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs/operators'), require('@angular/core'), require('rxjs'), require('@stomp/stompjs')) :
+	typeof define === 'function' && define.amd ? define('@stomp/ng2-stompjs', ['exports', 'rxjs/operators', '@angular/core', 'rxjs', '@stomp/stompjs'], factory) :
+	(factory((global.stomp = global.stomp || {}, global.stomp['ng2-stompjs'] = {}),global.Rx.Observable.prototype,global.ng.core,global.rxjs,global.stompjs));
+}(this, (function (exports,operators,core,rxjs,stompjs) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -76,20 +76,18 @@ var StompRService = /** @class */ (function () {
                 _this.state.next(StompState.CLOSED);
             }
         };
-        this.state = new BehaviorSubject.BehaviorSubject(StompState.CLOSED);
-        this.connectObservable = this.state
-            .filter(function (currentState) {
+        this.state = new rxjs.BehaviorSubject(StompState.CLOSED);
+        this.connectObservable = this.state.pipe(operators.filter(function (currentState) {
             return currentState === StompState.CONNECTED;
-        });
+        }));
         this.connectObservable.subscribe(function () {
             _this.sendQueuedMessages();
         });
-        this._serverHeadersBehaviourSubject = new BehaviorSubject.BehaviorSubject(null);
-        this.serverHeadersObservable = this._serverHeadersBehaviourSubject
-            .filter(function (headers) {
+        this._serverHeadersBehaviourSubject = new rxjs.BehaviorSubject(null);
+        this.serverHeadersObservable = this._serverHeadersBehaviourSubject.pipe(operators.filter(function (headers) {
             return headers !== null;
-        });
-        this.errorSubject = new Subject.Subject();
+        }));
+        this.errorSubject = new rxjs.Subject();
     }
     Object.defineProperty(StompRService.prototype, "config", {
         set: function (value) {
@@ -110,7 +108,8 @@ var StompRService = /** @class */ (function () {
         this.client.heartbeat.outgoing = this._config.heartbeat_out;
         this.client.reconnect_delay = this._config.reconnect_delay;
         if (!this._config.debug) {
-            this.debug = function () { };
+            this.debug = function () {
+            };
         }
         this.client.debug = this.debug;
         this.setupOnReceive();
@@ -172,7 +171,7 @@ var StompRService = /** @class */ (function () {
         if (!headers['ack']) {
             headers['ack'] = 'auto';
         }
-        var coldObservable = Observable.Observable.create(function (messages) {
+        var coldObservable = rxjs.Observable.create(function (messages) {
             var stompSubscription;
             var stompConnectedSubscription;
             stompConnectedSubscription = _this.connectObservable
@@ -194,26 +193,26 @@ var StompRService = /** @class */ (function () {
                 }
             };
         });
-        return coldObservable.share();
+        return coldObservable.pipe(operators.share());
     };
     StompRService.prototype.setupOnReceive = function () {
         var _this = this;
-        this.defaultMessagesObservable = new Subject.Subject();
+        this.defaultMessagesObservable = new rxjs.Subject();
         this.client.onreceive = function (message) {
             _this.defaultMessagesObservable.next(message);
         };
     };
     StompRService.prototype.setupReceipts = function () {
         var _this = this;
-        this.receiptsObservable = new Subject.Subject();
+        this.receiptsObservable = new rxjs.Subject();
         this.client.onreceipt = function (frame) {
             _this.receiptsObservable.next(frame);
         };
     };
     StompRService.prototype.waitForReceipt = function (receiptId, callback) {
-        this.receiptsObservable.filter(function (frame) {
+        this.receiptsObservable.pipe(operators.filter(function (frame) {
             return frame.headers['receipt-id'] === receiptId;
-        }).first().subscribe(function (frame) {
+        }), operators.first()).subscribe(function (frame) {
             callback(frame);
         });
     };

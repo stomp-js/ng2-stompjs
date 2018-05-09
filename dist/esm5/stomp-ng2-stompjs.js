@@ -1,11 +1,7 @@
 import { __values, __extends } from 'tslib';
+import { first, filter, share } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/share';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { client, over } from '@stomp/stompjs';
 
 var StompState = {
@@ -41,18 +37,16 @@ var StompRService = /** @class */ (function () {
             }
         };
         this.state = new BehaviorSubject(StompState.CLOSED);
-        this.connectObservable = this.state
-            .filter(function (currentState) {
+        this.connectObservable = this.state.pipe(filter(function (currentState) {
             return currentState === StompState.CONNECTED;
-        });
+        }));
         this.connectObservable.subscribe(function () {
             _this.sendQueuedMessages();
         });
         this._serverHeadersBehaviourSubject = new BehaviorSubject(null);
-        this.serverHeadersObservable = this._serverHeadersBehaviourSubject
-            .filter(function (headers) {
+        this.serverHeadersObservable = this._serverHeadersBehaviourSubject.pipe(filter(function (headers) {
             return headers !== null;
-        });
+        }));
         this.errorSubject = new Subject();
     }
     Object.defineProperty(StompRService.prototype, "config", {
@@ -74,7 +68,8 @@ var StompRService = /** @class */ (function () {
         this.client.heartbeat.outgoing = this._config.heartbeat_out;
         this.client.reconnect_delay = this._config.reconnect_delay;
         if (!this._config.debug) {
-            this.debug = function () { };
+            this.debug = function () {
+            };
         }
         this.client.debug = this.debug;
         this.setupOnReceive();
@@ -158,7 +153,7 @@ var StompRService = /** @class */ (function () {
                 }
             };
         });
-        return coldObservable.share();
+        return coldObservable.pipe(share());
     };
     StompRService.prototype.setupOnReceive = function () {
         var _this = this;
@@ -175,9 +170,9 @@ var StompRService = /** @class */ (function () {
         };
     };
     StompRService.prototype.waitForReceipt = function (receiptId, callback) {
-        this.receiptsObservable.filter(function (frame) {
+        this.receiptsObservable.pipe(filter(function (frame) {
             return frame.headers['receipt-id'] === receiptId;
-        }).first().subscribe(function (frame) {
+        }), first()).subscribe(function (frame) {
             callback(frame);
         });
     };

@@ -2,8 +2,8 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { StompRService, StompService, StompState, StompConfig } from '../../../..';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs';
+
 import {defaultConfig, MyStompRService, MyStompService, stompServiceFactory} from './stomp.service.factory';
 import { Message } from '@stomp/stompjs';
 import {ensureStompConnected, disconnetStompRAndEnsure, ensureStompRDisconnected} from './helpers';
