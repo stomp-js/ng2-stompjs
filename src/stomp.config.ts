@@ -22,6 +22,13 @@ export class StompConfig {
    * }
    */
   url: string | (() => any);
+  
+  /**
+   * Stopm protocols that will be used
+   * They are being set in the Sec-WebSocket-Protocol header
+   * Leave empty for default protocols
+   */  
+  protocols: string[];
 
   /**
    * Headers

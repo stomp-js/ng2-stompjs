@@ -124,7 +124,7 @@ export class StompRService {
 
     // url takes precedence over socketFn
     if (typeof(this._config.url) === 'string') {
-      this.client = Stomp.client(this._config.url);
+      this.client = Stomp.client(this._config.url, this._config.protocols);
     } else {
       this.client = Stomp.over(this._config.url);
     }
