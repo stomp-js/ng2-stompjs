@@ -16,6 +16,9 @@ export function defaultConfig(): StompConfig {
 
     // Comment above and uncomment below to test with SockJS
     // url: socketProvider,
+    
+    // default protocols
+    protocols: null,
 
     // Headers
     // Typical keys: login, passcode, host
