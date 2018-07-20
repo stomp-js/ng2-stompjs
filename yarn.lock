@@ -167,9 +167,9 @@
     magic-string "^0.19.0"
     source-map "^0.5.6"
 
-"@stomp/stompjs@^4.0.0 >=4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@stomp/stompjs/-/stompjs-4.0.2.tgz#e8932ea407e89d47f354b4cb47a4d9ad60c23a0d"
+"@stomp/stompjs@^4.0.0 >=4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@stomp/stompjs/-/stompjs-4.0.7.tgz#39c56a16250ecf012ad784f2bc52812fc0d6385b"
   optionalDependencies:
     websocket "^1.0.24"
 
