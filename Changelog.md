@@ -1,5 +1,9 @@
 # Changelog
 
+# 6.0.1 2018-07-20
+
+- Fix issue with disconnect [#77](https://github.com/stomp-js/ng2-stompjs/issues/77)
+
 ## Angular 6
 
 - It will have version numbers in 6.x.x format.

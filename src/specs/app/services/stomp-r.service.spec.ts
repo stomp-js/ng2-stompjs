@@ -55,7 +55,7 @@ describe('StompRService', () => {
     });
 
     it('and not reconnect', () => {
-      expect(stompService.state.getValue()).toEqual(StompState.CLOSED);
+      expect(stompService.state.getValue()).not.toEqual(StompState.CONNECTED);
     });
   });
 });

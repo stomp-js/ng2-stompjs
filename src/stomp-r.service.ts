@@ -179,7 +179,13 @@ export class StompRService {
   public disconnect(): void {
 
     // Disconnect if connected. Callback will set CLOSED state
-    if (this.client && this.client.connected) {
+    if (this.client) {
+      if (!this.client.connected) {
+        // Nothing to do
+        this.state.next(StompState.CLOSED);
+        return;
+      }
+
       // Notify observers that we are disconnecting!
       this.state.next(StompState.DISCONNECTING);
 
