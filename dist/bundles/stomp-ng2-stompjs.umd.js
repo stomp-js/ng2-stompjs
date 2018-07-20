@@ -126,7 +126,11 @@ var StompRService = /** @class */ (function () {
     };
     StompRService.prototype.disconnect = function () {
         var _this = this;
-        if (this.client && this.client.connected) {
+        if (this.client) {
+            if (!this.client.connected) {
+                this.state.next(StompState.CLOSED);
+                return;
+            }
             this.state.next(StompState.DISCONNECTING);
             this.client.disconnect(function () { return _this.state.next(StompState.CLOSED); });
         }

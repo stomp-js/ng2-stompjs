@@ -596,7 +596,7 @@ please use StompService class.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/stomp-r.service.ts:195</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/stomp-r.service.ts:201</a></div>
                             </td>
                         </tr>
 
@@ -760,7 +760,7 @@ please use StompService class.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/stomp-r.service.ts:209</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/stomp-r.service.ts:215</a></div>
                             </td>
                         </tr>
 
@@ -866,7 +866,7 @@ publish queued messages as soon as the broker gets connected.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="219" class="link-to-prism">src/stomp-r.service.ts:219</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">src/stomp-r.service.ts:225</a></div>
                             </td>
                         </tr>
 
@@ -907,7 +907,7 @@ publish queued messages as soon as the broker gets connected.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="312" class="link-to-prism">src/stomp-r.service.ts:312</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="318" class="link-to-prism">src/stomp-r.service.ts:318</a></div>
                             </td>
                         </tr>
 
@@ -949,7 +949,7 @@ get delivered to the default queue.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="323" class="link-to-prism">src/stomp-r.service.ts:323</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="329" class="link-to-prism">src/stomp-r.service.ts:329</a></div>
                             </td>
                         </tr>
 
@@ -990,7 +990,7 @@ get delivered to the default queue.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/stomp-r.service.ts:248</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">src/stomp-r.service.ts:254</a></div>
                             </td>
                         </tr>
 
@@ -1088,7 +1088,7 @@ to this library but the way STOMP brokers are designed to work.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="334" class="link-to-prism">src/stomp-r.service.ts:334</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="340" class="link-to-prism">src/stomp-r.service.ts:340</a></div>
                             </td>
                         </tr>
 
@@ -1269,7 +1269,7 @@ StompState.CONNECTED</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="351" class="link-to-prism">src/stomp-r.service.ts:351</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="357" class="link-to-prism">src/stomp-r.service.ts:357</a></div>
                             </td>
                         </tr>
 
@@ -1402,7 +1402,7 @@ the stomp broker.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="356" class="link-to-prism">src/stomp-r.service.ts:356</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="362" class="link-to-prism">src/stomp-r.service.ts:362</a></div>
                             </td>
                         </tr>
 
@@ -1458,7 +1458,7 @@ the stomp broker.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="367" class="link-to-prism">src/stomp-r.service.ts:367</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="373" class="link-to-prism">src/stomp-r.service.ts:373</a></div>
                             </td>
                         </tr>
 
@@ -1895,7 +1895,13 @@ export class StompRService {
   public disconnect(): void {
 
     // Disconnect if connected. Callback will set CLOSED state
-    if (this.client &amp;&amp; this.client.connected) {
+    if (this.client) {
+      if (!this.client.connected) {
+        // Nothing to do
+        this.state.next(StompState.CLOSED);
+        return;
+      }
+
       // Notify observers that we are disconnecting!
       this.state.next(StompState.DISCONNECTING);
 
