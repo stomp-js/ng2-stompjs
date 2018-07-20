@@ -162,7 +162,12 @@ var StompRService = (function () {
     StompRService.prototype.disconnect = function () {
         var _this = this;
         // Disconnect if connected. Callback will set CLOSED state
-        if (this.client && this.client.connected) {
+        if (this.client) {
+            if (!this.client.connected) {
+                // Nothing to do
+                this.state.next(StompState.CLOSED);
+                return;
+            }
             // Notify observers that we are disconnecting!
             this.state.next(StompState.DISCONNECTING);
             this.client.disconnect(function () { return _this.state.next(StompState.CLOSED); });
