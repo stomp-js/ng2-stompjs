@@ -43,7 +43,6 @@ describe('StompRService', () => {
   describe('should disconnect even when underlying connection is not there', () => {
     // Simulate error on Websocket and wait for while and call disconnect
     beforeEach((done) => {
-      stompService.forceDisconnect();
       disconnetStompRAndEnsure(stompService, done);
     });
 

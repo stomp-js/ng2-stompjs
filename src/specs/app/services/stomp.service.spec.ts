@@ -114,7 +114,7 @@ describe('StompService', () => {
           setTimeout(() => {
             // Now publish the message when STOMP Broker has been disconnected
             stompService.publish(queueName, msg);
-          }, 1000);
+          }, 1500);
         }
       });
     });

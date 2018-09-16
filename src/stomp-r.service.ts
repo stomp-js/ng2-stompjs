@@ -4,8 +4,8 @@ import { BehaviorSubject ,  Observable ,  Observer ,  Subject ,  Subscription } 
 
 import { StompConfig } from './stomp.config';
 
-import * as Stomp from '@stomp/stompjs';
-import { Frame, StompSubscription } from '@stomp/stompjs';
+import { Frame, Message, Stomp, StompSubscription } from '@stomp/stompjs';
+import { CompatClient as Client } from '@stomp/stompjs';
 import { StompHeaders } from './stomp-headers';
 import { StompState } from './stomp-state';
 
@@ -54,18 +54,18 @@ export class StompRService {
   /**
    * Will emit all messages to the default queue (any message that are not handled by a subscription)
    */
-  public defaultMessagesObservable: Subject<Stomp.Message>;
+  public defaultMessagesObservable: Subject<Message>;
 
   /**
    * Will emit all receipts
    */
-  public receiptsObservable: Subject<Stomp.Frame>;
+  public receiptsObservable: Subject<Frame>;
 
   /**
    * Will trigger when an error occurs. This Subject can be used to handle errors from
    * the stomp broker.
    */
-  public errorSubject: Subject<string | Stomp.Message>;
+  public errorSubject: Subject<string | Message>;
 
   /**
    * Internal array to hold locally queued messages when STOMP broker is not connected.
@@ -80,7 +80,7 @@ export class StompRService {
   /**
    * STOMP Client from @stomp/stomp.js
    */
-  protected client: Stomp.Client;
+  protected client: Client;
 
   /**
    * Constructor
@@ -251,7 +251,7 @@ export class StompRService {
    * @param queueName
    * @param headers
    */
-  public subscribe(queueName: string, headers: StompHeaders = {}): Observable<Stomp.Message> {
+  public subscribe(queueName: string, headers: StompHeaders = {}): Observable<Message> {
 
     /* Well the logic is complicated but works beautifully. RxJS is indeed wonderful.
      *
@@ -273,7 +273,7 @@ export class StompRService {
     }
 
     const coldObservable = Observable.create(
-      (messages: Observer<Stomp.Message>) => {
+      (messages: Observer<Message>) => {
         /*
          * These variables will be used as part of the closure and work their magic during unsubscribe
          */
@@ -284,7 +284,7 @@ export class StompRService {
         stompConnectedSubscription = this.connectObservable
           .subscribe(() => {
             this.debug(`Will subscribe to ${queueName}`);
-            stompSubscription = this.client.subscribe(queueName, (message: Stomp.Message) => {
+            stompSubscription = this.client.subscribe(queueName, (message: Message) => {
                 messages.next(message);
               },
               headers);
@@ -318,7 +318,7 @@ export class StompRService {
   protected setupOnReceive(): void {
     this.defaultMessagesObservable = new Subject();
 
-    this.client.onreceive = (message: Stomp.Message) => {
+    this.client.onreceive = (message: Message) => {
       this.defaultMessagesObservable.next(message);
     };
   }
@@ -329,7 +329,7 @@ export class StompRService {
   protected setupReceipts(): void {
     this.receiptsObservable = new Subject();
 
-    this.client.onreceipt = (frame: Stomp.Frame) => {
+    this.client.onreceipt = (frame: Frame) => {
       this.receiptsObservable.next(frame);
     };
   }
@@ -337,13 +337,13 @@ export class StompRService {
   /**
    * Wait for receipt, this indicates that server has carried out the related operation
    */
-  public waitForReceipt(receiptId: string, callback: (frame: Stomp.Frame) => void): void {
+  public waitForReceipt(receiptId: string, callback: (frame: Frame) => void): void {
     this.receiptsObservable.pipe(
-      filter((frame: Stomp.Frame) => {
+      filter((frame: Frame) => {
         return frame.headers['receipt-id'] === receiptId;
       }),
       first()
-    ).subscribe((frame: Stomp.Frame) => {
+    ).subscribe((frame: Frame) => {
       callback(frame);
     });
   }
@@ -370,13 +370,13 @@ export class StompRService {
   }
 
   /** Handle errors from stomp.js */
-  protected on_error = (error: string | Stomp.Message) => {
+  protected on_error = (error: any) => {
 
     // Trigger the error subject
     this.errorSubject.next(error);
 
     if (typeof error === 'object') {
-      error = (<Stomp.Message>error).body;
+      error = (<Message>error).body;
     }
 
     this.debug(`Error: ${error}`);
