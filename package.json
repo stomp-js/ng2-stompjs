@@ -36,7 +36,8 @@
   },
   "main": "./index.ts",
   "dependencies": {
-    "@stomp/stompjs": "^4.0.0 >=4.0.7"
+    "@stomp/stompjs": "^4.0.0 >=4.0.7",
+    "angular2-uuid": "^1.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",

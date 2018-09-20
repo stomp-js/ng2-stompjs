@@ -1,11 +1,9 @@
-import {Injectable} from '@angular/core';
-import {StompService} from './stomp.service';
-import {Observable} from 'rxjs/Observable';
-import {Message} from '@stomp/stompjs';
-import {UUID} from 'angular2-uuid';
-import {Observer} from 'rxjs/Observer';
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { StompService } from './stomp.service';
+import { Message } from '@stomp/stompjs';
+import { UUID } from 'angular2-uuid';
+import { Observable, Observer, Subject, Subscription } from "rxjs";
+import { filter, first } from "rxjs/operators";
 
 @Injectable()
 export class StompRPCService {
@@ -19,7 +17,7 @@ export class StompRPCService {
 
   public rpc(serviceEndPoint: string, payload: string): Observable<Message> {
     // We know there will be only one message in reply
-    return this.stream(serviceEndPoint, payload).first();
+    return this.stream(serviceEndPoint, payload).pipe(first());
   }
 
   private stream(serviceEndPoint: string, payload: string) {
@@ -29,9 +27,9 @@ export class StompRPCService {
 
         const correlationId = UUID.UUID();
 
-        defaultMessagesSubscription = this.messagesObservable.filter((message: Message) => {
+        defaultMessagesSubscription = this.messagesObservable.pipe(filter((message: Message) => {
           return message.headers['correlation-id'] === correlationId;
-        }).subscribe((message: Message) => {
+        })).subscribe((message: Message) => {
           rpcObserver.next(message);
         });
 
