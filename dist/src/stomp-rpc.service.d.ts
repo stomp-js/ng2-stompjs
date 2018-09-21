@@ -1,11 +1,11 @@
-import { StompService } from './stomp.service';
-import { Message } from '@stomp/stompjs';
-import { Observable, Subject } from "rxjs";
+import { Message, StompHeaders } from '@stomp/stompjs';
+import { Observable } from "rxjs";
+import { StompRService } from "./stomp-r.service";
 export declare class StompRPCService {
     private stompService;
     protected replyQueue: string;
-    protected messagesObservable: Subject<Message>;
-    constructor(stompService: StompService);
-    rpc(serviceEndPoint: string, payload: string): Observable<Message>;
-    private stream(serviceEndPoint, payload);
+    protected messagesObservable: Observable<Message>;
+    constructor(stompService: StompRService);
+    rpc(serviceEndPoint: string, payload: string, headers?: StompHeaders): Observable<Message>;
+    private stream(serviceEndPoint, payload, headers?);
 }
