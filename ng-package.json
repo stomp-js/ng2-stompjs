@@ -8,6 +8,7 @@
     }
   },
   "whitelistedNonPeerDependencies": [
-    "@stomp/stompjs"
+    "@stomp/stompjs",
+    "angular2-uuid"
   ]
 }

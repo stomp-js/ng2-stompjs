@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
-import { StompService } from './stomp.service';
-import { Message } from '@stomp/stompjs';
+import { Message, StompHeaders } from '@stomp/stompjs';
 import { UUID } from 'angular2-uuid';
 import { Observable, Observer, Subject, Subscription } from "rxjs";
 import { filter, first } from "rxjs/operators";
+import { StompRService } from "./stomp-r.service";
 
 @Injectable()
 export class StompRPCService {
-  protected replyQueue = 'rpc-replies';
+  protected replyQueue = '/temp-queue/rpc-replies';
 
-  protected messagesObservable: Subject<Message>;
+  protected messagesObservable: Observable<Message>;
 
-  constructor(private stompService: StompService) {
+  constructor(private stompService: StompRService) {
     this.messagesObservable = this.stompService.defaultMessagesObservable;
   }
 
-  public rpc(serviceEndPoint: string, payload: string): Observable<Message> {
+  public rpc(serviceEndPoint: string, payload: string, headers?: StompHeaders): Observable<Message> {
     // We know there will be only one message in reply
-    return this.stream(serviceEndPoint, payload).pipe(first());
+    return this.stream(serviceEndPoint, payload, headers).pipe(first());
   }
 
-  private stream(serviceEndPoint: string, payload: string) {
+  private stream(serviceEndPoint: string, payload: string, headers: StompHeaders = {}) {
     return Observable.create(
       (rpcObserver: Observer<Message>) => {
         let defaultMessagesSubscription: Subscription;
@@ -34,10 +34,8 @@ export class StompRPCService {
         });
 
         // send an RPC request
-        const headers = {
-          'reply-to': `/temp-queue/${this.replyQueue}`,
-          'correlation-id': correlationId
-        };
+        headers['reply-to'] = this.replyQueue;
+        headers['correlation-id'] = correlationId;
 
         this.stompService.publish(serviceEndPoint, payload, headers);
 
