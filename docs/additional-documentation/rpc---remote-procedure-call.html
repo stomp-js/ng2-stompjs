@@ -7,14 +7,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	      <link rel="stylesheet" href="./styles/style.css">
-        <link rel="stylesheet" href="./styles/Vagrant.css">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/Vagrant.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">@stomp/ng2-stompjs documentation</a>
+            <a href="../" class="navbar-brand">@stomp/ng2-stompjs documentation</a>
             <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
@@ -388,7 +388,7 @@
 </nav>
                </div>
                <!-- START CONTENT -->
-               <div class="content package-dependencies">
+               <div class="content additional-page">
                    <div class="content-data">
 
 
@@ -402,18 +402,76 @@
 
 
 
-    <ol class="breadcrumb">
-        <li>Dependencies</li>
-    </ol>
-    <ul class="dependencies-list">
-        <li>
-            <b>@stomp/stompjs</b> : ^4.0.0 &gt;&#x3D;4.0.7</li>
-        <li>
-            <b>angular2-uuid</b> : ^1.1.1</li>
-    </ul>
 
 
 
+<h1 id="rpc-remote-procedure-call">RPC - Remote Procedure Call</h1>
+<p>Messaging usually works one way.
+There is however a convention for two way communication (i.e. request/response).
+This involves <code>reply-to</code> queues which routes the response back to correct client program
+and <code>correlation-id</code> to uniquely match a response to the correct request.</p>
+<p>See: <a href="https://www.rabbitmq.com/tutorials/tutorial-six-python.html">https://www.rabbitmq.com/tutorials/tutorial-six-python.html</a> for a sample using
+a very similar approach.</p>
+<h2 id="implementing-the-rpc-server-endpoint">Implementing the RPC server endpoint</h2>
+<p>This can be implemented in any language, in most cases it will be there in some backend server.</p>
+<pre class="line-numbers"><code class="language-typescript">    const myServiceEndPoint = &#39;/topic/echo&#39;;
+
+    stompService.subscribe(myServiceEndPoint).subscribe((message: Message) =&gt; {
+      // The response needs to be sent back here
+      const replyTo = message.headers[&#39;reply-to&#39;];
+
+      // Same correlation id needs to be sent back as message header
+      const correlationId = message.headers[&#39;correlation-id&#39;];
+
+      // Process the request, compute the response
+      const incomingMessage = message.body;
+
+      const outgoingMessage = &#39;Echoing - &#39; + incomingMessage;
+
+      // Send the response back to destination `replyTo` with `correlation-id` header
+      stompService.publish(replyTo, outgoingMessage, {&#39;correlation-id&#39; : correlationId});
+    });</code></pre><h2 id="using-it-from-the-client">Using it from the client</h2>
+<h3 id="rabbitmq">RabbitMQ</h3>
+<p>RabbitMQ has special support for <code>temp-queues</code> in <code>reply-to</code> messages
+which make things to work magically. Really I mean it.</p>
+<p>If you don&#39;t believe me check details at <a href="https://www.rabbitmq.com/stomp.html#d.tqd">https://www.rabbitmq.com/stomp.html#d.tqd</a></p>
+<p>Well the client code looks equally simple and similar to what you would expect
+to use with any backend service.</p>
+<p>The <code>StompRPCService</code> can be created by means of Angular Dependency Injection
+or be created manually.
+It in turns needs an initialized <code>StompRService</code> as
+a dependency (or argument).
+<code>StompService</code> is a derived class of <code>StompRService</code>, so that will work as well.</p>
+<pre class="line-numbers"><code class="language-typescript">    const myServiceEndPoint = &#39;/topic/echo&#39;;
+
+    const request = &#39;Hello&#39;;
+    stompRPCService.rpc(myServiceEndPoint, request).subscribe((message: Message) =&gt; {
+      // Consume the response
+      console.log(message.body);
+    });</code></pre><p>Just like Ajax requests, it will yield only once.</p>
+<p>There is another method called <code>stream</code> that will not terminate after one response.
+This can be used to receive stream of responses for a single request.
+If you use that it will be your responsibility to unsubscribe when you do not expect
+any additional messages.</p>
+<h3 id="other-brokers">Other Brokers</h3>
+<p>There few requirements:</p>
+<ul>
+<li>the reply queue name <strong>must</strong> be unique across the broker.</li>
+<li>ideally, for security reasons only the client creating the queue should have access to it.</li>
+</ul>
+<p>Many brokers have <code>temp-queue</code> concept which should simplify your work. </p>
+<p>Following gives and outline:</p>
+<pre class="line-numbers"><code class="language-typescript">  const stompRPCConfigForActiveMQ = {
+    // A unique name, BTW angular2-uuid module is already added as dependency
+    replyQueueName: `/topic/replies.${UUID.UUID()}`,
+
+    // Simply subscribe, you would need to secure by adding broker specific options
+    setupReplyQueue: (replyQueueName: string, stompService: StompRService) =&gt; {
+      return stompService.subscribe(replyQueueName);
+    }
+  };</code></pre><p>This custom config would need to be passed as second parameter in <code>StompRPCService</code>
+constructor, or, can be passed as an Angular Dependency.</p>
+<p>Apart from this additional setup step usage remains same as RabbitMQ case as documented above.</p>
 
                    </div><div class="search-results">
     <div class="has-results">
@@ -429,29 +487,29 @@
            </div>
        </div>
 
-       <script src="./js/libs/bootstrap-native.js"></script>
+       <script src="../js/libs/bootstrap-native.js"></script>
 
-       <script src="./js/libs/es6-shim.min.js"></script>
-       <script src="./js/libs/EventDispatcher.js"></script>
-       <script src="./js/libs/promise.min.js"></script>
-       <script src="./js/libs/zepto.min.js"></script>
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
 
-       <script src="./js/compodoc.js"></script>
+       <script src="../js/compodoc.js"></script>
 
         <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_URL = 'dependencies.html';
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_URL = 'rpc---remote-procedure-call.html';
         </script>
 
-       <script src="./js/search/search.js"></script>
-       <script src="./js/search/lunr.min.js"></script>
-       <script src="./js/search/search-lunr.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
-       <script src="./js/tabs.js"></script>
-       <script src="./js/menu.js"></script>
-       <script src="./js/libs/prism.js"></script>
-       <script src="./js/sourceCode.js"></script>
-       <script src="./js/search/search_index.js"></script>
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
 
 
     </body>

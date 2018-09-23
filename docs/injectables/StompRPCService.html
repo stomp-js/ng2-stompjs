@@ -84,6 +84,9 @@
                         <a href="additional-documentation/sock-js.html" data-type="entity-link" data-context-id="additional">Sock JS</a>
                     </li>
                     <li class="link ">
+                        <a href="additional-documentation/rpc---remote-procedure-call.html" data-type="entity-link" data-context-id="additional">RPC - Remote Procedure Call</a>
+                    </li>
+                    <li class="link ">
                         <a href="additional-documentation/contributing.html" data-type="entity-link" data-context-id="additional">Contributing</a>
                     </li>
             </ul>
@@ -143,6 +146,9 @@
                         >
                             <li class="link">
                                 <a href="injectables/StompConfig.html" data-type="entity-link">StompConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="injectables/StompRPCConfig.html" data-type="entity-link">StompRPCConfig</a>
                             </li>
                             <li class="link">
                                 <a href="injectables/StompRPCService.html" data-type="entity-link">StompRPCService</a>
@@ -264,6 +270,9 @@
                         <a href="additional-documentation/sock-js.html" data-type="entity-link" data-context-id="additional">Sock JS</a>
                     </li>
                     <li class="link ">
+                        <a href="additional-documentation/rpc---remote-procedure-call.html" data-type="entity-link" data-context-id="additional">RPC - Remote Procedure Call</a>
+                    </li>
+                    <li class="link ">
                         <a href="additional-documentation/contributing.html" data-type="entity-link" data-context-id="additional">Contributing</a>
                     </li>
             </ul>
@@ -323,6 +332,9 @@
 >
                             <li class="link">
                                 <a href="injectables/StompConfig.html" data-type="entity-link">StompConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="injectables/StompRPCConfig.html" data-type="entity-link">StompRPCConfig</a>
                             </li>
                             <li class="link">
                                 <a href="injectables/StompRPCService.html" data-type="entity-link">StompRPCService</a>
@@ -409,31 +421,20 @@
             <code>src/stomp-rpc.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>An implementation of RPC service using messaging.</p>
+<p>Please see the <a href="../additional-documentation/rpc---remote-procedure-call.html">guide</a> for details.</p>
+
+            </p>
 
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Protected</span>
-                                <a href="#messagesObservable">messagesObservable</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Protected</span>
-                                <a href="#replyQueue">replyQueue</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -446,6 +447,10 @@
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#rpc">rpc</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#stream">stream</a>
                             </li>
                         </ul>
                     </td>
@@ -465,17 +470,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(stompService: <a href="../injectables/StompRService.html">StompRService</a>)</code>
+<code>constructor(stompService: <a href="../injectables/StompRService.html">StompRService</a>, stompRPCConfig?: <a href="../injectables/StompRPCConfig.html">StompRPCConfig</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/stomp-rpc.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/stomp-rpc.service.ts:22</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Create an instance, see the <a href="../additional-documentation/rpc---remote-procedure-call.html">guide</a> for details.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -496,6 +503,18 @@
                                                   
                                                     <td>
                                                             no
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>stompRPCConfig</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/StompRPCConfig.html" target="_self" >StompRPCConfig</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            yes
                                                     </td>
                                                     
                                                 </tr>
@@ -537,12 +556,14 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/stomp-rpc.service.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/stomp-rpc.service.ts:41</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Make an RPC request. See the <a href="../additional-documentation/rpc---remote-procedure-call.html">guide</a> for example.</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -607,131 +628,184 @@
                 </tr>
             </tbody>
         </table>
-</section>
-
-            <section>
-    
-        <h3 id="inputs">
-            Properties
-        </h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="messagesObservable"></a>
+                        <a name="stream"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Protected</span>
-                            messagesObservable
+                                <span class="modifier">Public</span>
+                            stream
                             </b>
-                            <a href="#messagesObservable"><span class="fa fa-link"></span></a>
+                            <a href="#stream"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>messagesObservable:     <code>Observable&lt;Message&gt;</code>
-</code>
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>stream(serviceEndPoint: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, payload: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, headers: <a href="../undefineds/StompHeaders.html">StompHeaders</a>)</code>
                     </td>
                 </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>Observable&lt;Message&gt;</code>
 
-                        </td>
-                    </tr>
+
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/stomp-rpc.service.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/stomp-rpc.service.ts:49</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="replyQueue"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Protected</span>
-                            replyQueue
-                            </b>
-                            <a href="#replyQueue"><span class="fa fa-link"></span></a>
-                        </span>
+                            <div class="io-description"><p>Make an RPC stream request. See the <a href="../additional-documentation/rpc---remote-procedure-call.html">guide</a>.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>serviceEndPoint</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>payload</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>headers</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#StompHeaders" target="_self" >StompHeaders</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>replyQueue:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;/temp-queue/rpc-replies&#x27;</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/stomp-rpc.service.ts:10</a></div>
-                            </td>
-                        </tr>
-
-
             </tbody>
         </table>
 </section>
+
 
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Message, StompHeaders } from &#x27;@stomp/stompjs&#x27;;
-import { UUID } from &#x27;angular2-uuid&#x27;;
-import { Observable, Observer, Subject, Subscription } from &quot;rxjs&quot;;
-import { filter, first } from &quot;rxjs/operators&quot;;
-import { StompRService } from &quot;./stomp-r.service&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
+import {Message, StompHeaders} from &#x27;@stomp/stompjs&#x27;;
+import {UUID} from &#x27;angular2-uuid&#x27;;
+import {Observable, Observer, Subscription} from &quot;rxjs&quot;;
+import {filter, first} from &quot;rxjs/operators&quot;;
+import {StompRService} from &quot;./stomp-r.service&quot;;
+import {setupReplyQueueFnType, StompRPCConfig} from &quot;./stomp-rpc.config&quot;;
 
+/**
+ * An implementation of RPC service using messaging.
+ *
+ * Please see the [guide](../additional-documentation/rpc---remote-procedure-call.html) for details.
+ */
 @Injectable()
 export class StompRPCService {
-  protected replyQueue &#x3D; &#x27;/temp-queue/rpc-replies&#x27;;
+  private _replyQueueName &#x3D; &#x27;/temp-queue/rpc-replies&#x27;;
 
-  protected messagesObservable: Observable&lt;Message&gt;;
+  private _setupReplyQueue: setupReplyQueueFnType &#x3D; () &#x3D;&gt; {
+    return this.stompService.defaultMessagesObservable;
+  };
 
-  constructor(private stompService: StompRService) {
-    this.messagesObservable &#x3D; this.stompService.defaultMessagesObservable;
+  private _repliesObservable: Observable&lt;Message&gt;;
+
+  /**
+   * Create an instance, see the [guide](../additional-documentation/rpc---remote-procedure-call.html) for details.
+   */
+  constructor(private stompService: StompRService, private stompRPCConfig?: StompRPCConfig) {
+    if (stompRPCConfig) {
+      if (stompRPCConfig.replyQueueName) {
+        this._replyQueueName &#x3D; stompRPCConfig.replyQueueName;
+      }
+      if (stompRPCConfig.setupReplyQueue) {
+        this._setupReplyQueue &#x3D; stompRPCConfig.setupReplyQueue;
+      }
+    }
   }
 
+  /**
+   * Make an RPC request. See the [guide](../additional-documentation/rpc---remote-procedure-call.html) for example.
+   */
   public rpc(serviceEndPoint: string, payload: string, headers?: StompHeaders): Observable&lt;Message&gt; {
     // We know there will be only one message in reply
     return this.stream(serviceEndPoint, payload, headers).pipe(first());
   }
 
-  private stream(serviceEndPoint: string, payload: string, headers: StompHeaders &#x3D; {}) {
+  /**
+   * Make an RPC stream request. See the [guide](../additional-documentation/rpc---remote-procedure-call.html).
+   */
+  public stream(serviceEndPoint: string, payload: string, headers: StompHeaders &#x3D; {}) {
+    if (!this._repliesObservable) {
+      this._repliesObservable &#x3D; this._setupReplyQueue(this._replyQueueName, this.stompService);
+    }
+
     return Observable.create(
       (rpcObserver: Observer&lt;Message&gt;) &#x3D;&gt; {
         let defaultMessagesSubscription: Subscription;
 
         const correlationId &#x3D; UUID.UUID();
 
-        defaultMessagesSubscription &#x3D; this.messagesObservable.pipe(filter((message: Message) &#x3D;&gt; {
+        defaultMessagesSubscription &#x3D; this._repliesObservable.pipe(filter((message: Message) &#x3D;&gt; {
           return message.headers[&#x27;correlation-id&#x27;] &#x3D;&#x3D;&#x3D; correlationId;
         })).subscribe((message: Message) &#x3D;&gt; {
           rpcObserver.next(message);
         });
 
         // send an RPC request
-        headers[&#x27;reply-to&#x27;] &#x3D; this.replyQueue;
+        headers[&#x27;reply-to&#x27;] &#x3D; this._replyQueueName;
         headers[&#x27;correlation-id&#x27;] &#x3D; correlationId;
 
         this.stompService.publish(serviceEndPoint, payload, headers);
