@@ -54,6 +54,7 @@ a dependency (or argument).
     const myServiceEndPoint = '/topic/echo';
 
     const request = 'Hello';
+    // It accepts a optional third argument a Hash of headers to be sent as part of the request
     stompRPCService.rpc(myServiceEndPoint, request).subscribe((message: Message) => {
       // Consume the response
       console.log(message.body);
