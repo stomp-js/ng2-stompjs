@@ -70,7 +70,7 @@ any additional messages.
 
 ### Other Brokers
 
-There few requirements:
+There are few requirements:
 
 - the reply queue name **must** be unique across the broker.
 - ideally, for security reasons only the client creating the queue should have access to it.
