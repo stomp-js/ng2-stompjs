@@ -1,5 +1,9 @@
 # Changelog
 
+# 6.1.0.beta.4 2018-09-24
+
+- Correct packaging error
+
 # 6.1.0.beta.3 2018-09-23
 
 - RPC support

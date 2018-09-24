@@ -4,3 +4,4 @@ export { StompService } from './src/stomp.service';
 export { StompState } from './src/stomp-state';
 export { StompConfig } from './src/stomp.config';
 export { StompRPCService } from './src/stomp-rpc.service';
+export { StompRPCConfig } from './src/stomp-rpc.config';
