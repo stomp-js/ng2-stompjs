@@ -645,7 +645,7 @@
     exports.StompState = StompState;
     exports.StompConfig = StompConfig;
     exports.StompRPCService = StompRPCService;
-    exports.ɵa = StompRPCConfig;
+    exports.StompRPCConfig = StompRPCConfig;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

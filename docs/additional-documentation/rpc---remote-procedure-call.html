@@ -445,6 +445,7 @@ a dependency (or argument).
 <pre class="line-numbers"><code class="language-typescript">    const myServiceEndPoint = &#39;/topic/echo&#39;;
 
     const request = &#39;Hello&#39;;
+    // It accepts a optional third argument a Hash of headers to be sent as part of the request
     stompRPCService.rpc(myServiceEndPoint, request).subscribe((message: Message) =&gt; {
       // Consume the response
       console.log(message.body);
@@ -454,7 +455,7 @@ This can be used to receive stream of responses for a single request.
 If you use that it will be your responsibility to unsubscribe when you do not expect
 any additional messages.</p>
 <h3 id="other-brokers">Other Brokers</h3>
-<p>There few requirements:</p>
+<p>There are few requirements:</p>
 <ul>
 <li>the reply queue name <strong>must</strong> be unique across the broker.</li>
 <li>ideally, for security reasons only the client creating the queue should have access to it.</li>
