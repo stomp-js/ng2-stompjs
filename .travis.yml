@@ -4,24 +4,13 @@ language: node_js
 node_js:
   - '10.0.0'
 
-apt:
-  sources:
-    - google-chrome
-  packages:
-    - google-chrome-stable
-    - google-chrome-beta
-
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- docker run -d --hostname rabbitmq.service --name rabbitmq.service -v /rabbitmq:/var/lib/rabbitmq -v /root:/root -p 5672:5672 -p 15672:15672 -p 15674:15674 -p 15670:15670 -p 61613:61613 quay.io/kreatio/rabbitmq:3.6.8-official-alpine-with-webstomp
 
 services:
   - docker
 
 before_script:
-  - docker run -d --hostname rabbitmq.service --name rabbitmq.service -v /rabbitmq:/var/lib/rabbitmq -v /root:/root -p 5672:5672 -p 15672:15672 -p 15674:15674 -p 15670:15670 -p 61613:61613 quay.io/kreatio/rabbitmq:3.6.8-official-alpine-with-webstomp
-  - sleep 10
   - docker exec rabbitmq.service rabbitmqctl status
 
 script: ng test
