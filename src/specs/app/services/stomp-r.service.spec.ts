@@ -28,11 +28,11 @@ describe('StompRService', () => {
   });
 
   describe('should disconnect', () => {
-    // Ask service to disconnect and wait for 2200 ms (more than double
+    // Ask service to disconnect and wait for 500 ms (more than double
     // of reconnect delay)
     beforeEach((done) => {
       stompService.disconnect();
-      setTimeout(() => { done(); }, 2200);
+      setTimeout(() => { done(); }, 500);
     });
 
     it('and not reconnect', () => {
@@ -46,11 +46,11 @@ describe('StompRService', () => {
       disconnetStompRAndEnsure(stompService, done);
     });
 
-    // Ask service to disconnect and wait for 2200 ms (more than double
+    // Ask service to disconnect and wait for 500 ms (more than double
     // of reconnect delay)
     beforeEach((done) => {
       stompService.disconnect();
-      setTimeout(() => { done(); }, 2200);
+      setTimeout(() => { done(); }, 500);
     });
 
     it('and not reconnect', () => {

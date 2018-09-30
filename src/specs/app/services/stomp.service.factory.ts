@@ -32,7 +32,7 @@ export function defaultConfig(): StompConfig {
     // Wait in milliseconds before attempting auto reconnect
     // Set to 0 to disable
     // Typical value 5000 (5 seconds)
-    reconnect_delay: 1000,
+    reconnect_delay: 200,
 
     // Will log diagnostics on console
     debug: true

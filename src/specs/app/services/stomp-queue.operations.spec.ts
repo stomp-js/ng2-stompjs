@@ -56,7 +56,7 @@ describe('StompService Queues', () => {
 
       setTimeout(() => {
         done();
-      }, 200);
+      }, 100);
     });
 
     // Send one message to each queue and verify that these are received in respective subscriptions
@@ -69,7 +69,7 @@ describe('StompService Queues', () => {
         expect(spyHandler2).toHaveBeenCalledWith('Message 02-01');
 
         done();
-      }, 200);
+      }, 100);
     });
 
     it('should receive message in correct queue', () => {
@@ -82,7 +82,7 @@ describe('StompService Queues', () => {
         queSubscription1.unsubscribe();
         setTimeout(() => {
           done();
-        }, 200);
+        }, 100);
       });
 
       it('should not receive message in the first queue', (done) => {
@@ -94,7 +94,7 @@ describe('StompService Queues', () => {
           expect(spyHandler2.calls.count()).toBe(2);
 
           done();
-        }, 200);
+        }, 100);
       });
     });
 
@@ -103,7 +103,7 @@ describe('StompService Queues', () => {
         queSubscription2.unsubscribe();
         setTimeout(() => {
           done();
-        }, 200);
+        }, 100);
       });
 
       it('should not receive message in the second queue', (done) => {
@@ -115,7 +115,7 @@ describe('StompService Queues', () => {
           expect(spyHandler2.calls.count()).toBe(1);
 
           done();
-        }, 200);
+        }, 100);
       });
     });
 
@@ -125,7 +125,7 @@ describe('StompService Queues', () => {
         queSubscription2.unsubscribe();
         setTimeout(() => {
           done();
-        }, 200);
+        }, 100);
       });
 
       it('should not receive message in any of the  queues', (done) => {
@@ -137,7 +137,7 @@ describe('StompService Queues', () => {
           expect(spyHandler2.calls.count()).toBe(1);
 
           done();
-        }, 200);
+        }, 100);
       });
     });
   });
