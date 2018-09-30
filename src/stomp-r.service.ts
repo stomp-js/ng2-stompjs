@@ -370,7 +370,7 @@ export class StompRService {
   }
 
   /** Handle errors from stomp.js */
-  protected on_error = (error: any) => {
+  protected on_error = (error: string | Message) => {
 
     // Trigger the error subject
     this.errorSubject.next(error);
