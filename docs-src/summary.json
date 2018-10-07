@@ -4,6 +4,10 @@
     "file": "SockJS.md"
   },
   {
+    "title": "RPC - Remote Procedure Call",
+    "file": "RPC.md"
+  },
+  {
     "title": "Contributing",
     "file": "Contributing.md"
   }

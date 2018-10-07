@@ -1,5 +1,13 @@
 # Changelog
 
+# 6.1.0.beta.4 2018-09-24
+
+- Correct packaging error
+
+# 6.1.0.beta.3 2018-09-23
+
+- RPC support
+
 # 4.0.1 & 6.0.1 2018-07-20
 
 - Fix issue with disconnect [#77](https://github.com/stomp-js/ng2-stompjs/issues/77)
