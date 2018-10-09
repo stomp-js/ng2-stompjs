@@ -4,9 +4,8 @@ import { BehaviorSubject ,  Observable ,  Observer ,  Subject ,  Subscription } 
 
 import { StompConfig } from './stomp.config';
 
-import { Frame, Message, Stomp, StompSubscription } from '@stomp/stompjs';
+import { Frame, Message, Stomp, StompHeaders, StompSubscription } from '@stomp/stompjs';
 import { CompatClient as Client } from '@stomp/stompjs';
-import { StompHeaders } from './stomp-headers';
 import { StompState } from './stomp-state';
 
 /**
