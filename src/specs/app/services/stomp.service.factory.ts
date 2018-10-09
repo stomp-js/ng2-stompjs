@@ -48,7 +48,7 @@ export class MyStompService extends StompService {
    * This method closes the underlying WebSocket, simulating a close due to an error
    */
   public forceDisconnect(): void {
-    this.client.ws.close();
+    this.client.forceDisconnect();
   }
 }
 
@@ -61,6 +61,6 @@ export class MyStompRService extends StompRService {
    * This method closes the underlying WebSocket, simulating a close due to an error
    */
   public forceDisconnect(): void {
-    this.client.ws.close();
+    this.client.forceDisconnect();
   }
 }

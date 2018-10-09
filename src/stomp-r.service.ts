@@ -1,12 +1,11 @@
-import { first, filter, share } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject ,  Observable ,  Observer ,  Subject ,  Subscription } from 'rxjs';
+import {filter, first, share} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, Observer, Subject, Subscription} from 'rxjs';
 
-import { StompConfig } from './stomp.config';
+import {StompConfig} from './stomp.config';
 
-import { Frame, Message, Stomp, StompHeaders, StompSubscription } from '@stomp/stompjs';
-import { CompatClient as Client } from '@stomp/stompjs';
-import { StompState } from './stomp-state';
+import {Client, Frame, Message, Stomp, StompHeaders, StompSubscription} from '@stomp/stompjs';
+import {StompState} from './stomp-state';
 
 /**
  * Angular2 STOMP Raw Service using @stomp/stomp.js
@@ -64,7 +63,7 @@ export class StompRService {
    * Will trigger when an error occurs. This Subject can be used to handle errors from
    * the stomp broker.
    */
-  public errorSubject: Subject<string | Message>;
+  public stompError$: Subject<Frame>;
 
   /**
    * Internal array to hold locally queued messages when STOMP broker is not connected.
@@ -108,7 +107,7 @@ export class StompRService {
       })
     );
 
-    this.errorSubject = new Subject();
+    this.stompError$ = new Subject();
   }
 
   /** Set configuration */
@@ -129,11 +128,11 @@ export class StompRService {
     }
 
     // Configure client heart-beating
-    this.client.heartbeat.incoming = this._config.heartbeat_in;
-    this.client.heartbeat.outgoing = this._config.heartbeat_out;
+    this.client.heartbeatIncoming = this._config.heartbeat_in;
+    this.client.heartbeatOutgoing = this._config.heartbeat_out;
 
     // Auto reconnect
-    this.client.reconnect_delay = this._config.reconnect_delay;
+    this.client.reconnectDelay = this._config.reconnect_delay;
 
     if (!this._config.debug) {
       this.debug = function () {
@@ -160,12 +159,19 @@ export class StompRService {
       this._config.headers = {};
     }
 
+    this.client.configure({
+      onConnect: this.on_connect,
+      onStompError: (frame: Frame) => {
+        // Trigger the frame subject
+        this.stompError$.next(frame);
+      },
+      onWebSocketClose: () => {
+        this.state.next(StompState.CLOSED);
+      },
+      connectHeaders: this._config.headers
+    });
     // Attempt connection, passing in a callback
-    this.client.connect(
-      this._config.headers,
-      this.on_connect,
-      this.on_error
-    );
+    this.client.activate();
 
     this.debug('Connecting...');
     this.state.next(StompState.TRYING);
@@ -179,6 +185,9 @@ export class StompRService {
 
     // Disconnect if connected. Callback will set CLOSED state
     if (this.client) {
+
+      this.client.deactivate();
+
       if (!this.client.connected) {
         // Nothing to do
         this.state.next(StompState.CLOSED);
@@ -187,10 +196,6 @@ export class StompRService {
 
       // Notify observers that we are disconnecting!
       this.state.next(StompState.DISCONNECTING);
-
-      this.client.disconnect(
-        () => this.state.next(StompState.CLOSED)
-      );
     }
   }
 
@@ -213,7 +218,7 @@ export class StompRService {
    */
   public publish(queueName: string, message: string, headers: StompHeaders = {}): void {
     if (this.connected()) {
-      this.client.send(queueName, headers, message);
+      this.client.publish({destination: queueName, headers: headers, body: message});
     } else {
       this.debug(`Not connected, queueing ${message}`);
       this.queuedMessages.push({queueName: <string>queueName, message: <string>message, headers: headers});
@@ -317,7 +322,7 @@ export class StompRService {
   protected setupOnReceive(): void {
     this.defaultMessagesObservable = new Subject();
 
-    this.client.onreceive = (message: Message) => {
+    this.client.onUnhandledMessage = (message: Message) => {
       this.defaultMessagesObservable.next(message);
     };
   }
@@ -328,7 +333,7 @@ export class StompRService {
   protected setupReceipts(): void {
     this.receiptsObservable = new Subject();
 
-    this.client.onreceipt = (frame: Frame) => {
+    this.client.onUnhandledReceipt = (frame: Frame) => {
       this.receiptsObservable.next(frame);
     };
   }
@@ -368,22 +373,4 @@ export class StompRService {
     this.state.next(StompState.CONNECTED);
   }
 
-  /** Handle errors from stomp.js */
-  protected on_error = (error: string | Message) => {
-
-    // Trigger the error subject
-    this.errorSubject.next(error);
-
-    if (typeof error === 'object') {
-      error = (<Message>error).body;
-    }
-
-    this.debug(`Error: ${error}`);
-
-    // Check for dropped connection and try reconnecting
-    if (!this.client.connected) {
-      // Reset state indicator
-      this.state.next(StompState.CLOSED);
-    }
-  }
 }
