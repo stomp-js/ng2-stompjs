@@ -342,14 +342,7 @@ export class StompRService {
    * Wait for receipt, this indicates that server has carried out the related operation
    */
   public waitForReceipt(receiptId: string, callback: (frame: Frame) => void): void {
-    this.receiptsObservable.pipe(
-      filter((frame: Frame) => {
-        return frame.headers['receipt-id'] === receiptId;
-      }),
-      first()
-    ).subscribe((frame: Frame) => {
-      callback(frame);
-    });
+    this.client.watchForReceipt(receiptId, callback);
   }
 
   /**
