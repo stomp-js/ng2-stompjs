@@ -166,7 +166,7 @@ export class StompRService {
         this.stompError$.next(frame);
       },
       onWebSocketClose: () => {
-        this.state.next(StompState.CLOSED);
+        this._changeState(StompState.CLOSED);
       },
       connectHeaders: this._config.headers
     });
@@ -174,7 +174,7 @@ export class StompRService {
     this.client.activate();
 
     this.debug('Connecting...');
-    this.state.next(StompState.TRYING);
+    this._changeState(StompState.TRYING);
   }
 
 
@@ -190,12 +190,12 @@ export class StompRService {
 
       if (!this.client.connected) {
         // Nothing to do
-        this.state.next(StompState.CLOSED);
+        this._changeState(StompState.CLOSED);
         return;
       }
 
       // Notify observers that we are disconnecting!
-      this.state.next(StompState.DISCONNECTING);
+      this._changeState(StompState.DISCONNECTING);
     }
   }
 
@@ -363,7 +363,11 @@ export class StompRService {
     this._serverHeadersBehaviourSubject.next(frame.headers);
 
     // Indicate our connected state to observers
-    this.state.next(StompState.CONNECTED);
+    this._changeState(StompState.CONNECTED);
+  }
+
+  private _changeState(state: StompState): void {
+    this.state.next(state);
   }
 
 }
