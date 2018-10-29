@@ -36,6 +36,7 @@
   },
   "main": "./index.ts",
   "dependencies": {
+    "@stomp/rx-stomp": "0.1.0-beta.2",
     "@stomp/stompjs": "^5.0.0-beta.4",
     "angular2-uuid": "^1.1.1"
   },
