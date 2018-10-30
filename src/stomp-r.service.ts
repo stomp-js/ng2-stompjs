@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 
 import {RxStomp, RxStompConfig, RxStompState} from "@stomp/rx-stomp";
 
-import {publishParams, StompHeaders, Client} from "@stomp/stompjs";
+import {publishParams, Client, Message, Frame} from "@stomp/stompjs";
 
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {map} from "rxjs/operators";
 
 import {StompState} from "./stomp-state";
+import { StompHeaders } from './stomp-headers';
 import {StompConfig} from "./stomp.config";
 
 /**
@@ -74,14 +75,14 @@ export class StompRService extends RxStomp {
   /**
    * Will emit all messages to the default queue (any message that are not handled by a subscription)
    */
-  get defaultMessagesObservable() {
+  get defaultMessagesObservable(): Subject<Message> {
     return this.unhandledMessage$;
   }
 
   /**
    * Will emit all receipts
    */
-  get receiptsObservable() {
+  get receiptsObservable(): Subject<Frame> {
     return this.unhandledReceipts$;
   }
 
@@ -89,7 +90,7 @@ export class StompRService extends RxStomp {
    * Will trigger when an error occurs. This Subject can be used to handle errors from
    * the stomp broker.
    */
-  get errorSubject() {
+  get errorSubject(): Subject<string | Frame> {
     return this.stompErrors$;
   }
 
@@ -174,7 +175,7 @@ export class StompRService extends RxStomp {
    * @param queueName
    * @param headers
    */
-  public subscribe(queueName: string, headers: StompHeaders = {}) {
+  public subscribe(queueName: string, headers: StompHeaders = {}): Observable<Message> {
     return this.watch(queueName, headers);
   }
 

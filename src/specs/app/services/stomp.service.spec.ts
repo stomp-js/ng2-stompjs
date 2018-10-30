@@ -4,8 +4,9 @@ import { filter } from 'rxjs/operators';
 import { StompService, StompState } from '../../../..';
 
 import { defaultConfig, MyStompService, stompServiceFactory } from './stomp.service.factory';
-import { Message, StompHeaders } from '@stomp/stompjs';
+import { Message } from '@stomp/stompjs';
 import { ensureStompConnected, disconnetStompRAndEnsure } from './helpers';
+import { StompHeaders } from '../../../stomp-headers';
 
 describe('StompService', () => {
   let stompService: StompService;
