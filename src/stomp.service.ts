@@ -27,7 +27,7 @@ export class StompService extends StompRService {
   public constructor(config: StompConfig) {
     super();
 
-    this.configure(config);
-    this.activate();
+    this.config = config;
+    this.initAndConnect();
   }
 }

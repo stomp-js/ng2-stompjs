@@ -43,7 +43,7 @@ describe('Rabbit RPC', () => {
 
   it('Simple RPC', (done) => {
     // Watch for RPC response
-    stompRPCService.rpc(myServiceEndPoint, 'Hello').subscribe((message: Message) => {
+    stompRPCService.rpc({destination: myServiceEndPoint, body: 'Hello'}).subscribe((message: Message) => {
       expect(message.body).toBe('Echoing - Hello');
       done();
     });
@@ -57,7 +57,7 @@ describe('Rabbit RPC', () => {
     let origNumSubcribers = numSubscribers();
 
     // Watch for RPC response
-    stompRPCService.rpc(myServiceEndPoint, 'Hello').subscribe((message: Message) => {
+    stompRPCService.rpc({destination: myServiceEndPoint, body: 'Hello'}).subscribe((message: Message) => {
       expect(message.body).toBe('Echoing - Hello');
       setTimeout(() => {
         expect(numSubscribers()).toBe(origNumSubcribers);
