@@ -1,8 +1,9 @@
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { StompConfig } from './stomp.config';
-import * as Stomp from '@stomp/stompjs';
+import { RxStomp } from "@stomp/rx-stomp";
+import { publishParams, Client, Message, Frame } from "@stomp/stompjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { StompState } from "./stomp-state";
 import { StompHeaders } from './stomp-headers';
-import { StompState } from './stomp-state';
+import { StompConfig } from "./stomp.config";
 /**
  * Angular2 STOMP Raw Service using @stomp/stomp.js
  *
@@ -16,7 +17,7 @@ import { StompState } from './stomp-state';
  * If you will like to pass the configuration as a dependency,
  * please use StompService class.
  */
-export declare class StompRService {
+export declare class StompRService extends RxStomp {
     /**
      * State of the STOMPService
      *
@@ -24,13 +25,14 @@ export declare class StompRService {
      * used to show current status to the end user.
      */
     state: BehaviorSubject<StompState>;
+    private static _mapStompState(st);
     /**
      * Will trigger when connection is established. Use this to carry out initialization.
      * It will trigger every time a (re)connection occurs. If it is already connected
      * it will trigger immediately. You can safely ignore the value, as it will always be
      * StompState.CONNECTED
      */
-    connectObservable: Observable<StompState>;
+    readonly connectObservable: Observable<StompState>;
     /**
      * Provides headers from most recent connection to the server as return by the CONNECTED
      * frame.
@@ -38,47 +40,22 @@ export declare class StompRService {
      * It will additionally trigger in event of reconnection, the value will be set of headers from
      * the recent server response.
      */
-    serverHeadersObservable: Observable<StompHeaders>;
-    private _serverHeadersBehaviourSubject;
+    readonly serverHeadersObservable: Observable<StompHeaders>;
     /**
      * Will emit all messages to the default queue (any message that are not handled by a subscription)
      */
-    defaultMessagesObservable: Subject<Stomp.Message>;
+    readonly defaultMessagesObservable: Subject<Message>;
     /**
      * Will emit all receipts
      */
-    receiptsObservable: Subject<Stomp.Frame>;
+    readonly receiptsObservable: Subject<Frame>;
     /**
      * Will trigger when an error occurs. This Subject can be used to handle errors from
      * the stomp broker.
      */
-    errorSubject: Subject<string | Stomp.Message>;
-    /**
-     * Internal array to hold locally queued messages when STOMP broker is not connected.
-     */
-    protected queuedMessages: {
-        queueName: string;
-        message: string;
-        headers: StompHeaders;
-    }[];
-    /**
-     * Configuration
-     */
-    private _config;
-    /**
-     * STOMP Client from @stomp/stomp.js
-     */
-    protected client: Stomp.Client;
-    /**
-     * Constructor
-     *
-     * See README and samples for configuration examples
-     */
-    constructor();
+    readonly errorSubject: Subject<string | Frame>;
     /** Set configuration */
     config: StompConfig;
-    /** It will initialize STOMP Client. */
-    protected initStompClient(): void;
     /**
      * It will connect to the STOMP broker.
      */
@@ -87,10 +64,6 @@ export declare class StompRService {
      * It will disconnect from the STOMP broker.
      */
     disconnect(): void;
-    /**
-     * It will return `true` if STOMP broker is connected and `false` otherwise.
-     */
-    connected(): boolean;
     /**
      * It will send a message to a named destination. The message must be `string`.
      *
@@ -101,9 +74,7 @@ export declare class StompRService {
      * @param message
      * @param headers
      */
-    publish(queueName: string, message: string, headers?: StompHeaders): void;
-    /** It will send queued messages. */
-    protected sendQueuedMessages(): void;
+    publish(queueName: string | publishParams, message?: string, headers?: StompHeaders): void;
     /**
      * It will subscribe to server message queues
      *
@@ -121,29 +92,7 @@ export declare class StompRService {
      * @param queueName
      * @param headers
      */
-    subscribe(queueName: string, headers?: StompHeaders): Observable<Stomp.Message>;
-    /**
-     * It will handle messages received in the default queue. Messages that would not be handled otherwise
-     * get delivered to the default queue.
-     */
-    protected setupOnReceive(): void;
-    /**
-     * It will emit all receipts.
-     */
-    protected setupReceipts(): void;
-    /**
-     * Wait for receipt, this indicates that server has carried out the related operation
-     */
-    waitForReceipt(receiptId: string, callback: (frame: Stomp.Frame) => void): void;
-    /**
-     * Callback Functions
-     *
-     * Note the method signature: () => preserves lexical scope
-     * if we need to use this.x inside the function
-     */
-    protected debug: (args: any) => void;
-    /** Callback run on successfully connecting to server */
-    protected on_connect: (frame: Stomp.Frame) => void;
-    /** Handle errors from stomp.js */
-    protected on_error: (error: string | Stomp.Message) => void;
+    subscribe(queueName: string, headers?: StompHeaders): Observable<Message>;
+    readonly client: Client;
+    constructor();
 }

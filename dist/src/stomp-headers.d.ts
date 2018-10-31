@@ -1,4 +1,1 @@
-/** Type definition for Headers */
-export declare type StompHeaders = {
-    [key: string]: any;
-};
+export { StompHeaders } from '@stomp/stompjs';

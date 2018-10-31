@@ -1,5 +1,10 @@
 # Changelog
 
+# 7.0.0-beta.1 2018-10-31
+
+- Based on @stompjs/rx-stomp
+- Compatibility mode working
+
 # 6.1.0.beta.4 2018-09-24
 
 - Correct packaging error

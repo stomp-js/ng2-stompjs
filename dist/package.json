@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "6.1.0-beta.4",
+  "version": "7.0.0-beta.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/stomp-js/ng2-stompjs"
@@ -25,8 +25,7 @@
   },
   "main": "bundles/stomp-ng2-stompjs.umd.js",
   "dependencies": {
-    "@stomp/stompjs": "^4.0.0 >=4.0.7",
-    "angular2-uuid": "^1.1.1",
+    "@stomp/rx-stomp": "0.1.0-beta.2",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
@@ -43,7 +42,7 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
-    "@compodoc/compodoc": "^1.1.2",
+    "@compodoc/compodoc": "^1.1.5",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
@@ -56,6 +55,7 @@
     "karma-coverage-istanbul-reporter": "~1.4.2",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-summary-reporter": "^1.5.1",
     "ng-packagr": "^4.1.1",
     "protractor": "^5.4.1",
     "rxjs": "^6.0.0",
