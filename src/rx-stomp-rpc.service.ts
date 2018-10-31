@@ -8,4 +8,4 @@ import {RxStompRPC} from "@stomp/rx-stomp";
  * Please see the [guide](../additional-documentation/rpc---remote-procedure-call.html) for details.
  */
 @Injectable()
-export class StompRPCService extends RxStompRPC { }
+export class RxStompRPCService extends RxStompRPC { }
