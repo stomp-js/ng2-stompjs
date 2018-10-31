@@ -1,9 +1,8 @@
 // These are likely to fail on any broker other than RabbitMQ
-import {StompService} from '../../../stomp.service';
-import {defaultConfig, stompServiceFactory} from './stomp.service.factory';
-import {ensureStompConnected} from './helpers';
+import {defaultConfig, stompServiceFactory} from './compatibility/stomp.service.factory';
+import {ensureStompConnected} from './compatibility/helpers';
 import {Message} from '@stomp/stompjs';
-import {StompRPCService} from '../../../..';
+import {StompService, StompRPCService} from '../../../..';
 import {UUID} from 'angular2-uuid';
 
 describe('Rabbit RPC', () => {

@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { StompRService, StompService, StompConfig } from '../../../..';
+import { StompRService, StompService, StompConfig } from '../../../../../';
 import * as SockJS from 'sockjs-client';
 
 

@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 // Helper functions
-import {StompRService, StompState} from '../../../..';
+import {StompRService, StompState} from '../../../../../';
 
 export function ensureStompConnected(stompService: StompRService, done) {
   stompService.connectObservable.subscribe((state: StompState) => {

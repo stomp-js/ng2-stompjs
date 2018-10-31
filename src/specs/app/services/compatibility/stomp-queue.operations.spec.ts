@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { map } from 'rxjs/operators';
-import { StompService} from '../../../..';
+import { StompService} from '../../../../../';
 import { defaultConfig, stompServiceFactory } from './stomp.service.factory';
 import { ensureStompConnected, disconnetStompRAndEnsure} from './helpers';
 import { Subscription } from 'rxjs';

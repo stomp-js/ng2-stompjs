@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { StompRService, StompState, StompConfig } from '../../../..';
+import { StompRService, StompState, StompConfig } from '../../../../../';
 
 import { defaultConfig, MyStompRService } from './stomp.service.factory';
 import { ensureStompConnected, disconnetStompRAndEnsure, ensureStompRDisconnected } from './helpers';
