@@ -77,48 +77,6 @@ describe('StompService Queues', () => {
       expect(true).toBe(true);
     });
 
-    describe('unsubscribe first queue', () => {
-      beforeEach((done) => {
-        queSubscription1.unsubscribe();
-        setTimeout(() => {
-          done();
-        }, 100);
-      });
-
-      it('should not receive message in the first queue', (done) => {
-        stompService.publish(queueName1, 'Message 01-02');
-        stompService.publish(queueName2, 'Message 02-02');
-
-        setTimeout(() => {
-          expect(spyHandler1.calls.count()).toBe(1);
-          expect(spyHandler2.calls.count()).toBe(2);
-
-          done();
-        }, 100);
-      });
-    });
-
-    describe('unsubscribe second queue', () => {
-      beforeEach((done) => {
-        queSubscription2.unsubscribe();
-        setTimeout(() => {
-          done();
-        }, 100);
-      });
-
-      it('should not receive message in the second queue', (done) => {
-        stompService.publish(queueName1, 'Message 01-02');
-        stompService.publish(queueName2, 'Message 02-02');
-
-        setTimeout(() => {
-          expect(spyHandler1.calls.count()).toBe(2);
-          expect(spyHandler2.calls.count()).toBe(1);
-
-          done();
-        }, 100);
-      });
-    });
-
     describe('unsubscribe both queues', () => {
       beforeEach((done) => {
         queSubscription1.unsubscribe();
