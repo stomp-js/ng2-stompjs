@@ -2,11 +2,6 @@
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
   "lib": {
     "entryFile": "index.ts",
-    "externals": {
-      "@stomp/rx-stomp": "./node_modules/@stomp/rx-stompjs/index.js",
-      "@stomp/stompjs": "./node_modules/@stomp/stompjs/index.js",
-      "@stomp/stompjs/index": "./node_modules/@stomp/stompjs/index.js"
-    },
     "umdModuleIds": {
       "@stomp/rx-stomp": "RxStomp",
       "@stomp/stompjs": "StompJs"
