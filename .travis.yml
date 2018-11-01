@@ -9,4 +9,5 @@ before_install:
 before_script:
   - docker exec rabbitmq rabbitmqctl status
 
-script: ng test
+script:
+  - ng lint && ng test
