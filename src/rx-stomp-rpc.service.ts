@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {RxStompRPC} from "@stomp/rx-stomp";
+import {RxStompRPC} from '@stomp/rx-stomp';
 
 /**
  * An implementation of RPC service using messaging.

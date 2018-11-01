@@ -1,8 +1,8 @@
 import {TestBed} from '@angular/core/testing';
-import {take} from "rxjs/operators";
-import {defaultRxStompConfig, disconnectRxStompAndEnsure} from "./rx-helpers";
-import {RxStompService} from "../../../rx-stomp.service";
-import {InjectableRxStompConfig, rxStompServiceFactory} from "../../../../";
+import {take} from 'rxjs/operators';
+import {defaultRxStompConfig, disconnectRxStompAndEnsure} from './rx-helpers';
+import {RxStompService} from '../../../rx-stomp.service';
+import {InjectableRxStompConfig, rxStompServiceFactory} from '../../../../';
 
 describe('RxStompService', () => {
   let rxStompService: RxStompService;
@@ -31,7 +31,7 @@ describe('RxStompService', () => {
       rxStompService.activate();
 
       rxStompService.connected$.pipe(take(1)).subscribe(() => {
-        done()
+        done();
       });
     });
   });
@@ -65,7 +65,7 @@ describe('RxStompService', () => {
 
     it('should connect', (done) => {
       rxStompService.connected$.pipe(take(1)).subscribe(() => {
-        done()
+        done();
       });
     });
   });

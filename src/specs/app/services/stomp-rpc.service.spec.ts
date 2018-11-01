@@ -49,11 +49,11 @@ describe('Rabbit RPC', () => {
   });
 
   it('Should not leak', (done) => {
-    let numSubscribers = () => {
+    const numSubscribers = () => {
       return stompService.defaultMessagesObservable.observers.length;
     };
 
-    let origNumSubcribers = numSubscribers();
+    const origNumSubcribers = numSubscribers();
 
     // Watch for RPC response
     stompRPCService.rpc({destination: myServiceEndPoint, body: 'Hello'}).subscribe((message: Message) => {

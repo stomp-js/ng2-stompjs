@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 
-import {RxStomp, RxStompConfig, RxStompState} from "@stomp/rx-stomp";
+import {RxStomp, RxStompConfig, RxStompState} from '@stomp/rx-stomp';
 
-import {publishParams, Client, Message, Frame} from "@stomp/stompjs";
+import {publishParams, Client, Message, Frame} from '@stomp/stompjs';
 
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {map} from "rxjs/operators";
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import {StompState} from "./stomp-state";
+import {StompState} from './stomp-state';
 import { StompHeaders } from './stomp-headers';
-import {StompConfig} from "./stomp.config";
+import {StompConfig} from './stomp.config';
 
 /**
  * Angular2 STOMP Raw Service using @stomp/stomp.js
@@ -114,7 +114,7 @@ export class StompRService extends RxStomp {
     if (config.debug) {
       rxStompConfig.debug = (str: string): void => {
         console.log(new Date(), str);
-      }
+      };
     }
 
     rxStompConfig.connectHeaders = config.headers;

@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 
-import {RxStompRPCConfig} from "@stomp/rx-stomp";
+import {RxStompRPCConfig} from '@stomp/rx-stomp';
 
 /**
  * RPC Config. See the guide for example.
