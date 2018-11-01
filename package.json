@@ -2,10 +2,7 @@
   "name": "@stomp/ng2-stompjs",
   "version": "7.0.0-beta.1",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
     "dist": "ng-packagr -p ng-package.json",
-    "build": "ng build",
     "test": "ng test",
     "doc": "bin/doc-gen.sh",
     "doc-serve": "bin/doc-gen.sh -r 59322 -s -w -o",
