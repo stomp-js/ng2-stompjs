@@ -4,7 +4,6 @@ export { StompService } from './src/stomp.service';
 export { StompHeaders } from './src/stomp-headers';
 export { StompState } from './src/stomp-state';
 export { StompConfig } from './src/stomp.config';
-export { StompRPCConfig } from './src/stomp-rpc.config';
 
 export { RxStompRPCService } from './src/rx-stomp-rpc.service';
 export { RxStompService } from './src/rx-stomp.service';
