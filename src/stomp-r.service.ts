@@ -179,6 +179,38 @@ export class StompRService extends RxStomp {
     return this.watch(queueName, headers);
   }
 
+  /**
+   * STOMP brokers may carry out operation asynchronously and allow requesting for acknowledgement.
+   * To request an acknowledgement, a `receipt` header needs to be sent with the actual request.
+   * The value (say receipt-id) for this header needs to be unique for each use. Typically a sequence, a UUID, a
+   * random number or a combination may be used.
+   *
+   * A complaint broker will send a RECEIPT frame when an operation has actually been completed.
+   * The operation needs to be matched based in the value of the receipt-id.
+   *
+   * This method allow watching for a receipt and invoke the callback
+   * when corresponding receipt has been received.
+   *
+   * The actual {@link https://stomp-js.github.io/stompjs/classes/Frame.html}
+   * will be passed as parameter to the callback.
+   *
+   * Example:
+   * ```javascript
+   *        // Publishing with acknowledgement
+   *        let receiptId = randomText();
+   *
+   *        rxStomp.waitForReceipt(receiptId, function() {
+   *          // Will be called after server acknowledges
+   *        });
+   *        rxStomp.publish({destination: TEST.destination, headers: {receipt: receiptId}, body: msg});
+   * ```
+   *
+   * Maps to: https://stomp-js.github.io/stompjs/classes/Client.html#watchForReceipt
+   */
+  public waitForReceipt(receiptId: string, callback: (frame: Frame) => void): void {
+    super.watchForReceipt(receiptId, callback);
+  }
+
   get client(): Client {
     return this._stompClient;
   }
