@@ -2,9 +2,9 @@
 import {Message} from '@stomp/stompjs';
 import {RxStompRPCService, RxStompService, rxStompServiceFactory, InjectableRxStompConfig} from '../../../..';
 import {UUID} from 'angular2-uuid';
-import {TestBed} from "@angular/core/testing";
-import {defaultRxStompConfig} from "./rx-helpers";
-import {RxStomp, RxStompConfig} from "@stomp/rx-stomp";
+import {TestBed} from '@angular/core/testing';
+import {defaultRxStompConfig} from './rx-helpers';
+import {RxStomp, RxStompConfig} from '@stomp/rx-stomp';
 
 describe('Rabbit RPC', () => {
   const myServiceEndPoint = '/topic/echo';
@@ -40,7 +40,7 @@ describe('Rabbit RPC', () => {
     const rxStompConfig: RxStompConfig = (Object as any).assign({}, defaultRxStompConfig);
     // Identify log messages on the server side
     rxStompConfig.debug = (str: string) => {
-      console.log("RPC Server: ", new Date(), str);
+      console.log('RPC Server: ', new Date(), str);
     };
     rxStomp.configure(rxStompConfig);
     rxStomp.activate();
