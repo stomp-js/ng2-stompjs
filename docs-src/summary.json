@@ -14,5 +14,9 @@
   {
     "title": "Change Log",
     "file": "Changelog.md"
+  },
+  {
+    "title": "v6 Readme",
+    "file": "v6-Readme.md"
   }
 ]

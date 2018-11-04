@@ -1,0 +1,19 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { InjectableRxStompConfig } from './injectable-rx-stomp-config';
+import { RxStompService } from './rx-stomp.service';
+import { TestBed } from '@angular/core/testing';
+/**
+ * @param {?} rxStompConfig
+ * @return {?}
+ */
+export function rxStompServiceFactory(rxStompConfig) {
+    var /** @type {?} */ rxStompService = new RxStompService();
+    rxStompService.configure(TestBed.get(InjectableRxStompConfig));
+    rxStompService.activate();
+    return rxStompService;
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicngtc3RvbXAtc2VydmljZS1mYWN0b3J5LmpzIiwic291cmNlUm9vdCI6Im5nOi8vQHN0b21wL25nMi1zdG9tcGpzLyIsInNvdXJjZXMiOlsic3JjL3J4LXN0b21wLXNlcnZpY2UtZmFjdG9yeS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsT0FBTyxFQUFDLHVCQUF1QixFQUFDLE1BQU0sOEJBQThCLENBQUM7QUFDckUsT0FBTyxFQUFDLGNBQWMsRUFBQyxNQUFNLG9CQUFvQixDQUFDO0FBQ2xELE9BQU8sRUFBQyxPQUFPLEVBQUMsTUFBTSx1QkFBdUIsQ0FBQzs7Ozs7QUFFOUMsTUFBTSxnQ0FBZ0MsYUFBc0M7SUFDMUUscUJBQU0sY0FBYyxHQUFHLElBQUksY0FBYyxFQUFFLENBQUM7SUFFNUMsY0FBYyxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLHVCQUF1QixDQUFDLENBQUMsQ0FBQztJQUMvRCxjQUFjLENBQUMsUUFBUSxFQUFFLENBQUM7SUFFMUIsTUFBTSxDQUFDLGNBQWMsQ0FBQztDQUN2QiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7SW5qZWN0YWJsZVJ4U3RvbXBDb25maWd9IGZyb20gJy4vaW5qZWN0YWJsZS1yeC1zdG9tcC1jb25maWcnO1xuaW1wb3J0IHtSeFN0b21wU2VydmljZX0gZnJvbSAnLi9yeC1zdG9tcC5zZXJ2aWNlJztcbmltcG9ydCB7VGVzdEJlZH0gZnJvbSAnQGFuZ3VsYXIvY29yZS90ZXN0aW5nJztcblxuZXhwb3J0IGZ1bmN0aW9uIHJ4U3RvbXBTZXJ2aWNlRmFjdG9yeShyeFN0b21wQ29uZmlnOiBJbmplY3RhYmxlUnhTdG9tcENvbmZpZyk6IFJ4U3RvbXBTZXJ2aWNlIHtcbiAgY29uc3QgcnhTdG9tcFNlcnZpY2UgPSBuZXcgUnhTdG9tcFNlcnZpY2UoKTtcblxuICByeFN0b21wU2VydmljZS5jb25maWd1cmUoVGVzdEJlZC5nZXQoSW5qZWN0YWJsZVJ4U3RvbXBDb25maWcpKTtcbiAgcnhTdG9tcFNlcnZpY2UuYWN0aXZhdGUoKTtcblxuICByZXR1cm4gcnhTdG9tcFNlcnZpY2U7XG59XG4iXX0=

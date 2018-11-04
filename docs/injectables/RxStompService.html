@@ -19,10 +19,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -42,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>StompRPCService</li>
+  <li>RxStompService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,17 +57,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/stomp-rpc.service.ts</code>
+            <code>src/rx-stomp.service.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>An implementation of RPC service using messaging.</p>
-<p>Please see the <a href="../additional-documentation/rpc---remote-procedure-call.html">guide</a> for details.</p>
-
-            </p>
 
 
 
@@ -81,17 +70,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { RxStomp } from &#x27;@stomp/rx-stomp&#x27;;
 
-import {RxStompRPC} from &quot;@stomp/rx-stomp&quot;;
-
-/**
- * An implementation of RPC service using messaging.
- *
- * Please see the [guide](../additional-documentation/rpc---remote-procedure-call.html) for details.
- */
 @Injectable()
-export class StompRPCService extends RxStompRPC { }
+export class RxStompService extends RxStomp { }
 </code></pre>
     </div>
 
@@ -124,12 +107,14 @@ export class StompRPCService extends RxStompRPC { }
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'StompRPCService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'RxStompService.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

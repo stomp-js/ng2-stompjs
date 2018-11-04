@@ -1,5 +1,10 @@
 # Changelog
 
+# 7.0.0-beta.2 2018-11-04
+
+- Test cases and documentation updates, lint clean
+- Update @stomp/rx-stomp to 0.1.0-beta.4
+
 # 7.0.0-beta.1 2018-10-31
 
 - Based on @stompjs/rx-stomp

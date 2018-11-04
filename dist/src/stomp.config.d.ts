@@ -1,4 +1,4 @@
-import { StompHeaders } from "@stomp/stompjs";
+import { StompHeaders } from '@stomp/stompjs';
 /**
  * Represents a configuration object for the
  * STOMPService to connect to.

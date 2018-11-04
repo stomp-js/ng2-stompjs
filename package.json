@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "7.0.0-beta.1",
+  "version": "7.0.0-beta.2",
   "scripts": {
     "dist": "ng-packagr -p ng-package.json",
     "test": "ng test",

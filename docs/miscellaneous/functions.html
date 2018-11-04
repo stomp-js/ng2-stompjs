@@ -19,10 +19,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -64,13 +61,25 @@
                             <a href="#defaultConfig" title="src/specs/app/services/compatibility/stomp.service.factory.ts"><b>defaultConfig</b>&nbsp;&nbsp;&nbsp;(src/.../stomp.service.factory.ts)</a>
                         </li>
                         <li>
+                            <a href="#disconnectRxStompAndEnsure" title="src/specs/app/services/rx-helpers.ts"><b>disconnectRxStompAndEnsure</b>&nbsp;&nbsp;&nbsp;(src/.../rx-helpers.ts)</a>
+                        </li>
+                        <li>
                             <a href="#disconnetStompRAndEnsure" title="src/specs/app/services/compatibility/helpers.ts"><b>disconnetStompRAndEnsure</b>&nbsp;&nbsp;&nbsp;(src/.../helpers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ensureRxStompConnected" title="src/specs/app/services/rx-helpers.ts"><b>ensureRxStompConnected</b>&nbsp;&nbsp;&nbsp;(src/.../rx-helpers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ensureRxStompDisconnected" title="src/specs/app/services/rx-helpers.ts"><b>ensureRxStompDisconnected</b>&nbsp;&nbsp;&nbsp;(src/.../rx-helpers.ts)</a>
                         </li>
                         <li>
                             <a href="#ensureStompConnected" title="src/specs/app/services/compatibility/helpers.ts"><b>ensureStompConnected</b>&nbsp;&nbsp;&nbsp;(src/.../helpers.ts)</a>
                         </li>
                         <li>
                             <a href="#ensureStompRDisconnected" title="src/specs/app/services/compatibility/helpers.ts"><b>ensureStompRDisconnected</b>&nbsp;&nbsp;&nbsp;(src/.../helpers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#rxStompServiceFactory" title="src/rx-stomp-service-factory.ts"><b>rxStompServiceFactory</b>&nbsp;&nbsp;&nbsp;(src/.../rx-stomp-service-factory.ts)</a>
                         </li>
                         <li>
                             <a href="#socketProvider" title="src/specs/app/services/compatibility/stomp.service.factory.ts"><b>socketProvider</b>&nbsp;&nbsp;&nbsp;(src/.../stomp.service.factory.ts)</a>
@@ -150,7 +159,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>stompServiceFactory(_conf: undefined)</code>
+<code>stompServiceFactory(_conf)</code>
                     </td>
                 </tr>
 
@@ -189,6 +198,213 @@
             </tbody>
         </table>
 </section>
+    <h3>src/specs/app/services/rx-helpers.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disconnectRxStompAndEnsure"></a>
+                        <span class="name">
+                            <b>
+                            disconnectRxStompAndEnsure
+                            </b>
+                            <a href="#disconnectRxStompAndEnsure"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>disconnectRxStompAndEnsure(rxStomp, done: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>rxStomp</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>done</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ensureRxStompConnected"></a>
+                        <span class="name">
+                            <b>
+                            ensureRxStompConnected
+                            </b>
+                            <a href="#ensureRxStompConnected"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ensureRxStompConnected(rxStomp, done: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>rxStomp</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>done</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ensureRxStompDisconnected"></a>
+                        <span class="name">
+                            <b>
+                            ensureRxStompDisconnected
+                            </b>
+                            <a href="#ensureRxStompDisconnected"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ensureRxStompDisconnected(rxStomp, done: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>rxStomp</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>done</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
     <h3>src/specs/app/services/compatibility/helpers.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -206,7 +422,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>disconnetStompRAndEnsure(stompService: undefined, done: )</code>
+<code>disconnetStompRAndEnsure(stompService, done)</code>
                     </td>
                 </tr>
 
@@ -268,7 +484,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>ensureStompConnected(stompService: undefined, done: )</code>
+<code>ensureStompConnected(stompService, done)</code>
                     </td>
                 </tr>
 
@@ -330,7 +546,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>ensureStompRDisconnected(stompService: undefined, done: )</code>
+<code>ensureStompRDisconnected(stompService, done)</code>
                     </td>
                 </tr>
 
@@ -378,6 +594,62 @@
             </tbody>
         </table>
 </section>
+    <h3>src/rx-stomp-service-factory.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rxStompServiceFactory"></a>
+                        <span class="name">
+                            <b>
+                            rxStompServiceFactory
+                            </b>
+                            <a href="#rxStompServiceFactory"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>rxStompServiceFactory(rxStompConfig)</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>rxStompConfig</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -403,7 +675,9 @@
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -1,0 +1,306 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@stomp/ng2-stompjs documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/Vagrant.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">@stomp/ng2-stompjs documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="-stomp-ng2-stompjs">@stomp/ng2-stompjs</h1>
+<p>Angular 2/4/5 <a href="https://travis-ci.org/stomp-js/ng2-stompjs"><img src="https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=angular4" alt="Build Status" class="img-responsive"></a></p>
+<p>Angular 6 <a href="https://travis-ci.org/stomp-js/ng2-stompjs"><img src="https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master" alt="Build Status" class="img-responsive"></a></p>
+<p>An Angular (Angular2, Angular4, Angular5, Angular6 ...) style wrapper for @stomp/stompjs.</p>
+<h2 id="version-compatibility">Version Compatibility</h2>
+<p>While we tried really hard to support multiple Angular versions with same release -
+actually succeeded for Anguar 2/4/5, it is not possible for Angular 6. This library
+makes quite extensive use of rxjs which has undergone breaking changes in Angular 6.</p>
+<p>Going forward following numbering scheme will be followed:</p>
+<ul>
+<li>6.x.x - managed in <code>master</code> branch, will only support Angular 6 - use dependency like &quot;^6.0.0&quot; </li>
+<li>4.x.x - managed in <code>angular4</code> branch, will support Angular 2/4/5 - use dependency like &quot;^4.0.0&quot;</li>
+</ul>
+<p>For the time being both versions will be maintained. From October 2018, only critical
+updates will be applied to 4.x.x releases.</p>
+<p>As of now both versions offer exactly same APIs.</p>
+<h2 id="special-request">Special Request</h2>
+<p>Recently documentation has been switched to
+<a href="https://github.com/compodoc/compodoc">Compodoc</a> from TypeDoc.
+Please raise an issue if you find broken links or inconsistency in documentation.</p>
+<h2 id="documentation">Documentation</h2>
+<p>Please head to <a href="https://stomp-js.github.io/ng2-stompjs/">https://stomp-js.github.io/ng2-stompjs/</a></p>
+<p>Changelog at <a href="https://stomp-js.github.io/ng2-stompjs/changelog.html">https://stomp-js.github.io/ng2-stompjs/changelog.html</a></p>
+<h2 id="compatibility">Compatibility</h2>
+<p>Tested with Angular CLI generated Angular2 (2.4.0), Angular4 (4.0.0), 
+Angular (5.0.0). 
+It has been reported to work with ionic projects as well.</p>
+<h2 id="installation">Installation</h2>
+<p>To install this library, run:</p>
+<div><pre class="line-numbers"><code class="language-bash">$ npm install &#64;stomp/ng2-stompjs --save</code></pre></div><p>or, if using yarn:</p>
+<div><pre class="line-numbers"><code class="language-bash">$ yarn add &#64;stomp/ng2-stompjs</code></pre></div><p>This will additionally install @stomp/stompjs 
+from <a href="https://github.com/stomp-js/stomp-websocket">https://github.com/stomp-js/stomp-websocket</a></p>
+<h2 id="usage">Usage</h2>
+<ul>
+<li>See API documentation at 
+<a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompService.html">https://stomp-js.github.io/ng2-stompjs/injectables/StompService.html</a>,
+<a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html">https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html</a>
+and <a href="https://stomp-js.github.io/ng2-stompjs/index.html">https://stomp-js.github.io/ng2-stompjs/index.html</a></li>
+<li>General Demos (using Angular CLI)<ul>
+<li><a href="https://github.com/stomp-js/ng6-stompjs-demo">https://github.com/stomp-js/ng6-stompjs-demo</a></li>
+<li><a href="https://github.com/stomp-js/ng5-stompjs-demo">https://github.com/stomp-js/ng5-stompjs-demo</a></li>
+<li><a href="https://github.com/stomp-js/ng4-stompjs-demo">https://github.com/stomp-js/ng4-stompjs-demo</a></li>
+<li><a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a> </li>
+</ul>
+</li>
+<li><a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a> also demonstrates fetching
+Stomp configuration using a http call (APP_INITIALIZER)</li>
+<li>See <a href="https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html">SockJS Support</a>.
+<a href="https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs">https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs</a> for a sample
+using SockJS</li>
+</ul>
+<h3 id="sockjs-users">SockJS Users</h3>
+<p>You must read <a href="https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html">https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html</a>  </p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>You will need to have a Stomp broker running.</li>
+<li>The sample code on this page assumes you have
+RabbitMQ running with default settings and Web STOMP plugin activated.
+(see: <a href="https://www.rabbitmq.com/web-stomp.html.">https://www.rabbitmq.com/web-stomp.html.</a>)</li>
+</ul>
+<h3 id="all-the-hard-work">All the Hard Work</h3>
+<ul>
+<li>The main service is StompService, which will need to be provided</li>
+<li>The STOMP Broker connection details will need to be provided via<br>class StompConfig. See the samples for several ways to configure it
+See <a href="https://angular.io/docs/ts/latest/guide/dependency-injection.html">https://angular.io/docs/ts/latest/guide/dependency-injection.html</a> for
+background reading</li>
+<li>Sample configuration:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-typescript">    const stompConfig: StompConfig = {
+      // Which server?
+      url: &#39;ws://127.0.0.1:15674/ws&#39;,
+
+      // Headers
+      // Typical keys: login, passcode, host
+      headers: {
+        login: &#39;guest&#39;,
+        passcode: &#39;guest&#39;
+      },
+
+      // How often to heartbeat?
+      // Interval in milliseconds, set to 0 to disable
+      heartbeat_in: 0, // Typical value 0 - disabled
+      heartbeat_out: 20000, // Typical value 20000 - every 20 seconds
+
+      // Wait in milliseconds before attempting auto reconnect
+      // Set to 0 to disable
+      // Typical value 5000 (5 seconds)
+      reconnect_delay: 5000,
+
+      // Will log diagnostics on console
+      debug: true
+    };</code></pre></div><ul>
+<li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts</a> 
+for a sample code file with configuration passed from a local
+hash. Feel free to copy and modify this file</li>
+<li>See <a href="https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng2-stompjs-demo/blob/master/src/app/app.module.ts</a>
+for a sample code file with configuration fetched from a http
+resource</li>
+<li>Assuming the config specified as a <code>const</code>, code sample to 
+provide <code>StompService</code> and <code>StompConfig</code> will look like:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-typescript">  providers: [
+    StompService,
+    {
+      provide: StompConfig,
+      useValue: stompConfig
+    }
+  ]</code></pre></div><ul>
+<li>See <a href="https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts">https://github.com/stomp-js/ng4-stompjs-demo/blob/master/src/app/app.module.ts</a>
+for a sample file</li>
+</ul>
+<h3 id="reap-the-benefits">Reap the Benefits</h3>
+<h4 id="inject-stompservice">Inject StompService</h4>
+<p>In your constructor (typically of a component or a service), inject
+  <code>StompService</code> as a dependency:</p>
+<div><pre class="line-numbers"><code class="language-typescript">constructor(private _stompService: StompService) { }</code></pre></div><h4 id="subscribe-to-a-queue">Subscribe to a queue</h4>
+<p>The queue name structure and semantics vary
+based on your specific STOMP Broker, 
+see: <a href="https://www.rabbitmq.com/stomp.html">https://www.rabbitmq.com/stomp.html</a>
+for RabbitMQ specific details.</p>
+<p>Call <code>subscribe(queueName: string, headers: StompHeaders = {})</code> 
+with name of the queue which returns an Observable (details at:
+<a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#subscribe)">https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#subscribe)</a>. Any
+of Observable specific operators (map, filter, subscribe, etc.) can be
+applied on it. This can also be set into a template with <code>async</code> pipe.</p>
+<p>Example:</p>
+<div><pre class="line-numbers"><code class="language-typescript">    let stomp_subscription = this._stompService.subscribe(&#39;/topic/ng-demo-sub&#39;);
+
+    stomp_subscription.map((message: Message) =&gt; {
+      return message.body;
+    }).subscribe((msg_body: string) =&gt; {
+      console.log(`Received: ${msg_body}`);
+    });
+</code></pre></div><p>The <code>Message</code> class comes from <code>@stomp/stompjs</code>. So, you will need the
+following import in the classes where you consume messages:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import {Message} from &#39;&#64;stomp/stompjs&#39;;</code></pre></div><h4 id="unsubscribe-from-a-queue">Unsubscribe from a queue</h4>
+<p>You will need to unsubscribe from stomp_subscription (which is an Observer),
+it will then internally unsubscribe from the underlying STOMP queue
+subscription.</p>
+<h4 id="publishing-messages">Publishing messages</h4>
+<p>Call <code>publish(queueName: string, message: string, headers: StompHeaders = {})</code> 
+(details at: <a href="https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#publish)">https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#publish)</a>.
+Example:</p>
+<div><pre class="line-numbers"><code class="language-typescript">this._stompService.publish(&#39;/topic/ng-demo-sub&#39;, &#39;My important message&#39;);</code></pre></div><p>Please note that <code>message</code> is actually string. So, if you need to send JSON
+you will need to convert it into string (typically using 
+<code>JSON.stringify()</code>)</p>
+<h4 id="watching-for-stomp-connection-status">Watching for Stomp connection status</h4>
+<ul>
+<li><code>stompService.state</code> is a <code>BehaviorSubject</code> which maintains and switches
+its value as per the underlying Stomp Connection status.</li>
+<li>The value is from an enum with these possible values: <ul>
+<li>CLOSED</li>
+<li>TRYING</li>
+<li>CONNECTED</li>
+<li>DISCONNECTING</li>
+</ul>
+</li>
+<li>The following code will subscribe to <code>stompService.state</code> and convert
+the enum value (which is a number) to the corresponding string value:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-typescript">    this._stompService.state
+      .map((state: number) =&gt; StompState[state])
+      .subscribe((status: string) =&gt; {
+      console.log(`Stomp connection status: ${status}`);
+    });</code></pre></div><p>If you are interested in watching only when connection is established, you can
+subscribe to <code>this._stompService.connectObservable</code>.</p>
+<h4 id="delayed-initialization">Delayed initialization</h4>
+<p>It is usually possible to use Angular dependency injection techniques and
+APP_INITIALIZER to delay the initialization till the configuration is ready
+(may be fetched using an API call.) See a sample at:
+<a href="https://github.com/stomp-js/ng2-stompjs-demo">https://github.com/stomp-js/ng2-stompjs-demo</a></p>
+<p>The initialization process can be manually controlled with the additional 
+class <code>StompRService</code> which is injected 
+instead of <code>StompService</code>. This has a few additional
+methods to assign a configuration and manually initiate the connection to the STOMP Broker.</p>
+<div><pre class="line-numbers"><code class="language-typescript">// Do not provide StompService or StompConfig, only provide StompRService
+
+  providers: [
+    StompRService
+  ]
+</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">class YourClass {}
+    constructor(private _stompService: StompRService) { }
+
+    public initStomp() {
+      StompConfig config;
+
+      cofig = this.fetchConfigFromSomeWhere();
+
+      this._stompService.config = config;
+      this._stompService.initAndConnect();
+    }
+}</code></pre></div><p>The methods <code>subscribe</code> and <code>publish</code> can be called even before call to <code>initAndConnect</code>.
+However these will be queued till the actual connection is successful.</p>
+<p>For the curious - <code>initAndConnect</code> may be called more than once with a potentially
+updated configuration.</p>
+<h2 id="contributors">Contributors</h2>
+<ul>
+<li><a href="https://github.com/sjmf">Sam Finnigan</a></li>
+<li><a href="https://github.com/JimiC">Jimi (Dimitris) Charalampidis</a></li>
+<li><a href="https://github.com/kum-deepak">Deepak Kumar</a></li>
+<li>Astha Deep</li>
+<li><a href="https://github.com/mpromonet">Michel Promonet</a></li>
+<li>Everyone involved at <a href="https://github.com/stomp-js/stomp-websocket">https://github.com/stomp-js/stomp-websocket</a></li>
+</ul>
+<h2 id="license">License</h2>
+<p>MIT</p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'v6-readme.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

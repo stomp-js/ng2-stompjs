@@ -19,10 +19,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -124,6 +121,10 @@ please use StompService class.</p>
                                     <span class="modifier">Public</span>
                                 <a href="#subscribe">subscribe</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#waitForReceipt">waitForReceipt</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -180,7 +181,7 @@ please use StompService class.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/stomp-r.service.ts:184</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">src/stomp-r.service.ts:216</a></div>
                             </td>
                         </tr>
 
@@ -483,6 +484,109 @@ to this library but the way STOMP brokers are designed to work.</p>
                 </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="waitForReceipt"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            waitForReceipt
+                            </b>
+                            <a href="#waitForReceipt"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>waitForReceipt(receiptId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (frame: Frame) => void)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/stomp-r.service.ts:210</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>STOMP brokers may carry out operation asynchronously and allow requesting for acknowledgement.
+To request an acknowledgement, a <code>receipt</code> header needs to be sent with the actual request.
+The value (say receipt-id) for this header needs to be unique for each use. Typically a sequence, a UUID, a
+random number or a combination may be used.</p>
+<p>A complaint broker will send a RECEIPT frame when an operation has actually been completed.
+The operation needs to be matched based in the value of the receipt-id.</p>
+<p>This method allow watching for a receipt and invoke the callback
+when corresponding receipt has been received.</p>
+<p>The actual <a href="https://stomp-js.github.io/stompjs/classes/Frame.html">https://stomp-js.github.io/stompjs/classes/Frame.html</a>
+will be passed as parameter to the callback.</p>
+<p>Example:</p>
+<div><pre class="line-numbers"><code class="language-javascript">   *        // Publishing with acknowledgement
+   *        let receiptId = randomText();
+   *
+   *        rxStomp.waitForReceipt(receiptId, function() {
+   *          // Will be called after server acknowledges
+   *        });
+   *        rxStomp.publish({destination: TEST.destination, headers: {receipt: receiptId}, body: msg});
+   *</code></pre></div><p>Maps to: <a href="https://stomp-js.github.io/stompjs/classes/Client.html#watchForReceipt">https://stomp-js.github.io/stompjs/classes/Client.html#watchForReceipt</a></p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>receiptId</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>callback</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </section>
 
             <section>
@@ -724,7 +828,7 @@ the stomp broker.</p>
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>config(config: )</code></span>
+                        <span class="accessor"><b>set</b><code>config(config)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -785,7 +889,7 @@ the stomp broker.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/stomp-r.service.ts:182</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="214" class="link-to-prism">src/stomp-r.service.ts:214</a></div>
                                 </td>
                             </tr>
 
@@ -798,16 +902,16 @@ the stomp broker.</p>
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 
-import {RxStomp, RxStompConfig, RxStompState} from &quot;@stomp/rx-stomp&quot;;
+import {RxStomp, RxStompConfig, RxStompState} from &#x27;@stomp/rx-stomp&#x27;;
 
-import {publishParams, Client, Message, Frame} from &quot;@stomp/stompjs&quot;;
+import {publishParams, Client, Message, Frame} from &#x27;@stomp/stompjs&#x27;;
 
-import {BehaviorSubject, Observable, Subject} from &quot;rxjs&quot;;
-import {map} from &quot;rxjs/operators&quot;;
+import {BehaviorSubject, Observable, Subject} from &#x27;rxjs&#x27;;
+import {map} from &#x27;rxjs/operators&#x27;;
 
-import {StompState} from &quot;./stomp-state&quot;;
+import {StompState} from &#x27;./stomp-state&#x27;;
 import { StompHeaders } from &#x27;./stomp-headers&#x27;;
-import {StompConfig} from &quot;./stomp.config&quot;;
+import {StompConfig} from &#x27;./stomp.config&#x27;;
 
 /**
  * Angular2 STOMP Raw Service using @stomp/stomp.js
@@ -912,7 +1016,7 @@ export class StompRService extends RxStomp {
     if (config.debug) {
       rxStompConfig.debug &#x3D; (str: string): void &#x3D;&gt; {
         console.log(new Date(), str);
-      }
+      };
     }
 
     rxStompConfig.connectHeaders &#x3D; config.headers;
@@ -977,6 +1081,38 @@ export class StompRService extends RxStomp {
     return this.watch(queueName, headers);
   }
 
+  /**
+   * STOMP brokers may carry out operation asynchronously and allow requesting for acknowledgement.
+   * To request an acknowledgement, a &#x60;receipt&#x60; header needs to be sent with the actual request.
+   * The value (say receipt-id) for this header needs to be unique for each use. Typically a sequence, a UUID, a
+   * random number or a combination may be used.
+   *
+   * A complaint broker will send a RECEIPT frame when an operation has actually been completed.
+   * The operation needs to be matched based in the value of the receipt-id.
+   *
+   * This method allow watching for a receipt and invoke the callback
+   * when corresponding receipt has been received.
+   *
+   * The actual {@link https://stomp-js.github.io/stompjs/classes/Frame.html}
+   * will be passed as parameter to the callback.
+   *
+   * Example:
+   * &#x60;&#x60;&#x60;javascript
+   *        // Publishing with acknowledgement
+   *        let receiptId &#x3D; randomText();
+   *
+   *        rxStomp.waitForReceipt(receiptId, function() {
+   *          // Will be called after server acknowledges
+   *        });
+   *        rxStomp.publish({destination: TEST.destination, headers: {receipt: receiptId}, body: msg});
+   * &#x60;&#x60;&#x60;
+   *
+   * Maps to: https://stomp-js.github.io/stompjs/classes/Client.html#watchForReceipt
+   */
+  public waitForReceipt(receiptId: string, callback: (frame: Frame) &#x3D;&gt; void): void {
+    super.watchForReceipt(receiptId, callback);
+  }
+
   get client(): Client {
     return this._stompClient;
   }
@@ -1028,7 +1164,9 @@ export class StompRService extends RxStomp {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
