@@ -1,5 +1,9 @@
 # Changelog
 
+# 7.0.0-beta.3 2018-11-04
+
+- Fix error in `src/rx-stomp-service-factory.ts`
+
 # 7.0.0-beta.2 2018-11-04
 
 - Test cases and documentation updates, lint clean
