@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { StompHeaders } from '@stomp/stompjs';
+
 /**
+ * Part of `@stomp/ng2-stompjs`.
+ *
+ * **This class has been deprecated in favor of {@link InjectableRxStompConfig}.
+ * It will be dropped `@stomp/ng2-stompjs@8.x.x`.**
+ *
  * Represents a configuration object for the
  * STOMPService to connect to.
  */
-
 @Injectable()
 export class StompConfig {
   /**

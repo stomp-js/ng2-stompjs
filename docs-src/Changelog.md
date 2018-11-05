@@ -1,5 +1,10 @@
 # Changelog
 
+# 7.0.0-beta.4 2018-11-05
+
+- Updated API documentation.
+- Moved some of the guides to https://stomp-js.github.io
+
 # 7.0.0-beta.3 2018-11-04
 
 - Fix error in `src/rx-stomp-service-factory.ts`

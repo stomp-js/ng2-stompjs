@@ -12,6 +12,11 @@ import { StompHeaders } from './stomp-headers';
 import {StompConfig} from './stomp.config';
 
 /**
+ * Part of `@stomp/ng2-stompjs`.
+ *
+ * **This class has been deprecated in favor of {@link RxStompService}.
+ * It will be dropped `@stomp/ng2-stompjs@8.x.x`.**
+ *
  * Angular2 STOMP Raw Service using @stomp/stomp.js
  *
  * You will only need the public properties and
