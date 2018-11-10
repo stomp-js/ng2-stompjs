@@ -4,6 +4,8 @@
 
 - Updated API documentation.
 - Moved some of the guides to https://stomp-js.github.io
+- Updated "@stomp/rx-stomp@0.1.0-beta.5" fixes
+  [#103](https://github.com/stomp-js/ng2-stompjs/issues/103)
 
 # 7.0.0-beta.3 2018-11-04
 
