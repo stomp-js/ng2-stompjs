@@ -2,9 +2,11 @@ import { RxStompRPC } from '@stomp/rx-stomp';
 import { RxStompService } from './rx-stomp.service';
 import { InjectableRxStompRpcConfig } from './injectable-rx-stomp-rpc-config';
 /**
- * An implementation of RPC service using messaging.
+ * Part of `@stomp/ng2-stompjs`.
  *
- * Please see the [guide](../additional-documentation/rpc---remote-procedure-call.html) for details.
+ * Injectable version of {@link RxStompRPC}.
+ *
+ * See guide at {@link /guide/rx-stomp/ng2-stompjs/2018/10/12/remote-procedure-call.html}
  */
 export declare class RxStompRPCService extends RxStompRPC {
     constructor(rxStomp: RxStompService, stompRPCConfig?: InjectableRxStompRpcConfig);

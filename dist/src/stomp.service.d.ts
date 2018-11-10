@@ -1,6 +1,11 @@
 import { StompConfig } from './stomp.config';
 import { StompRService } from './stomp-r.service';
 /**
+ * Part of `@stomp/ng2-stompjs`.
+ *
+ * **This class has been deprecated in favor of {@link RxStompService} with {@link rxStompServiceFactory}.
+ * It will be dropped `@stomp/ng2-stompjs@8.x.x`.**
+ *
  * Angular2 STOMP Service using @stomp/stomp.js
  *
  * @description This service handles subscribing to a
