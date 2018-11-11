@@ -196,7 +196,7 @@ export class StompRService extends RxStomp {
    * This method allow watching for a receipt and invoke the callback
    * when corresponding receipt has been received.
    *
-   * The actual {@link https://stomp-js.github.io/stompjs/classes/Frame.html}
+   * The actual {@link Frame}
    * will be passed as parameter to the callback.
    *
    * Example:
@@ -210,7 +210,7 @@ export class StompRService extends RxStomp {
    *        rxStomp.publish({destination: TEST.destination, headers: {receipt: receiptId}, body: msg});
    * ```
    *
-   * Maps to: https://stomp-js.github.io/stompjs/classes/Client.html#watchForReceipt
+   * Maps to: [Client#watchForReceipt]{@link Client#watchForReceipt}
    */
   public waitForReceipt(receiptId: string, callback: (frame: Frame) => void): void {
     super.watchForReceipt(receiptId, callback);
