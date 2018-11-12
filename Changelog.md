@@ -1,5 +1,9 @@
 # Changelog
 
+# 7.0.0 2018-11-12
+
+- Document restructuring and cleanups.
+
 # 7.0.0-beta.4 2018-11-05
 
 - Updated API documentation.
