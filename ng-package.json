@@ -3,8 +3,7 @@
   "lib": {
     "entryFile": "index.ts",
     "umdModuleIds": {
-      "@stomp/rx-stomp": "RxStomp",
-      "@stomp/stompjs": "StompJs"
+      "@stomp/rx-stomp": "RxStomp"
     }
   },
   "whitelistedNonPeerDependencies": [
