@@ -4,8 +4,6 @@
   "scripts": {
     "dist": "ng-packagr -p ng-package.json",
     "test": "ng test",
-    "doc": "bin/doc-gen.sh",
-    "doc-serve": "bin/doc-gen.sh -r 59322 -s -w -o",
     "cleanup": "rm -rf dist docs",
     "lint": "ng lint"
   },
