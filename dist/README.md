@@ -28,7 +28,7 @@ Please follow [Migrating ng2-stompjs to v7].
 - **Highly recommended** step by step guide at [ng2-stompjs with Angular 7]
 - Upgrade guide [Migrating ng2-stompjs to v7]
 - API documentation is located at: [API Docs]
-- Using [Using STOMP with SockJS]
+- [Using STOMP with SockJS]
 - [Change Log](Changelog.md)
 - [Contributing](Contributing.md)
 
