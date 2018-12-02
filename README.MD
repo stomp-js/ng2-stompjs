@@ -1,6 +1,6 @@
 # @stomp/ng2-stompjs
 
-Angular 6/7 [![Build Status](https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master)](https://travis-ci.org/stomp-js/ng2-stompjs)
+Angular 6/7 [![Build Status](https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master)](https://travis-ci.org/stomp-js/ng2-stompjs) [![Greenkeeper badge](https://badges.greenkeeper.io/stomp-js/ng2-stompjs.svg)](https://greenkeeper.io/)
 
 An Angular (Angular6+) style wrapper for [@stomp/stompjs].
 
