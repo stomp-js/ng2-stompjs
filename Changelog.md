@@ -1,5 +1,9 @@
 # Changelog
 
+# 7.0.2
+
+- Greek keeper
+
 # 7.0.1 2018-11-26
 
 - Updated @stomp/rx-stomp and @stomp/stompjs 
