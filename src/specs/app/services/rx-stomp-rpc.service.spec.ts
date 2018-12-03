@@ -5,6 +5,7 @@ import {UUID} from 'angular2-uuid';
 import {TestBed} from '@angular/core/testing';
 import {defaultRxStompConfig} from './rx-helpers';
 import {RxStomp, RxStompConfig} from '@stomp/rx-stomp';
+import {take} from "rxjs/operators";
 
 describe('Rabbit RPC', () => {
   const myServiceEndPoint = '/topic/echo';
@@ -45,23 +46,25 @@ describe('Rabbit RPC', () => {
     rxStomp.configure(rxStompConfig);
     rxStomp.activate();
 
-    const receiptId = UUID.UUID();
+    rxStomp.connected$.pipe(take(1)).subscribe(() => {
+      const receiptId = UUID.UUID();
 
-    rxStomp.watch(myServiceEndPoint, {receipt: receiptId}).subscribe((message: Message) => {
-      const replyTo = message.headers['reply-to'];
-      const correlationId = message.headers['correlation-id'];
-      const incomingMessage = message.body;
+      rxStomp.watch(myServiceEndPoint, {receipt: receiptId}).subscribe((message: Message) => {
+        const replyTo = message.headers['reply-to'];
+        const correlationId = message.headers['correlation-id'];
+        const incomingMessage = message.body;
 
-      const outgoingMessage = 'Echoing - ' + incomingMessage;
-      rxStomp.publish({
-        destination: replyTo,
-        body: outgoingMessage,
-        headers: {'correlation-id': correlationId}
+        const outgoingMessage = 'Echoing - ' + incomingMessage;
+        rxStomp.publish({
+          destination: replyTo,
+          body: outgoingMessage,
+          headers: {'correlation-id': correlationId}
+        });
       });
-    });
 
-    rxStomp.watchForReceipt(receiptId, () => {
-      done();
+      rxStomp.watchForReceipt(receiptId, () => {
+        done();
+      });
     });
   });
 
