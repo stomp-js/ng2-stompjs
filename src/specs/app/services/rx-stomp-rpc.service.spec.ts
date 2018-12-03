@@ -5,7 +5,7 @@ import {UUID} from 'angular2-uuid';
 import {TestBed} from '@angular/core/testing';
 import {defaultRxStompConfig} from './rx-helpers';
 import {RxStomp, RxStompConfig} from '@stomp/rx-stomp';
-import {take} from "rxjs/operators";
+import {take} from 'rxjs/operators';
 
 describe('Rabbit RPC', () => {
   const myServiceEndPoint = '/topic/echo';
