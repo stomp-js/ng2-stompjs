@@ -1,5 +1,10 @@
 # Changelog
 
+# 7.1.0-beta.1 2018-12-24
+
+- rx-stomp@0.2.0-beta.1
+- Message -> IMessage, InjectableRxStompRpcConfig -> InjectableRxStompRPCConfig
+
 # 7.0.1 2018-11-26
 
 - Updated @stomp/rx-stomp and @stomp/stompjs 
