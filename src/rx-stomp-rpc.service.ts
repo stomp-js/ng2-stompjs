@@ -2,7 +2,7 @@ import {Injectable, Optional} from '@angular/core';
 
 import {RxStompRPC} from '@stomp/rx-stomp';
 import {RxStompService} from './rx-stomp.service';
-import {InjectableRxStompRpcConfig} from './injectable-rx-stomp-rpc-config';
+import {InjectableRxStompRPCConfig} from './injectable-rx-stomp-rpc-config';
 
 /**
  * Part of `@stomp/ng2-stompjs`.
@@ -13,7 +13,7 @@ import {InjectableRxStompRpcConfig} from './injectable-rx-stomp-rpc-config';
  */
 @Injectable()
 export class RxStompRPCService extends RxStompRPC {
-  constructor(rxStomp: RxStompService, @Optional() stompRPCConfig?: InjectableRxStompRpcConfig) {
+  constructor(rxStomp: RxStompService, @Optional() stompRPCConfig?: InjectableRxStompRPCConfig) {
     super(rxStomp, stompRPCConfig);
   }
 }

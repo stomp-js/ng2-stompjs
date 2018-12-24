@@ -9,4 +9,10 @@ import {RxStompRPCConfig} from '@stomp/rx-stomp';
  * See guide at {@link /guide/rx-stomp/ng2-stompjs/2018/10/12/remote-procedure-call.html}
  */
 @Injectable()
-export class InjectableRxStompRpcConfig extends RxStompRPCConfig { }
+export class InjectableRxStompRPCConfig extends RxStompRPCConfig { }
+
+// Backward compatibility
+/**
+ * Deprecated, use {@link InjectableRxStompRPCConfig} instead
+ */
+export const InjectableRxStompRpcConfig = InjectableRxStompRPCConfig;

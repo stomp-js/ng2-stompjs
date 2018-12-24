@@ -1,6 +1,6 @@
 // These are likely to fail on any broker other than RabbitMQ
-import {Message} from '@stomp/stompjs';
-import {RxStompRPCService, RxStompService, rxStompServiceFactory, InjectableRxStompConfig} from '../../../..';
+import {IMessage} from '@stomp/stompjs';
+import {InjectableRxStompConfig, RxStompRPCService, RxStompService, rxStompServiceFactory} from '../../../..';
 import {UUID} from 'angular2-uuid';
 import {TestBed} from '@angular/core/testing';
 import {defaultRxStompConfig} from './rx-helpers';
@@ -49,7 +49,7 @@ describe('Rabbit RPC', () => {
     rxStomp.connected$.pipe(take(1)).subscribe(() => {
       const receiptId = UUID.UUID();
 
-      rxStomp.watch(myServiceEndPoint, {receipt: receiptId}).subscribe((message: Message) => {
+      rxStomp.watch(myServiceEndPoint, {receipt: receiptId}).subscribe((message: IMessage) => {
         const replyTo = message.headers['reply-to'];
         const correlationId = message.headers['correlation-id'];
         const incomingMessage = message.body;
@@ -70,7 +70,7 @@ describe('Rabbit RPC', () => {
 
   it('Simple RPC', (done) => {
     // Watch for RPC response
-    stompRPCService.rpc({destination: myServiceEndPoint, body: 'Hello'}).subscribe((message: Message) => {
+    stompRPCService.rpc({destination: myServiceEndPoint, body: 'Hello'}).subscribe((message: IMessage) => {
       expect(message.body).toBe('Echoing - Hello');
       done();
     });
@@ -84,7 +84,7 @@ describe('Rabbit RPC', () => {
     const origNumSubcribers = numSubscribers();
 
     // Watch for RPC response
-    stompRPCService.rpc({destination: myServiceEndPoint, body: 'Hello'}).subscribe((message: Message) => {
+    stompRPCService.rpc({destination: myServiceEndPoint, body: 'Hello'}).subscribe((message: IMessage) => {
       expect(message.body).toBe('Echoing - Hello');
       setTimeout(() => {
         expect(numSubscribers()).toBe(origNumSubcribers);
