@@ -12,25 +12,29 @@ import { RxStompRPCConfig } from '@stomp/rx-stomp';
  *
  * See guide at {\@link /guide/rx-stomp/ng2-stompjs/2018/10/12/remote-procedure-call.html}
  */
-var InjectableRxStompRpcConfig = /** @class */ (function (_super) {
-    tslib_1.__extends(InjectableRxStompRpcConfig, _super);
-    function InjectableRxStompRpcConfig() {
+var InjectableRxStompRPCConfig = /** @class */ (function (_super) {
+    tslib_1.__extends(InjectableRxStompRPCConfig, _super);
+    function InjectableRxStompRPCConfig() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    InjectableRxStompRpcConfig.decorators = [
+    InjectableRxStompRPCConfig.decorators = [
         { type: Injectable }
     ];
-    return InjectableRxStompRpcConfig;
+    return InjectableRxStompRPCConfig;
 }(RxStompRPCConfig));
-export { InjectableRxStompRpcConfig };
-function InjectableRxStompRpcConfig_tsickle_Closure_declarations() {
+export { InjectableRxStompRPCConfig };
+function InjectableRxStompRPCConfig_tsickle_Closure_declarations() {
     /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
-    InjectableRxStompRpcConfig.decorators;
+    InjectableRxStompRPCConfig.decorators;
     /**
      * @nocollapse
      * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
      */
-    InjectableRxStompRpcConfig.ctorParameters;
+    InjectableRxStompRPCConfig.ctorParameters;
 }
+/**
+ * Deprecated, use {\@link InjectableRxStompRPCConfig} instead
+ */
+export var /** @type {?} */ InjectableRxStompRpcConfig = InjectableRxStompRPCConfig;
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5qZWN0YWJsZS1yeC1zdG9tcC1ycGMtY29uZmlnLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQHN0b21wL25nMi1zdG9tcGpzLyIsInNvdXJjZXMiOlsic3JjL2luamVjdGFibGUtcngtc3RvbXAtcnBjLWNvbmZpZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUFBLE9BQU8sRUFBQyxVQUFVLEVBQUMsTUFBTSxlQUFlLENBQUM7QUFDekMsT0FBTyxFQUFDLGdCQUFnQixFQUFDLE1BQU0saUJBQWlCLENBQUM7Ozs7Ozs7OztJQVVELHNEQUFnQjs7Ozs7Z0JBRC9ELFVBQVU7O3FDQVZYO0VBV2dELGdCQUFnQjtTQUFuRCwwQkFBMEIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0luamVjdGFibGV9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHtSeFN0b21wUlBDQ29uZmlnfSBmcm9tICdAc3RvbXAvcngtc3RvbXAnO1xuXG4vKipcbiAqIFBhcnQgb2YgYEBzdG9tcC9uZzItc3RvbXBqc2AuXG4gKlxuICogSW5qZWN0YWJsZSB2ZXJzaW9uIG9mIHtAbGluayBSeFN0b21wUlBDQ29uZmlnfS5cbiAqXG4gKiBTZWUgZ3VpZGUgYXQge0BsaW5rIC9ndWlkZS9yeC1zdG9tcC9uZzItc3RvbXBqcy8yMDE4LzEwLzEyL3JlbW90ZS1wcm9jZWR1cmUtY2FsbC5odG1sfVxuICovXG5ASW5qZWN0YWJsZSgpXG5leHBvcnQgY2xhc3MgSW5qZWN0YWJsZVJ4U3RvbXBScGNDb25maWcgZXh0ZW5kcyBSeFN0b21wUlBDQ29uZmlnIHsgfVxuIl19
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5qZWN0YWJsZS1yeC1zdG9tcC1ycGMtY29uZmlnLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQHN0b21wL25nMi1zdG9tcGpzLyIsInNvdXJjZXMiOlsic3JjL2luamVjdGFibGUtcngtc3RvbXAtcnBjLWNvbmZpZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUFBLE9BQU8sRUFBQyxVQUFVLEVBQUMsTUFBTSxlQUFlLENBQUM7QUFDekMsT0FBTyxFQUFDLGdCQUFnQixFQUFDLE1BQU0saUJBQWlCLENBQUM7Ozs7Ozs7OztJQVVELHNEQUFnQjs7Ozs7Z0JBRC9ELFVBQVU7O3FDQVZYO0VBV2dELGdCQUFnQjtTQUFuRCwwQkFBMEI7Ozs7Ozs7Ozs7Ozs7QUFNdkMsTUFBTSxDQUFDLHFCQUFNLDBCQUEwQixHQUFHLDBCQUEwQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtJbmplY3RhYmxlfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7UnhTdG9tcFJQQ0NvbmZpZ30gZnJvbSAnQHN0b21wL3J4LXN0b21wJztcblxuLyoqXG4gKiBQYXJ0IG9mIGBAc3RvbXAvbmcyLXN0b21wanNgLlxuICpcbiAqIEluamVjdGFibGUgdmVyc2lvbiBvZiB7QGxpbmsgUnhTdG9tcFJQQ0NvbmZpZ30uXG4gKlxuICogU2VlIGd1aWRlIGF0IHtAbGluayAvZ3VpZGUvcngtc3RvbXAvbmcyLXN0b21wanMvMjAxOC8xMC8xMi9yZW1vdGUtcHJvY2VkdXJlLWNhbGwuaHRtbH1cbiAqL1xuQEluamVjdGFibGUoKVxuZXhwb3J0IGNsYXNzIEluamVjdGFibGVSeFN0b21wUlBDQ29uZmlnIGV4dGVuZHMgUnhTdG9tcFJQQ0NvbmZpZyB7IH1cblxuLy8gQmFja3dhcmQgY29tcGF0aWJpbGl0eVxuLyoqXG4gKiBEZXByZWNhdGVkLCB1c2Uge0BsaW5rIEluamVjdGFibGVSeFN0b21wUlBDQ29uZmlnfSBpbnN0ZWFkXG4gKi9cbmV4cG9ydCBjb25zdCBJbmplY3RhYmxlUnhTdG9tcFJwY0NvbmZpZyA9IEluamVjdGFibGVSeFN0b21wUlBDQ29uZmlnO1xuIl19

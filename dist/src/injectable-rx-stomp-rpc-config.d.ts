@@ -6,5 +6,9 @@ import { RxStompRPCConfig } from '@stomp/rx-stomp';
  *
  * See guide at {@link /guide/rx-stomp/ng2-stompjs/2018/10/12/remote-procedure-call.html}
  */
-export declare class InjectableRxStompRpcConfig extends RxStompRPCConfig {
+export declare class InjectableRxStompRPCConfig extends RxStompRPCConfig {
 }
+/**
+ * Deprecated, use {@link InjectableRxStompRPCConfig} instead
+ */
+export declare const InjectableRxStompRpcConfig: typeof InjectableRxStompRPCConfig;
