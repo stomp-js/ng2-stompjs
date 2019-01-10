@@ -1,5 +1,9 @@
 # Changelog
 
+# 7.1.0 2019-01-10
+
+- rx-stomp@0.2.0
+
 # 7.1.0-beta.1 2018-12-24
 
 - rx-stomp@0.2.0-beta.1
