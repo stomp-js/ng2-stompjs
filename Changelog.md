@@ -1,5 +1,14 @@
 # Changelog
 
+# 7.1.0-beta.1 2018-12-24
+
+- rx-stomp@0.3.0-beta.1
+- stompjs@5.2.0
+- Send ping only if WebSocket is connected.
+- Concept of splitLargeFrames flag.
+  Working towards [ng2-stompjs#120](https://github.com/stomp-js/ng2-stompjs/issues/120)
+- Concept of forceBinaryWSFrames.
+
 # 7.1.0 2019-01-10
 
 - rx-stomp@0.2.0
