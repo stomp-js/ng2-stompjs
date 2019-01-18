@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-npm run dist \
+ng lint && ng test \
+&& npm run dist \
 && cd dist \
 && npm publish --access=public
