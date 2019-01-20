@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "7.2.0-beta.1",
+  "version": "7.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/stomp-js/ng2-stompjs"
@@ -25,7 +25,7 @@
   },
   "main": "bundles/stomp-ng2-stompjs.umd.js",
   "dependencies": {
-    "@stomp/rx-stomp": "^0.3.0-beta.1",
+    "@stomp/rx-stomp": "^0.3.0 >=0.3.0",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
