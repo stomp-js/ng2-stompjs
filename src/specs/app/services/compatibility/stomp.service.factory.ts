@@ -3,7 +3,6 @@
 import { StompRService, StompService, StompConfig } from '../../../../../';
 import * as SockJS from 'sockjs-client';
 
-
 export function socketProvider() {
   // See below (url property of defaultConfig)
   return new SockJS('http://127.0.0.1:15674/stomp');
@@ -21,7 +20,7 @@ export function defaultConfig(): StompConfig {
     // Typical keys: login, passcode, host
     headers: {
       login: 'guest',
-      passcode: 'guest'
+      passcode: 'guest',
     },
 
     // How often to heartbeat?
@@ -35,7 +34,7 @@ export function defaultConfig(): StompConfig {
     reconnect_delay: 200,
 
     // Will log diagnostics on console
-    debug: true
+    debug: true,
   };
 }
 

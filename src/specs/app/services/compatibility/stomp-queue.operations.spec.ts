@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
 import { map } from 'rxjs/operators';
-import { StompService} from '../../../../../';
+import { StompService } from '../../../../../';
 import { defaultConfig, stompServiceFactory } from './stomp.service.factory';
-import { ensureStompConnected, disconnetStompRAndEnsure} from './helpers';
+import { ensureStompConnected, disconnetStompRAndEnsure } from './helpers';
 import { Subscription } from 'rxjs';
 
 describe('StompService Queues', () => {
@@ -11,7 +11,7 @@ describe('StompService Queues', () => {
   const stompConfig = defaultConfig();
 
   // Wait till STOMP Service is actually connected
-  beforeEach((done) => {
+  beforeEach(done => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
 
     stompService = stompServiceFactory(stompConfig);
@@ -19,7 +19,7 @@ describe('StompService Queues', () => {
   });
 
   // Disconnect and wait till it actually disconnects
-  afterEach((done) => {
+  afterEach(done => {
     disconnetStompRAndEnsure(stompService, done);
     stompService = null;
   });
@@ -33,7 +33,7 @@ describe('StompService Queues', () => {
 
     const handlers = {
       handler1: () => {},
-      handler2: () => {}
+      handler2: () => {},
     };
 
     let spyHandler1: jasmine.Spy;
@@ -45,14 +45,16 @@ describe('StompService Queues', () => {
     });
 
     // Subscribe to both queues
-    beforeEach((done) => {
-      queSubscription1 = stompService.subscribe(queueName1).pipe(
-        map((message) => message.body)
-      ).subscribe(spyHandler1);
+    beforeEach(done => {
+      queSubscription1 = stompService
+        .subscribe(queueName1)
+        .pipe(map(message => message.body))
+        .subscribe(spyHandler1);
 
-      queSubscription2 = stompService.subscribe(queueName2).pipe(
-        map((message) => message.body)
-      ).subscribe(spyHandler2);
+      queSubscription2 = stompService
+        .subscribe(queueName2)
+        .pipe(map(message => message.body))
+        .subscribe(spyHandler2);
 
       setTimeout(() => {
         done();
@@ -60,7 +62,7 @@ describe('StompService Queues', () => {
     });
 
     // Send one message to each queue and verify that these are received in respective subscriptions
-    beforeEach((done) => {
+    beforeEach(done => {
       stompService.publish(queueName1, 'Message 01-01');
       stompService.publish(queueName2, 'Message 02-01');
 
@@ -78,7 +80,7 @@ describe('StompService Queues', () => {
     });
 
     describe('unsubscribe both queues', () => {
-      beforeEach((done) => {
+      beforeEach(done => {
         queSubscription1.unsubscribe();
         queSubscription2.unsubscribe();
         setTimeout(() => {
@@ -86,7 +88,7 @@ describe('StompService Queues', () => {
         }, 100);
       });
 
-      it('should not receive message in any of the  queues', (done) => {
+      it('should not receive message in any of the  queues', done => {
         stompService.publish(queueName1, 'Message 01-02');
         stompService.publish(queueName2, 'Message 02-02');
 

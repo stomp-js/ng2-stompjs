@@ -1,15 +1,15 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {RxStomp, RxStompConfig, RxStompState} from '@stomp/rx-stomp';
+import { RxStomp, RxStompConfig, RxStompState } from '@stomp/rx-stomp';
 
-import {publishParams, Client, Message, Frame} from '@stomp/stompjs';
+import { publishParams, Client, Message, Frame } from '@stomp/stompjs';
 
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import {StompState} from './stomp-state';
+import { StompState } from './stomp-state';
 import { StompHeaders } from './stomp-headers';
-import {StompConfig} from './stomp.config';
+import { StompConfig } from './stomp.config';
 
 /**
  * Part of `@stomp/ng2-stompjs`.
@@ -61,9 +61,13 @@ export class StompRService extends RxStomp {
    * StompState.CONNECTED
    */
   get connectObservable(): Observable<StompState> {
-    return this.connected$.pipe(map((st: RxStompState): StompState => {
-      return StompRService._mapStompState(st);
-    }));
+    return this.connected$.pipe(
+      map(
+        (st: RxStompState): StompState => {
+          return StompRService._mapStompState(st);
+        }
+      )
+    );
   }
 
   /**
@@ -101,9 +105,9 @@ export class StompRService extends RxStomp {
 
   /** Set configuration */
   set config(config: StompConfig) {
-    const rxStompConfig: RxStompConfig = { };
+    const rxStompConfig: RxStompConfig = {};
 
-    if (typeof(config.url) === 'string') {
+    if (typeof config.url === 'string') {
       rxStompConfig.brokerURL = config.url;
     } else {
       rxStompConfig.webSocketFactory = config.url;
@@ -154,9 +158,17 @@ export class StompRService extends RxStomp {
    * @param message
    * @param headers
    */
-  public publish(queueName: string|publishParams, message?: string, headers: StompHeaders = {}): void {
+  public publish(
+    queueName: string | publishParams,
+    message?: string,
+    headers: StompHeaders = {}
+  ): void {
     if (typeof queueName === 'string') {
-      super.publish({destination: queueName as string, body: message, headers});
+      super.publish({
+        destination: queueName as string,
+        body: message,
+        headers,
+      });
     } else {
       const pubParams: publishParams = queueName;
       super.publish(pubParams);
@@ -180,7 +192,10 @@ export class StompRService extends RxStomp {
    * @param queueName
    * @param headers
    */
-  public subscribe(queueName: string, headers: StompHeaders = {}): Observable<Message> {
+  public subscribe(
+    queueName: string,
+    headers: StompHeaders = {}
+  ): Observable<Message> {
     return this.watch(queueName, headers);
   }
 
@@ -212,7 +227,10 @@ export class StompRService extends RxStomp {
    *
    * Maps to: [Client#watchForReceipt]{@link Client#watchForReceipt}
    */
-  public waitForReceipt(receiptId: string, callback: (frame: Frame) => void): void {
+  public waitForReceipt(
+    receiptId: string,
+    callback: (frame: Frame) => void
+  ): void {
     super.watchForReceipt(receiptId, callback);
   }
 

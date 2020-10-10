@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {RxStompRPCConfig} from '@stomp/rx-stomp';
+import { Injectable } from '@angular/core';
+import { RxStompRPCConfig } from '@stomp/rx-stomp';
 
 /**
  * Part of `@stomp/ng2-stompjs`.
@@ -9,7 +9,7 @@ import {RxStompRPCConfig} from '@stomp/rx-stomp';
  * See guide at {@link /guide/rx-stomp/ng2-stompjs/2018/10/12/remote-procedure-call.html}
  */
 @Injectable()
-export class InjectableRxStompRPCConfig extends RxStompRPCConfig { }
+export class InjectableRxStompRPCConfig extends RxStompRPCConfig {}
 
 // Backward compatibility
 /**

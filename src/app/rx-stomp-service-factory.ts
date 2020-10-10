@@ -1,5 +1,5 @@
-import {InjectableRxStompConfig} from './injectable-rx-stomp-config';
-import {RxStompService} from './rx-stomp.service';
+import { InjectableRxStompConfig } from './injectable-rx-stomp-config';
+import { RxStompService } from './rx-stomp.service';
 
 /**
  * Part of `@stomp/ng2-stompjs`.
@@ -13,7 +13,9 @@ import {RxStompService} from './rx-stomp.service';
  * See: {@link /guide/ng2-stompjs/2018/11/04/ng2-stomp-with-angular7.html}
  * for a step-by-step guide.
  */
-export function rxStompServiceFactory(rxStompConfig: InjectableRxStompConfig): RxStompService {
+export function rxStompServiceFactory(
+  rxStompConfig: InjectableRxStompConfig
+): RxStompService {
   const rxStompService = new RxStompService();
 
   rxStompService.configure(rxStompConfig);

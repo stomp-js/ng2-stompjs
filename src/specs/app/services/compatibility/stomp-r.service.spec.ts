@@ -3,7 +3,11 @@
 import { StompRService, StompState, StompConfig } from '../../../../../';
 
 import { defaultConfig, MyStompRService } from './stomp.service.factory';
-import { ensureStompConnected, disconnetStompRAndEnsure, ensureStompRDisconnected } from './helpers';
+import {
+  ensureStompConnected,
+  disconnetStompRAndEnsure,
+  ensureStompRDisconnected,
+} from './helpers';
 
 describe('StompRService', () => {
   let stompService: MyStompRService;
@@ -14,7 +18,7 @@ describe('StompRService', () => {
   });
 
   // Wait till STOMP Service is actually connected
-  beforeEach((done) => {
+  beforeEach(done => {
     stompService = new MyStompRService();
     stompService.config = stompConfig;
     stompService.initAndConnect();
@@ -22,7 +26,7 @@ describe('StompRService', () => {
   });
 
   // Disconnect and wait till it actually disconnects
-  afterEach((done) => {
+  afterEach(done => {
     ensureStompRDisconnected(stompService, done);
     stompService = null;
   });
@@ -30,9 +34,11 @@ describe('StompRService', () => {
   describe('should disconnect', () => {
     // Ask service to disconnect and wait for 500 ms (more than double
     // of reconnect delay)
-    beforeEach((done) => {
+    beforeEach(done => {
       stompService.disconnect();
-      setTimeout(() => { done(); }, 500);
+      setTimeout(() => {
+        done();
+      }, 500);
     });
 
     it('and not reconnect', () => {
@@ -42,15 +48,17 @@ describe('StompRService', () => {
 
   describe('should disconnect even when underlying connection is not there', () => {
     // Simulate error on Websocket and wait for while and call disconnect
-    beforeEach((done) => {
+    beforeEach(done => {
       disconnetStompRAndEnsure(stompService, done);
     });
 
     // Ask service to disconnect and wait for 500 ms (more than double
     // of reconnect delay)
-    beforeEach((done) => {
+    beforeEach(done => {
       stompService.disconnect();
-      setTimeout(() => { done(); }, 500);
+      setTimeout(() => {
+        done();
+      }, 500);
     });
 
     it('and not reconnect', () => {

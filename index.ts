@@ -1,4 +1,3 @@
-
 export { StompRService } from './src/app/compatibility/stomp-r.service';
 export { StompService } from './src/app/compatibility/stomp.service';
 export { StompHeaders } from './src/app/compatibility/stomp-headers';

@@ -28,7 +28,7 @@
 
 # 7.0.1 2018-11-26
 
-- Updated @stomp/rx-stomp and @stomp/stompjs 
+- Updated @stomp/rx-stomp and @stomp/stompjs
 
 # 7.0.0 2018-11-12
 
@@ -90,7 +90,7 @@
 
 ### 0.6.2
 
-- Added ability to get server headers from CONNECTED Frame 
+- Added ability to get server headers from CONNECTED Frame
   https://stomp-js.github.io/ng2-stompjs/injectables/StompRService.html#serverHeadersObservable
 - Enabled Travis
 
@@ -111,12 +111,12 @@
 ### 0.4.2
 
 - Initial [SockJS Support](https://stomp-js.github.io/ng2-stompjs/additional-documentation/sock-js.html).
-Sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
+  Sample at https://github.com/stomp-js/ng4-stompjs-demo/tree/sockjs
 
 ### 0.4.0
 
 - Updated to make it compliant to possible use of APP_INITIALIZER. The way to initiate the service has changed and it no longer uses StompConfigService.
-StompConfig is directly injected as dependency into StompService
+  StompConfig is directly injected as dependency into StompService
 
 ### 0.3.8
 
@@ -137,4 +137,3 @@ StompConfig is directly injected as dependency into StompService
 - Configuration structure has changed, user/password are not part of header
 - Support for headers in connect, subscribe, and publish
 - Typedoc for API documentation
-

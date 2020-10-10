@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {RxStompConfig} from '@stomp/rx-stomp';
+import { Injectable } from '@angular/core';
+import { RxStompConfig } from '@stomp/rx-stomp';
 
 /**
  * Part of `@stomp/ng2-stompjs`.
@@ -18,4 +18,4 @@ import {RxStompConfig} from '@stomp/rx-stomp';
  * Occasionally it may need to be combined with Angular's APP_INITIALIZER mechanism.
  */
 @Injectable()
-export class InjectableRxStompConfig extends RxStompConfig { }
+export class InjectableRxStompConfig extends RxStompConfig {}

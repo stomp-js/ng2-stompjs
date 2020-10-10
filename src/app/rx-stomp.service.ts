@@ -13,4 +13,4 @@ import { RxStomp } from '@stomp/rx-stomp';
  * See also {@link rxStompServiceFactory}.
  */
 @Injectable()
-export class RxStompService extends RxStomp { }
+export class RxStompService extends RxStomp {}

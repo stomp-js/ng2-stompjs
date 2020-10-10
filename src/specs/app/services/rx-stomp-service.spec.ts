@@ -1,8 +1,8 @@
-import {TestBed} from '@angular/core/testing';
-import {take} from 'rxjs/operators';
-import {defaultRxStompConfig, disconnectRxStompAndEnsure} from './rx-helpers';
-import {RxStompService} from '../../../app/rx-stomp.service';
-import {InjectableRxStompConfig, rxStompServiceFactory} from '../../../../';
+import { TestBed } from '@angular/core/testing';
+import { take } from 'rxjs/operators';
+import { defaultRxStompConfig, disconnectRxStompAndEnsure } from './rx-helpers';
+import { RxStompService } from '../../../app/rx-stomp.service';
+import { InjectableRxStompConfig, rxStompServiceFactory } from '../../../../';
 
 describe('RxStompService', () => {
   let rxStompService: RxStompService;
@@ -10,15 +10,13 @@ describe('RxStompService', () => {
   describe('Raw', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        providers: [
-          RxStompService
-        ]
+        providers: [RxStompService],
       });
 
       rxStompService = TestBed.get(RxStompService);
     });
 
-    afterEach((done) => {
+    afterEach(done => {
       disconnectRxStompAndEnsure(rxStompService, done);
     });
 
@@ -26,7 +24,7 @@ describe('RxStompService', () => {
       expect(rxStompService).toBeTruthy();
     });
 
-    it('should connect', (done) => {
+    it('should connect', done => {
       rxStompService.configure(defaultRxStompConfig);
       rxStompService.activate();
 
@@ -43,19 +41,19 @@ describe('RxStompService', () => {
           {
             provide: RxStompService,
             useFactory: rxStompServiceFactory,
-            deps: [InjectableRxStompConfig]
+            deps: [InjectableRxStompConfig],
           },
           {
             provide: InjectableRxStompConfig,
-            useValue: defaultRxStompConfig
-          }
-        ]
+            useValue: defaultRxStompConfig,
+          },
+        ],
       });
 
       rxStompService = TestBed.get(RxStompService);
     });
 
-    afterEach((done) => {
+    afterEach(done => {
       disconnectRxStompAndEnsure(rxStompService, done);
     });
 
@@ -63,11 +61,10 @@ describe('RxStompService', () => {
       expect(rxStompService).toBeTruthy();
     });
 
-    it('should connect', (done) => {
+    it('should connect', done => {
       rxStompService.connected$.pipe(take(1)).subscribe(() => {
         done();
       });
     });
   });
-
 });

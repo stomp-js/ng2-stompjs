@@ -6,7 +6,5 @@
       "@stomp/rx-stomp": "RxStomp"
     }
   },
-  "whitelistedNonPeerDependencies": [
-    "@stomp/rx-stomp"
-  ]
+  "whitelistedNonPeerDependencies": ["@stomp/rx-stomp"]
 }

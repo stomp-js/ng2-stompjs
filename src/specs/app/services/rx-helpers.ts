@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 // Helper functions
-import {RxStomp, RxStompState} from '@stomp/rx-stomp';
+import { RxStomp, RxStompState } from '@stomp/rx-stomp';
 
 export const defaultRxStompConfig = {
   // Which server?
@@ -11,7 +11,7 @@ export const defaultRxStompConfig = {
   // Typical keys: login, passcode, host
   connectHeaders: {
     login: 'guest',
-    passcode: 'guest'
+    passcode: 'guest',
   },
 
   // How often to heartbeat?
@@ -27,7 +27,7 @@ export const defaultRxStompConfig = {
   // Will log diagnostics on console
   debug: (msg: string): void => {
     console.log(new Date(), msg);
-  }
+  },
 };
 
 export function ensureRxStompConnected(rxStomp: RxStomp, done: any) {

@@ -23,7 +23,6 @@ import { StompRService } from './stomp-r.service';
  */
 @Injectable()
 export class StompService extends StompRService {
-
   /**
    * Constructor
    *
