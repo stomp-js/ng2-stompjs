@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {take} from 'rxjs/operators';
 import {defaultRxStompConfig, disconnectRxStompAndEnsure} from './rx-helpers';
-import {RxStompService} from '../../../rx-stomp.service';
+import {RxStompService} from '../../../app/rx-stomp.service';
 import {InjectableRxStompConfig, rxStompServiceFactory} from '../../../../';
 
 describe('RxStompService', () => {
