@@ -174,7 +174,7 @@ export class StompRService extends RxStomp {
    *
    * Note that when working with temporary queues where the subscription request
    * creates the
-   * underlying queue, mssages might be missed during reconnect. This issue is not specific
+   * underlying queue, messages might be missed during reconnect. This issue is not specific
    * to this library but the way STOMP brokers are designed to work.
    *
    * @param queueName
