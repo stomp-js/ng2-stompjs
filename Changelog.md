@@ -1,8 +1,10 @@
 # Changelog
 
-# 8.0.0
+# 8.0.0-beta2
 
-- rx-stomp@1.0.0-beta2
+- rx-stomp@1.0.0-beta4.
+- Start using prettier.
+- Configure Travis to use Node 10, 12 and 14.
 
 # 7.2.0 2019-01-20
 
