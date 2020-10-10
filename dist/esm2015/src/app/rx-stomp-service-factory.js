@@ -1,0 +1,27 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { RxStompService } from './rx-stomp.service';
+/**
+ * Part of `\@stomp/ng2-stompjs`.
+ *
+ * This is factory function that can create {\@link RxStompService}
+ * when configuration is already known.
+ * You can use this function for defining provider for {\@link RxStompService}.
+ * {\@link RxStompService} created using this function is configured and activated.
+ * This provides the simplest mechanism to define {\@link RxStompService} for Dependency Injection.
+ *
+ * See: {\@link /guide/ng2-stompjs/2018/11/04/ng2-stomp-with-angular7.html}
+ * for a step-by-step guide.
+ * @param {?} rxStompConfig
+ * @return {?}
+ */
+export function rxStompServiceFactory(rxStompConfig) {
+    const /** @type {?} */ rxStompService = new RxStompService();
+    rxStompService.configure(rxStompConfig);
+    rxStompService.activate();
+    return rxStompService;
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicngtc3RvbXAtc2VydmljZS1mYWN0b3J5LmpzIiwic291cmNlUm9vdCI6Im5nOi8vQHN0b21wL25nMi1zdG9tcGpzLyIsInNvdXJjZXMiOlsic3JjL2FwcC9yeC1zdG9tcC1zZXJ2aWNlLWZhY3RvcnkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUNBLE9BQU8sRUFBRSxjQUFjLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQzs7Ozs7Ozs7Ozs7Ozs7O0FBY3BELE1BQU0sZ0NBQ0osYUFBc0M7SUFFdEMsdUJBQU0sY0FBYyxHQUFHLElBQUksY0FBYyxFQUFFLENBQUM7SUFFNUMsY0FBYyxDQUFDLFNBQVMsQ0FBQyxhQUFhLENBQUMsQ0FBQztJQUN4QyxjQUFjLENBQUMsUUFBUSxFQUFFLENBQUM7SUFFMUIsTUFBTSxDQUFDLGNBQWMsQ0FBQztDQUN2QiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEluamVjdGFibGVSeFN0b21wQ29uZmlnIH0gZnJvbSAnLi9pbmplY3RhYmxlLXJ4LXN0b21wLWNvbmZpZyc7XG5pbXBvcnQgeyBSeFN0b21wU2VydmljZSB9IGZyb20gJy4vcngtc3RvbXAuc2VydmljZSc7XG5cbi8qKlxuICogUGFydCBvZiBgQHN0b21wL25nMi1zdG9tcGpzYC5cbiAqXG4gKiBUaGlzIGlzIGZhY3RvcnkgZnVuY3Rpb24gdGhhdCBjYW4gY3JlYXRlIHtAbGluayBSeFN0b21wU2VydmljZX1cbiAqIHdoZW4gY29uZmlndXJhdGlvbiBpcyBhbHJlYWR5IGtub3duLlxuICogWW91IGNhbiB1c2UgdGhpcyBmdW5jdGlvbiBmb3IgZGVmaW5pbmcgcHJvdmlkZXIgZm9yIHtAbGluayBSeFN0b21wU2VydmljZX0uXG4gKiB7QGxpbmsgUnhTdG9tcFNlcnZpY2V9IGNyZWF0ZWQgdXNpbmcgdGhpcyBmdW5jdGlvbiBpcyBjb25maWd1cmVkIGFuZCBhY3RpdmF0ZWQuXG4gKiBUaGlzIHByb3ZpZGVzIHRoZSBzaW1wbGVzdCBtZWNoYW5pc20gdG8gZGVmaW5lIHtAbGluayBSeFN0b21wU2VydmljZX0gZm9yIERlcGVuZGVuY3kgSW5qZWN0aW9uLlxuICpcbiAqIFNlZToge0BsaW5rIC9ndWlkZS9uZzItc3RvbXBqcy8yMDE4LzExLzA0L25nMi1zdG9tcC13aXRoLWFuZ3VsYXI3Lmh0bWx9XG4gKiBmb3IgYSBzdGVwLWJ5LXN0ZXAgZ3VpZGUuXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiByeFN0b21wU2VydmljZUZhY3RvcnkoXG4gIHJ4U3RvbXBDb25maWc6IEluamVjdGFibGVSeFN0b21wQ29uZmlnXG4pOiBSeFN0b21wU2VydmljZSB7XG4gIGNvbnN0IHJ4U3RvbXBTZXJ2aWNlID0gbmV3IFJ4U3RvbXBTZXJ2aWNlKCk7XG5cbiAgcnhTdG9tcFNlcnZpY2UuY29uZmlndXJlKHJ4U3RvbXBDb25maWcpO1xuICByeFN0b21wU2VydmljZS5hY3RpdmF0ZSgpO1xuXG4gIHJldHVybiByeFN0b21wU2VydmljZTtcbn1cbiJdfQ==

@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+export { StompHeaders } from '@stomp/stompjs';
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3RvbXAtaGVhZGVycy5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0BzdG9tcC9uZzItc3RvbXBqcy8iLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcGF0aWJpbGl0eS9zdG9tcC1oZWFkZXJzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0sZ0JBQWdCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgeyBTdG9tcEhlYWRlcnMgfSBmcm9tICdAc3RvbXAvc3RvbXBqcyc7XG4iXX0=
