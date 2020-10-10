@@ -5,7 +5,8 @@
     "dist": "ng-packagr -p ng-package.json",
     "test": "ng test",
     "cleanup": "rm -rf dist docs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prettier": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -61,10 +62,12 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-summary-reporter": "^1.5.1",
     "ng-packagr": "^4.1.1",
+    "prettier": "^2.1.2",
     "protractor": "^5.4.1",
     "rxjs": "^6.0.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "~2.7.2",
     "zone.js": "^0.8.26"
   }
