@@ -66,7 +66,7 @@ describe('StompService', () => {
       });
     });
 
-    xit('should be able to publish/subscribe even before STOMP is connected', (done) => {
+    it('should be able to publish/subscribe even before STOMP is connected', (done) => {
       // Queue is a durable queue
       const queueName = '/queue/ng-demo-sub02';
       const msg = 'My very special message 02' + Math.random();
