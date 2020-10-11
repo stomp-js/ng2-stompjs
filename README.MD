@@ -1,12 +1,12 @@
 # @stomp/ng2-stompjs
 
-Angular 6/7 [![Build Status](https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master)](https://travis-ci.org/stomp-js/ng2-stompjs)
+Angular 6/7/8/9/10 [![Build Status](https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master)](https://travis-ci.org/stomp-js/ng2-stompjs)
 
 An Angular (Angular6+) style wrapper for [@stomp/stompjs].
 
 ## Version Compatibility
 
-The current version is 7.x.x.
+The current version is 8.x.x.
 The underlying [@stomp/stompjs] has been bottom rewritten bringing strict compatibility
 with [STOMP standards].
 This is the first ever STOMP JS client library that reliably supports binary payloads.
@@ -16,7 +16,7 @@ This version is recommended for Angular6 and higher.
 It has been reported to work with ionic projects as well.
 
 Version 4.x.x may be used with Angular 2/4/5 - use dependency like "^4.0.0".
-Documentation for 4.x.x (and 6.x.x) can be accessed at 
+Documentation for 4.x.x (and 6.x.x) can be accessed at
 [https://stomp-js.github.io/ng2-stompjs/](https://stomp-js.github.io/ng2-stompjs/).
 
 ## Upgrading
@@ -35,6 +35,7 @@ Please follow [Migrating ng2-stompjs to v7].
 ## Samples
 
 - [stomp-js/ng2-stompjs-angular7] - final output of [ng2-stompjs with Angular 7].
+  This has been tested for Angular 10 as well.
 - The original Angular 6 demo upgraded as per [Migrating ng2-stompjs to v7]
   at [Angular 6 ng2stompjs 7].
 
