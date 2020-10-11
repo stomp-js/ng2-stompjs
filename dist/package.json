@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "8.0.0-beta2",
+  "version": "8.0.0-beta3",
   "repository": {
     "type": "git",
     "url": "https://github.com/stomp-js/ng2-stompjs"
@@ -19,13 +19,13 @@
     "angular",
     "stomp"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/stomp-js/ng2-stompjs/issues"
   },
   "main": "bundles/stomp-ng2-stompjs.umd.js",
   "dependencies": {
-    "@stomp/rx-stomp": "^1.0.0-beta4",
+    "@stomp/rx-stomp": "^1.0.0-beta5",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
