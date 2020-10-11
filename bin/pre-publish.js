@@ -1,5 +1,5 @@
 const fs = require('fs');
-const pkg =  require('../dist/package.json');
+const pkg = require('../dist/package.json');
 
 pkg.module = pkg.fesm2015;
 
