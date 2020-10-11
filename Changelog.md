@@ -1,5 +1,10 @@
 # Changelog
 
+# 8.0.0-beta3
+
+- rx-stomp@1.0.0-beta5.
+- Use `es2015` as target to avoid Angular issues.
+
 # 8.0.0-beta2
 
 - rx-stomp@1.0.0-beta4.
