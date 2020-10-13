@@ -6,7 +6,7 @@ import { RxStompRPCConfig } from '@stomp/rx-stomp';
  *
  * Injectable version of {@link RxStompRPCConfig}.
  *
- * See guide at {@link /guide/rx-stomp/ng2-stompjs/2018/10/12/remote-procedure-call.html}
+ * See guide at {@link /guide/rx-stomp/ng2-stompjs/remote-procedure-call.html}
  */
 @Injectable()
 export class InjectableRxStompRPCConfig extends RxStompRPCConfig {}
