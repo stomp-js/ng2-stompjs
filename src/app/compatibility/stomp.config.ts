@@ -9,6 +9,10 @@ import { StompHeaders } from '@stomp/stompjs';
  *
  * Represents a configuration object for the
  * STOMPService to connect to.
+ *
+ * This name conflicts with a class of the same name in @stomp/stompjs, excluding this from the documentation.
+ *
+ * @internal
  */
 @Injectable()
 export class StompConfig {
