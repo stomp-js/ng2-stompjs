@@ -13,6 +13,12 @@ import { InjectableRxStompRPCConfig } from './injectable-rx-stomp-rpc-config';
  */
 @Injectable()
 export class RxStompRPCService extends RxStompRPC {
+  /**
+   * Create an instance, typically called by Angular Dependency Injection framework.
+   *
+   * @param rxStomp
+   * @param stompRPCConfig
+   */
   constructor(
     rxStomp: RxStompService,
     @Optional() stompRPCConfig?: InjectableRxStompRPCConfig
