@@ -9,24 +9,24 @@ An Angular (Angular6+) style wrapper for [@stomp/stompjs].
 The current version is 8.x.x.
 The underlying [@stomp/stompjs] has been bottom rewritten bringing strict compatibility
 with [STOMP standards].
-This is the first ever STOMP JS client library that reliably supports binary payloads.
+This is the first-ever STOMP JS client library that reliably supports binary payloads.
 
 This version is recommended for Angular6 and higher.
 
 It has been reported to work with ionic projects as well.
 
-Version 4.x.x may be used with Angular 2/4/5 - use dependency like "^4.0.0".
-Documentation for 4.x.x (and 6.x.x) can be accessed at
-[https://stomp-js.github.io/ng2-stompjs/](https://stomp-js.github.io/ng2-stompjs/).
+## Getting started
+
+[https://stomp-js.github.io/](https://stomp-js.github.io/) has tutorials and documentation.
 
 ## Upgrading
 
-Please follow [Migrating ng2-stompjs to v7].
+Please follow [migration guides].
 
 ## Documentation
 
 - **Highly recommended** step by step guide at [ng2-stompjs with Angular 7]
-- Upgrade guide [Migrating ng2-stompjs to v7]
+- Upgrade instructions at [migration guides]
 - API documentation is located at: [API Docs]
 - [Using STOMP with SockJS]
 - [Change Log](Changelog.md)
@@ -36,8 +36,14 @@ Please follow [Migrating ng2-stompjs to v7].
 
 - [stomp-js/ng2-stompjs-angular7] - final output of [ng2-stompjs with Angular 7].
   This has been tested for Angular 10 as well.
-- The original Angular 6 demo upgraded as per [Migrating ng2-stompjs to v7]
+- The original Angular 6 demo upgraded as per [migration guides].
   at [Angular 6 ng2stompjs 7].
+
+## Older Angular versions
+
+Version 4.x.x may be used with Angular 2/4/5 - use dependency like "^4.0.0".
+Documentation for 4.x.x can be accessed at
+[https://stomp-js.github.io/ng2-stompjs/](https://stomp-js.github.io/ng2-stompjs/).
 
 ## Contributors
 
@@ -50,13 +56,13 @@ Please follow [Migrating ng2-stompjs to v7].
 
 ## License
 
-MIT
+Apache-2.0
 
 [@stomp/stompjs]: https://github.com/stomp-js/stompjs
 [STOMP standards]: https://stomp.github.io/stomp-specification-1.2.html
 [API Docs]: https://stomp-js.github.io/api-docs/latest/
-[ng2-stompjs with Angular 7]: https://stomp-js.github.io/guide/ng2-stompjs/2018/11/04/ng2-stomp-with-angular7.html
-[Migrating ng2-stompjs to v7]: https://stomp-js.github.io/guide/ng2-stompjs/2018/11/05/migrate-ng2-stompjs-v7.html
-[Using STOMP with SockJS]: https://stomp-js.github.io/guide/stompjs/rx-stomp/ng2-stompjs/2018/09/10/using-stomp-with-sockjs.html
+[ng2-stompjs with Angular 7]: https://stomp-js.github.io/guide/ng2-stompjs/ng2-stomp-with-angular7.html
+[migration guides]: https://stomp-js.github.io/#upgrading
+[Using STOMP with SockJS]: https://stomp-js.github.io/guide/stompjs/rx-stomp/ng2-stompjs/using-stomp-with-sockjs.html
 [stomp-js/ng2-stompjs-angular7]: https://github.com/stomp-js/ng2-stompjs-angular7
 [Angular 6 ng2stompjs 7]: https://github.com/stomp-js/ng6-stompjs-demo/tree/ng2-stompjs-v7

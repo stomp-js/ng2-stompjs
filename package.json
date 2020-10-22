@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "8.0.0-beta3",
+  "version": "8.0.0",
   "scripts": {
     "dist": "ng-packagr -p ng-package.json",
     "test": "ng test",
@@ -32,7 +32,7 @@
   },
   "main": "./index.ts",
   "dependencies": {
-    "@stomp/rx-stomp": "^1.0.0-beta5"
+    "@stomp/rx-stomp": "^1.0.0 >=1.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",

@@ -1,19 +1,11 @@
 # Changelog
 
-# 8.0.0-beta3
+# 8.0.0 (2020-20-22)
 
-- rx-stomp@1.0.0-beta5.
 - Use `es2015` as target to avoid Angular issues.
-
-# 8.0.0-beta2
-
-- rx-stomp@1.0.0-beta4.
+- rx-stomp@1.
 - Start using prettier.
 - Configure Travis to use Node 10, 12 and 14.
-
-# 7.2.0 2019-01-20
-
-- rx-stomp@0.3.0
 
 # 7.2.0-beta.1 2019-01-18
 
