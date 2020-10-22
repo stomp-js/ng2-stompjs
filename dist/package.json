@@ -1,6 +1,6 @@
 {
   "name": "@stomp/ng2-stompjs",
-  "version": "8.0.0-beta3",
+  "version": "8.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/stomp-js/ng2-stompjs"
@@ -25,7 +25,7 @@
   },
   "main": "bundles/stomp-ng2-stompjs.umd.js",
   "dependencies": {
-    "@stomp/rx-stomp": "^1.0.0-beta5",
+    "@stomp/rx-stomp": "^1.0.0 >=1.0.1",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
@@ -65,7 +65,7 @@
     "typescript": "~2.7.2",
     "zone.js": "^0.8.26"
   },
-  "module": "fesm5/stomp-ng2-stompjs.js",
+  "module": "fesm2015/stomp-ng2-stompjs.js",
   "es2015": "fesm2015/stomp-ng2-stompjs.js",
   "esm5": "esm5/stomp-ng2-stompjs.js",
   "esm2015": "esm2015/stomp-ng2-stompjs.js",

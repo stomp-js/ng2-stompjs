@@ -6,8 +6,14 @@ import { InjectableRxStompRPCConfig } from './injectable-rx-stomp-rpc-config';
  *
  * Injectable version of {@link RxStompRPC}.
  *
- * See guide at {@link /guide/rx-stomp/ng2-stompjs/2018/10/12/remote-procedure-call.html}
+ * See guide at {@link /guide/rx-stomp/ng2-stompjs/remote-procedure-call.html}
  */
 export declare class RxStompRPCService extends RxStompRPC {
+    /**
+     * Create an instance, typically called by Angular Dependency Injection framework.
+     *
+     * @param rxStomp
+     * @param stompRPCConfig
+     */
     constructor(rxStomp: RxStompService, stompRPCConfig?: InjectableRxStompRPCConfig);
 }
