@@ -61,7 +61,7 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-summary-reporter": "^1.5.1",
-    "ng-packagr": "^4.1.1",
+    "ng-packagr": "^10.1.1",
     "prettier": "^2.1.2",
     "protractor": "^5.4.1",
     "rxjs": "^6.0.0",
