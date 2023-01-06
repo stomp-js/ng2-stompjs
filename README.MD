@@ -1,4 +1,9 @@
-# @stomp/ng2-stompjs
+# Deprecated - @stomp/ng2-stompjs
+
+**This library is deprecated. It is not likely to work with Angular 10+.
+Please migrate to [rx-stomp](https://github.com/stomp-js/rx-stomp).
+Follow the [migration guide](https://stomp-js.github.io/guide/rx-stomp/ng2-stompjs/ng2-stompjs-to-rx-stomp.html)
+and [using rx-stomp with Angular](https://stomp-js.github.io/guide/rx-stomp/rx-stomp-with-angular.html).**
 
 Angular 6/7/8/9/10 [![Build Status](https://travis-ci.org/stomp-js/ng2-stompjs.svg?branch=master)](https://travis-ci.org/stomp-js/ng2-stompjs)
 
